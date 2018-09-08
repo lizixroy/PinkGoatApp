@@ -14,6 +14,10 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let wrapper = BTMultiBodyDynamicsWorldWrapper()
+        wrapper
+        
     }
 
     override var representedObject: Any? {

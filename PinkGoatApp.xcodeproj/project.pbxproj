@@ -12,6 +12,29 @@
 		B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5859C48213F83EF00C71222 /* Assets.xcassets */; };
 		B5859C4C213F83EF00C71222 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5859C4A213F83EF00C71222 /* Main.storyboard */; };
 		B5859C58213F83F000C71222 /* PinkGoatAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5859C57213F83F000C71222 /* PinkGoatAppTests.swift */; };
+		B5859C63213F849A00C71222 /* bullet in Resources */ = {isa = PBXBuildFile; fileRef = B5859C62213F849A00C71222 /* bullet */; };
+		B5859C75213F84E800C71222 /* libBullet3Dynamics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C65213F84E700C71222 /* libBullet3Dynamics.a */; };
+		B5859C76213F84E800C71222 /* libBullet3Geometry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C66213F84E800C71222 /* libBullet3Geometry.a */; };
+		B5859C77213F84E800C71222 /* libBullet3Collision.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C67213F84E800C71222 /* libBullet3Collision.a */; };
+		B5859C78213F84E800C71222 /* libBulletInverseDynamics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C68213F84E800C71222 /* libBulletInverseDynamics.a */; };
+		B5859C79213F84E800C71222 /* libBulletDynamics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C69213F84E800C71222 /* libBulletDynamics.a */; };
+		B5859C7A213F84E800C71222 /* libBullet3Common.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C6A213F84E800C71222 /* libBullet3Common.a */; };
+		B5859C7B213F84E800C71222 /* libBulletRobotics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C6B213F84E800C71222 /* libBulletRobotics.a */; };
+		B5859C7C213F84E800C71222 /* libBullet3OpenCL_clew.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C6C213F84E800C71222 /* libBullet3OpenCL_clew.a */; };
+		B5859C7D213F84E800C71222 /* libBulletWorldImporter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C6D213F84E800C71222 /* libBulletWorldImporter.a */; };
+		B5859C7E213F84E800C71222 /* libBulletXmlWorldImporter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C6E213F84E800C71222 /* libBulletXmlWorldImporter.a */; };
+		B5859C7F213F84E800C71222 /* libBulletCollision.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C6F213F84E800C71222 /* libBulletCollision.a */; };
+		B5859C80213F84E800C71222 /* libBulletFileLoader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C70213F84E800C71222 /* libBulletFileLoader.a */; };
+		B5859C81213F84E800C71222 /* libBulletInverseDynamicsUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C71213F84E800C71222 /* libBulletInverseDynamicsUtils.a */; };
+		B5859C82213F84E800C71222 /* libLinearMath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C72213F84E800C71222 /* libLinearMath.a */; };
+		B5859C83213F84E800C71222 /* libBulletSoftBody.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C73213F84E800C71222 /* libBulletSoftBody.a */; };
+		B5859C84213F84E800C71222 /* libBullet2FileLoader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C74213F84E800C71222 /* libBullet2FileLoader.a */; };
+		B5859C88213F87B800C71222 /* BulletDynamicsWorldFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C87213F87B800C71222 /* BulletDynamicsWorldFactory.mm */; };
+		B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C8E213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm */; };
+		B5859C92213F971A00C71222 /* PGMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C91213F971A00C71222 /* PGMainViewController.mm */; };
+		B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C93213F994E00C71222 /* URDF2Bullet.mm */; };
+		B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */; };
+		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +58,39 @@
 		B5859C53213F83F000C71222 /* PinkGoatAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinkGoatAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5859C57213F83F000C71222 /* PinkGoatAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinkGoatAppTests.swift; sourceTree = "<group>"; };
 		B5859C59213F83F000C71222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5859C62213F849A00C71222 /* bullet */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bullet; sourceTree = "<group>"; };
+		B5859C65213F84E700C71222 /* libBullet3Dynamics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBullet3Dynamics.a; path = ../../../../../usr/local/lib/libBullet3Dynamics.a; sourceTree = "<group>"; };
+		B5859C66213F84E800C71222 /* libBullet3Geometry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBullet3Geometry.a; path = ../../../../../usr/local/lib/libBullet3Geometry.a; sourceTree = "<group>"; };
+		B5859C67213F84E800C71222 /* libBullet3Collision.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBullet3Collision.a; path = ../../../../../usr/local/lib/libBullet3Collision.a; sourceTree = "<group>"; };
+		B5859C68213F84E800C71222 /* libBulletInverseDynamics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletInverseDynamics.a; path = ../../../../../usr/local/lib/libBulletInverseDynamics.a; sourceTree = "<group>"; };
+		B5859C69213F84E800C71222 /* libBulletDynamics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletDynamics.a; path = ../../../../../usr/local/lib/libBulletDynamics.a; sourceTree = "<group>"; };
+		B5859C6A213F84E800C71222 /* libBullet3Common.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBullet3Common.a; path = ../../../../../usr/local/lib/libBullet3Common.a; sourceTree = "<group>"; };
+		B5859C6B213F84E800C71222 /* libBulletRobotics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletRobotics.a; path = ../../../../../usr/local/lib/libBulletRobotics.a; sourceTree = "<group>"; };
+		B5859C6C213F84E800C71222 /* libBullet3OpenCL_clew.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBullet3OpenCL_clew.a; path = ../../../../../usr/local/lib/libBullet3OpenCL_clew.a; sourceTree = "<group>"; };
+		B5859C6D213F84E800C71222 /* libBulletWorldImporter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletWorldImporter.a; path = ../../../../../usr/local/lib/libBulletWorldImporter.a; sourceTree = "<group>"; };
+		B5859C6E213F84E800C71222 /* libBulletXmlWorldImporter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletXmlWorldImporter.a; path = ../../../../../usr/local/lib/libBulletXmlWorldImporter.a; sourceTree = "<group>"; };
+		B5859C6F213F84E800C71222 /* libBulletCollision.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletCollision.a; path = ../../../../../usr/local/lib/libBulletCollision.a; sourceTree = "<group>"; };
+		B5859C70213F84E800C71222 /* libBulletFileLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletFileLoader.a; path = ../../../../../usr/local/lib/libBulletFileLoader.a; sourceTree = "<group>"; };
+		B5859C71213F84E800C71222 /* libBulletInverseDynamicsUtils.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletInverseDynamicsUtils.a; path = ../../../../../usr/local/lib/libBulletInverseDynamicsUtils.a; sourceTree = "<group>"; };
+		B5859C72213F84E800C71222 /* libLinearMath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLinearMath.a; path = ../../../../../usr/local/lib/libLinearMath.a; sourceTree = "<group>"; };
+		B5859C73213F84E800C71222 /* libBulletSoftBody.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBulletSoftBody.a; path = ../../../../../usr/local/lib/libBulletSoftBody.a; sourceTree = "<group>"; };
+		B5859C74213F84E800C71222 /* libBullet2FileLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBullet2FileLoader.a; path = ../../../../../usr/local/lib/libBullet2FileLoader.a; sourceTree = "<group>"; };
+		B5859C85213F87B700C71222 /* PinkGoatApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinkGoatApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		B5859C86213F87B800C71222 /* BulletDynamicsWorldFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulletDynamicsWorldFactory.h; sourceTree = "<group>"; };
+		B5859C87213F87B800C71222 /* BulletDynamicsWorldFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BulletDynamicsWorldFactory.mm; sourceTree = "<group>"; };
+		B5859C8D213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTMultiBodyDynamicsWorldWrapper.h; sourceTree = "<group>"; };
+		B5859C8E213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BTMultiBodyDynamicsWorldWrapper.mm; sourceTree = "<group>"; };
+		B5859C90213F971A00C71222 /* PGMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMainViewController.h; sourceTree = "<group>"; };
+		B5859C91213F971A00C71222 /* PGMainViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGMainViewController.mm; sourceTree = "<group>"; };
+		B5859C93213F994E00C71222 /* URDF2Bullet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = URDF2Bullet.mm; sourceTree = "<group>"; };
+		B5859C94213F994E00C71222 /* URDF2Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URDF2Bullet.h; sourceTree = "<group>"; };
+		B5859C96213F99AD00C71222 /* URDFJointTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URDFJointTypes.h; sourceTree = "<group>"; };
+		B5859C97213F99E000C71222 /* URDFImporterInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URDFImporterInterface.h; sourceTree = "<group>"; };
+		B5859C98213F9A0300C71222 /* SDFAudioTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDFAudioTypes.h; sourceTree = "<group>"; };
+		B5859C99213F9A2200C71222 /* MultiBodyCreationInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiBodyCreationInterface.h; sourceTree = "<group>"; };
+		B5859C9A213F9B8300C71222 /* PGRobotFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotFactory.h; sourceTree = "<group>"; };
+		B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobotFactory.mm; sourceTree = "<group>"; };
+		B5859C9D213F9CDF00C71222 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +98,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */,
+				B5859C75213F84E800C71222 /* libBullet3Dynamics.a in Frameworks */,
+				B5859C76213F84E800C71222 /* libBullet3Geometry.a in Frameworks */,
+				B5859C77213F84E800C71222 /* libBullet3Collision.a in Frameworks */,
+				B5859C78213F84E800C71222 /* libBulletInverseDynamics.a in Frameworks */,
+				B5859C79213F84E800C71222 /* libBulletDynamics.a in Frameworks */,
+				B5859C7A213F84E800C71222 /* libBullet3Common.a in Frameworks */,
+				B5859C7B213F84E800C71222 /* libBulletRobotics.a in Frameworks */,
+				B5859C7C213F84E800C71222 /* libBullet3OpenCL_clew.a in Frameworks */,
+				B5859C7D213F84E800C71222 /* libBulletWorldImporter.a in Frameworks */,
+				B5859C7E213F84E800C71222 /* libBulletXmlWorldImporter.a in Frameworks */,
+				B5859C7F213F84E800C71222 /* libBulletCollision.a in Frameworks */,
+				B5859C80213F84E800C71222 /* libBulletFileLoader.a in Frameworks */,
+				B5859C81213F84E800C71222 /* libBulletInverseDynamicsUtils.a in Frameworks */,
+				B5859C82213F84E800C71222 /* libLinearMath.a in Frameworks */,
+				B5859C83213F84E800C71222 /* libBulletSoftBody.a in Frameworks */,
+				B5859C84213F84E800C71222 /* libBullet2FileLoader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +134,7 @@
 				B5859C43213F83EF00C71222 /* PinkGoatApp */,
 				B5859C56213F83F000C71222 /* PinkGoatAppTests */,
 				B5859C42213F83EF00C71222 /* Products */,
+				B5859C64213F84E700C71222 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,12 +150,27 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5859C99213F9A2200C71222 /* MultiBodyCreationInterface.h */,
+				B5859C98213F9A0300C71222 /* SDFAudioTypes.h */,
+				B5859C97213F99E000C71222 /* URDFImporterInterface.h */,
+				B5859C96213F99AD00C71222 /* URDFJointTypes.h */,
+				B5859C93213F994E00C71222 /* URDF2Bullet.mm */,
+				B5859C94213F994E00C71222 /* URDF2Bullet.h */,
+				B5859C89213F881F00C71222 /* bulletWrappers */,
+				B5859C62213F849A00C71222 /* bullet */,
 				B5859C44213F83EF00C71222 /* AppDelegate.swift */,
 				B5859C46213F83EF00C71222 /* ViewController.swift */,
 				B5859C48213F83EF00C71222 /* Assets.xcassets */,
 				B5859C4A213F83EF00C71222 /* Main.storyboard */,
 				B5859C4D213F83EF00C71222 /* Info.plist */,
 				B5859C4E213F83EF00C71222 /* PinkGoatApp.entitlements */,
+				B5859C86213F87B800C71222 /* BulletDynamicsWorldFactory.h */,
+				B5859C87213F87B800C71222 /* BulletDynamicsWorldFactory.mm */,
+				B5859C85213F87B700C71222 /* PinkGoatApp-Bridging-Header.h */,
+				B5859C90213F971A00C71222 /* PGMainViewController.h */,
+				B5859C91213F971A00C71222 /* PGMainViewController.mm */,
+				B5859C9A213F9B8300C71222 /* PGRobotFactory.h */,
+				B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */,
 			);
 			path = PinkGoatApp;
 			sourceTree = "<group>";
@@ -93,6 +182,39 @@
 				B5859C59213F83F000C71222 /* Info.plist */,
 			);
 			path = PinkGoatAppTests;
+			sourceTree = "<group>";
+		};
+		B5859C64213F84E700C71222 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5859C9D213F9CDF00C71222 /* SceneKit.framework */,
+				B5859C74213F84E800C71222 /* libBullet2FileLoader.a */,
+				B5859C67213F84E800C71222 /* libBullet3Collision.a */,
+				B5859C6A213F84E800C71222 /* libBullet3Common.a */,
+				B5859C65213F84E700C71222 /* libBullet3Dynamics.a */,
+				B5859C66213F84E800C71222 /* libBullet3Geometry.a */,
+				B5859C6C213F84E800C71222 /* libBullet3OpenCL_clew.a */,
+				B5859C6F213F84E800C71222 /* libBulletCollision.a */,
+				B5859C69213F84E800C71222 /* libBulletDynamics.a */,
+				B5859C70213F84E800C71222 /* libBulletFileLoader.a */,
+				B5859C68213F84E800C71222 /* libBulletInverseDynamics.a */,
+				B5859C71213F84E800C71222 /* libBulletInverseDynamicsUtils.a */,
+				B5859C6B213F84E800C71222 /* libBulletRobotics.a */,
+				B5859C73213F84E800C71222 /* libBulletSoftBody.a */,
+				B5859C6D213F84E800C71222 /* libBulletWorldImporter.a */,
+				B5859C6E213F84E800C71222 /* libBulletXmlWorldImporter.a */,
+				B5859C72213F84E800C71222 /* libLinearMath.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5859C89213F881F00C71222 /* bulletWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				B5859C8D213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.h */,
+				B5859C8E213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm */,
+			);
+			path = bulletWrappers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +267,7 @@
 				TargetAttributes = {
 					B5859C40213F83EF00C71222 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					B5859C52213F83F000C71222 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -178,6 +301,7 @@
 			files = (
 				B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */,
 				B5859C4C213F83EF00C71222 /* Main.storyboard in Resources */,
+				B5859C63213F849A00C71222 /* bullet in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,8 +319,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
+				B5859C92213F971A00C71222 /* PGMainViewController.mm in Sources */,
+				B5859C88213F87B800C71222 /* BulletDynamicsWorldFactory.mm in Sources */,
+				B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
+				B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,17 +476,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PinkGoatApp/PinkGoatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/PinkGoatApp/bullet\"";
 				INFOPLIST_FILE = PinkGoatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_BUNDLE_IDENTIFIER = pinkgoat.PinkGoatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinkGoatApp/PinkGoatApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -366,17 +500,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PinkGoatApp/PinkGoatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/PinkGoatApp/bullet\"";
 				INFOPLIST_FILE = PinkGoatApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_BUNDLE_IDENTIFIER = pinkgoat.PinkGoatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinkGoatApp/PinkGoatApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
