@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14121438B6700FBA6D7 /* UrdfParser.mm */; };
+		B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14521438BFD00FBA6D7 /* tinyxml2.mm */; };
+		B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */; };
 		B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5859C44213F83EF00C71222 /* AppDelegate.swift */; };
 		B5859C47213F83EF00C71222 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5859C46213F83EF00C71222 /* ViewController.swift */; };
 		B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5859C48213F83EF00C71222 /* Assets.xcassets */; };
@@ -48,6 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B526B14021438B6700FBA6D7 /* UrdfParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrdfParser.h; sourceTree = "<group>"; };
+		B526B14121438B6700FBA6D7 /* UrdfParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UrdfParser.mm; sourceTree = "<group>"; };
+		B526B14421438BFD00FBA6D7 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
+		B526B14521438BFD00FBA6D7 /* tinyxml2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = tinyxml2.mm; sourceTree = "<group>"; };
+		B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = urdfStringSplit.mm; sourceTree = "<group>"; };
+		B526B14821438C4F00FBA6D7 /* urdfStringSplit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = urdfStringSplit.h; sourceTree = "<group>"; };
+		B526B14A21438C6F00FBA6D7 /* SDFAudioTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDFAudioTypes.h; sourceTree = "<group>"; };
+		B526B14B2143943D00FBA6D7 /* urdfLexicalCast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = urdfLexicalCast.h; sourceTree = "<group>"; };
 		B5859C41213F83EF00C71222 /* PinkGoatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinkGoatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5859C44213F83EF00C71222 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5859C46213F83EF00C71222 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +139,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B526B13F21438B5300FBA6D7 /* URDF */ = {
+			isa = PBXGroup;
+			children = (
+				B526B14B2143943D00FBA6D7 /* urdfLexicalCast.h */,
+				B526B14A21438C6F00FBA6D7 /* SDFAudioTypes.h */,
+				B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */,
+				B526B14821438C4F00FBA6D7 /* urdfStringSplit.h */,
+				B526B14321438BF200FBA6D7 /* TinyXML */,
+				B526B14021438B6700FBA6D7 /* UrdfParser.h */,
+			);
+			path = URDF;
+			sourceTree = "<group>";
+		};
+		B526B14321438BF200FBA6D7 /* TinyXML */ = {
+			isa = PBXGroup;
+			children = (
+				B526B14521438BFD00FBA6D7 /* tinyxml2.mm */,
+				B526B14121438B6700FBA6D7 /* UrdfParser.mm */,
+				B526B14421438BFD00FBA6D7 /* tinyxml2.h */,
+			);
+			path = TinyXML;
+			sourceTree = "<group>";
+		};
 		B5859C38213F83EF00C71222 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +184,7 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B526B13F21438B5300FBA6D7 /* URDF */,
 				B5859C99213F9A2200C71222 /* MultiBodyCreationInterface.h */,
 				B5859C98213F9A0300C71222 /* SDFAudioTypes.h */,
 				B5859C97213F99E000C71222 /* URDFImporterInterface.h */,
@@ -319,11 +354,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */,
 				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
 				B5859C92213F971A00C71222 /* PGMainViewController.mm in Sources */,
 				B5859C88213F87B800C71222 /* BulletDynamicsWorldFactory.mm in Sources */,
+				B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */,
 				B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
+				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
 				B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */,
 			);
