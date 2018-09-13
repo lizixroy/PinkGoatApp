@@ -10,6 +10,13 @@
 		B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14121438B6700FBA6D7 /* UrdfParser.mm */; };
 		B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14521438BFD00FBA6D7 /* tinyxml2.mm */; };
 		B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */; };
+		B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B21E2148D29100FBA6D7 /* BulletUrdfImporter.mm */; };
+		B526B224214A25CB00FBA6D7 /* b3ResourcePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B222214A25CA00FBA6D7 /* b3ResourcePath.cpp */; };
+		B526B227214A263D00FBA6D7 /* tiny_obj_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B226214A263C00FBA6D7 /* tiny_obj_loader.cpp */; };
+		B526B22B214A275800FBA6D7 /* LoadMeshFromObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B229214A275700FBA6D7 /* LoadMeshFromObj.cpp */; };
+		B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B231214A283B00FBA6D7 /* LoadMeshFromCollada.cpp */; };
+		B526B237214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B235214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp */; };
+		B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B23A214A297100FBA6D7 /* stb_image.cpp */; };
 		B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5859C44213F83EF00C71222 /* AppDelegate.swift */; };
 		B5859C47213F83EF00C71222 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5859C46213F83EF00C71222 /* ViewController.swift */; };
 		B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5859C48213F83EF00C71222 /* Assets.xcassets */; };
@@ -59,6 +66,26 @@
 		B526B14821438C4F00FBA6D7 /* urdfStringSplit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = urdfStringSplit.h; sourceTree = "<group>"; };
 		B526B14A21438C6F00FBA6D7 /* SDFAudioTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDFAudioTypes.h; sourceTree = "<group>"; };
 		B526B14B2143943D00FBA6D7 /* urdfLexicalCast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = urdfLexicalCast.h; sourceTree = "<group>"; };
+		B526B21E2148D29100FBA6D7 /* BulletUrdfImporter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BulletUrdfImporter.mm; sourceTree = "<group>"; };
+		B526B21F2148D29100FBA6D7 /* BulletUrdfImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletUrdfImporter.h; sourceTree = "<group>"; };
+		B526B2212148D30200FBA6D7 /* UrdfRenderingInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UrdfRenderingInterface.h; sourceTree = "<group>"; };
+		B526B222214A25CA00FBA6D7 /* b3ResourcePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b3ResourcePath.cpp; sourceTree = "<group>"; };
+		B526B223214A25CB00FBA6D7 /* b3ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b3ResourcePath.h; sourceTree = "<group>"; };
+		B526B225214A263C00FBA6D7 /* tiny_obj_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiny_obj_loader.h; sourceTree = "<group>"; };
+		B526B226214A263C00FBA6D7 /* tiny_obj_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tiny_obj_loader.cpp; sourceTree = "<group>"; };
+		B526B228214A26A200FBA6D7 /* GLInstanceGraphicsShape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLInstanceGraphicsShape.h; sourceTree = "<group>"; };
+		B526B229214A275700FBA6D7 /* LoadMeshFromObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMeshFromObj.cpp; sourceTree = "<group>"; };
+		B526B22A214A275700FBA6D7 /* LoadMeshFromObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMeshFromObj.h; sourceTree = "<group>"; };
+		B526B22F214A27C500FBA6D7 /* LoadMeshFromSTL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMeshFromSTL.h; sourceTree = "<group>"; };
+		B526B230214A280500FBA6D7 /* ColladaGraphicsInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColladaGraphicsInstance.h; sourceTree = "<group>"; };
+		B526B231214A283B00FBA6D7 /* LoadMeshFromCollada.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMeshFromCollada.cpp; sourceTree = "<group>"; };
+		B526B232214A283B00FBA6D7 /* LoadMeshFromCollada.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMeshFromCollada.h; sourceTree = "<group>"; };
+		B526B234214A28A700FBA6D7 /* btMatrix4x4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = btMatrix4x4.h; sourceTree = "<group>"; };
+		B526B235214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b3ImportMeshUtility.cpp; sourceTree = "<group>"; };
+		B526B236214A28CA00FBA6D7 /* b3ImportMeshUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b3ImportMeshUtility.h; sourceTree = "<group>"; };
+		B526B238214A297000FBA6D7 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		B526B239214A297100FBA6D7 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
+		B526B23A214A297100FBA6D7 /* stb_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
 		B5859C41213F83EF00C71222 /* PinkGoatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinkGoatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5859C44213F83EF00C71222 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5859C46213F83EF00C71222 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +169,9 @@
 		B526B13F21438B5300FBA6D7 /* URDF */ = {
 			isa = PBXGroup;
 			children = (
+				B526B2212148D30200FBA6D7 /* UrdfRenderingInterface.h */,
+				B526B21E2148D29100FBA6D7 /* BulletUrdfImporter.mm */,
+				B526B21F2148D29100FBA6D7 /* BulletUrdfImporter.h */,
 				B526B14B2143943D00FBA6D7 /* urdfLexicalCast.h */,
 				B526B14A21438C6F00FBA6D7 /* SDFAudioTypes.h */,
 				B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */,
@@ -184,6 +214,23 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B526B239214A297100FBA6D7 /* stb_image_write.h */,
+				B526B23A214A297100FBA6D7 /* stb_image.cpp */,
+				B526B238214A297000FBA6D7 /* stb_image.h */,
+				B526B235214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp */,
+				B526B236214A28CA00FBA6D7 /* b3ImportMeshUtility.h */,
+				B526B234214A28A700FBA6D7 /* btMatrix4x4.h */,
+				B526B231214A283B00FBA6D7 /* LoadMeshFromCollada.cpp */,
+				B526B232214A283B00FBA6D7 /* LoadMeshFromCollada.h */,
+				B526B230214A280500FBA6D7 /* ColladaGraphicsInstance.h */,
+				B526B22F214A27C500FBA6D7 /* LoadMeshFromSTL.h */,
+				B526B229214A275700FBA6D7 /* LoadMeshFromObj.cpp */,
+				B526B22A214A275700FBA6D7 /* LoadMeshFromObj.h */,
+				B526B228214A26A200FBA6D7 /* GLInstanceGraphicsShape.h */,
+				B526B226214A263C00FBA6D7 /* tiny_obj_loader.cpp */,
+				B526B225214A263C00FBA6D7 /* tiny_obj_loader.h */,
+				B526B222214A25CA00FBA6D7 /* b3ResourcePath.cpp */,
+				B526B223214A25CB00FBA6D7 /* b3ResourcePath.h */,
 				B526B13F21438B5300FBA6D7 /* URDF */,
 				B5859C99213F9A2200C71222 /* MultiBodyCreationInterface.h */,
 				B5859C98213F9A0300C71222 /* SDFAudioTypes.h */,
@@ -354,15 +401,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B526B237214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp in Sources */,
+				B526B22B214A275800FBA6D7 /* LoadMeshFromObj.cpp in Sources */,
 				B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */,
 				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
 				B5859C92213F971A00C71222 /* PGMainViewController.mm in Sources */,
+				B526B227214A263D00FBA6D7 /* tiny_obj_loader.cpp in Sources */,
 				B5859C88213F87B800C71222 /* BulletDynamicsWorldFactory.mm in Sources */,
 				B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */,
+				B526B224214A25CB00FBA6D7 /* b3ResourcePath.cpp in Sources */,
 				B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */,
+				B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
+				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
+				B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */,
 				B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
