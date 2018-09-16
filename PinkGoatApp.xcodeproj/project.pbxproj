@@ -45,6 +45,9 @@
 		B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C93213F994E00C71222 /* URDF2Bullet.mm */; };
 		B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */; };
 		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
+		B5EBA404214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */; };
+		B5EBA406214E1ADC00DB4CD6 /* kuka_iiwa in Resources */ = {isa = PBXBuildFile; fileRef = B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */; };
+		B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +132,11 @@
 		B5859C9A213F9B8300C71222 /* PGRobotFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotFactory.h; sourceTree = "<group>"; };
 		B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobotFactory.mm; sourceTree = "<group>"; };
 		B5859C9D213F9CDF00C71222 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		B5EBA402214E0D3900DB4CD6 /* MyMultiBodyCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMultiBodyCreator.h; sourceTree = "<group>"; };
+		B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyMultiBodyCreator.cpp; sourceTree = "<group>"; };
+		B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = kuka_iiwa; sourceTree = "<group>"; };
+		B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = btDefaultCollisionConfiguration.cpp; sourceTree = "<group>"; };
+		B5EBA408214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btDefaultCollisionConfiguration.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +177,8 @@
 		B526B13F21438B5300FBA6D7 /* URDF */ = {
 			isa = PBXGroup;
 			children = (
+				B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */,
+				B5EBA402214E0D3900DB4CD6 /* MyMultiBodyCreator.h */,
 				B526B2212148D30200FBA6D7 /* UrdfRenderingInterface.h */,
 				B526B21E2148D29100FBA6D7 /* BulletUrdfImporter.mm */,
 				B526B21F2148D29100FBA6D7 /* BulletUrdfImporter.h */,
@@ -214,6 +224,9 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */,
+				B5EBA408214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.h */,
+				B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */,
 				B526B239214A297100FBA6D7 /* stb_image_write.h */,
 				B526B23A214A297100FBA6D7 /* stb_image.cpp */,
 				B526B238214A297000FBA6D7 /* stb_image.h */,
@@ -350,6 +363,11 @@
 					B5859C40213F83EF00C71222 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					B5859C52213F83F000C71222 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -383,6 +401,7 @@
 			files = (
 				B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */,
 				B5859C4C213F83EF00C71222 /* Main.storyboard in Resources */,
+				B5EBA406214E1ADC00DB4CD6 /* kuka_iiwa in Resources */,
 				B5859C63213F849A00C71222 /* bullet in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,8 +420,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EBA404214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp in Sources */,
 				B526B237214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp in Sources */,
 				B526B22B214A275800FBA6D7 /* LoadMeshFromObj.cpp in Sources */,
+				B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */,
 				B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */,
 				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
 				B5859C92213F971A00C71222 /* PGMainViewController.mm in Sources */,
@@ -569,7 +590,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = PinkGoatApp/PinkGoatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;
@@ -593,7 +613,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = PinkGoatApp/PinkGoatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;

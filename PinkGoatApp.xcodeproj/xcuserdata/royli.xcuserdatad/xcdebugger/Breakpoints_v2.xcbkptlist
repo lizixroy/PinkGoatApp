@@ -2,4 +2,70 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
+            timestampString = "558810986.051115"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1116"
+            endingLineNumber = "1116"
+            landmarkName = "BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visual, const char* urdfPathPrefix, const btTransform&amp; visualTransform, btAlignedObjectArray&lt;GLInstanceVertex&gt;&amp; verticesOut, btAlignedObjectArray&lt;int&gt;&amp; indicesOut, btAlignedObjectArray&lt;BulletURDFTexture&gt;&amp; texturesOut)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
+            timestampString = "558810986.052164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1009"
+            endingLineNumber = "1009"
+            landmarkName = "BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visual, const char* urdfPathPrefix, const btTransform&amp; visualTransform, btAlignedObjectArray&lt;GLInstanceVertex&gt;&amp; verticesOut, btAlignedObjectArray&lt;int&gt;&amp; indicesOut, btAlignedObjectArray&lt;BulletURDFTexture&gt;&amp; texturesOut)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
+            timestampString = "558810986.05283"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1028"
+            endingLineNumber = "1028"
+            landmarkName = "BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visual, const char* urdfPathPrefix, const btTransform&amp; visualTransform, btAlignedObjectArray&lt;GLInstanceVertex&gt;&amp; verticesOut, btAlignedObjectArray&lt;int&gt;&amp; indicesOut, btAlignedObjectArray&lt;BulletURDFTexture&gt;&amp; texturesOut)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/b3ImportMeshUtility.cpp"
+            timestampString = "558811085.248626"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "b3ImportMeshUtility::loadAndRegisterMeshFromFileInternal(const std::string&amp; fileName, b3ImportMeshData&amp; meshData)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
