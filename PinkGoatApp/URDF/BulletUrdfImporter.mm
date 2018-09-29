@@ -1278,8 +1278,8 @@ int BulletURDFImporter::convertLinkVisualShapes(int linkIndex, const char* pathP
 //                }
 			}
 			{
-				B3_PROFILE("registerGraphicsShape");
-                printf("Calling commented out code\n");
+//                B3_PROFILE("registerGraphicsShape");
+//                printf("Calling commented out code\n");
 //                graphicsIndex = m_data->m_guiHelper->registerGraphicsShape(&vertices[0].xyzw[0], vertices.size(), &indices[0], indices.size(), B3_GL_TRIANGLES, textureIndex);
 			}
 			

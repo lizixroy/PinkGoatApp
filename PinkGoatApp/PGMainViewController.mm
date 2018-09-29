@@ -73,6 +73,11 @@
             m_multiBody->setLinearDamping(0*0.99);
             printf("Root link name = %s",u2b.getLinkName(u2b.getRootLinkIndex()).c_str());
         }
+        
+        // present multi body in SceneKit
+        
+//        [guiHelper generateGraphicsWithWorld: world];
+        
     }
 
 }

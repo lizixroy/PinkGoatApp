@@ -48,6 +48,8 @@
 		B5EBA404214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */; };
 		B5EBA406214E1ADC00DB4CD6 /* kuka_iiwa in Resources */ = {isa = PBXBuildFile; fileRef = B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */; };
 		B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */; };
+		B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA40B214ECA7900DB4CD6 /* WavefrontObjConverter.m */; };
+		B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA40D214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,10 @@
 		B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = kuka_iiwa; sourceTree = "<group>"; };
 		B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = btDefaultCollisionConfiguration.cpp; sourceTree = "<group>"; };
 		B5EBA408214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btDefaultCollisionConfiguration.h; sourceTree = "<group>"; };
+		B5EBA40A214ECA7900DB4CD6 /* WavefrontObjConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WavefrontObjConverter.h; sourceTree = "<group>"; };
+		B5EBA40B214ECA7900DB4CD6 /* WavefrontObjConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WavefrontObjConverter.m; sourceTree = "<group>"; };
+		B5EBA40D214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wavefront2GLInstanceGraphicsShape.cpp; sourceTree = "<group>"; };
+		B5EBA40E214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wavefront2GLInstanceGraphicsShape.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +183,8 @@
 		B526B13F21438B5300FBA6D7 /* URDF */ = {
 			isa = PBXGroup;
 			children = (
+				B5EBA40D214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp */,
+				B5EBA40E214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.h */,
 				B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */,
 				B5EBA402214E0D3900DB4CD6 /* MyMultiBodyCreator.h */,
 				B526B2212148D30200FBA6D7 /* UrdfRenderingInterface.h */,
@@ -188,6 +196,8 @@
 				B526B14821438C4F00FBA6D7 /* urdfStringSplit.h */,
 				B526B14321438BF200FBA6D7 /* TinyXML */,
 				B526B14021438B6700FBA6D7 /* UrdfParser.h */,
+				B5EBA40A214ECA7900DB4CD6 /* WavefrontObjConverter.h */,
+				B5EBA40B214ECA7900DB4CD6 /* WavefrontObjConverter.m */,
 			);
 			path = URDF;
 			sourceTree = "<group>";
@@ -433,9 +443,11 @@
 				B526B224214A25CB00FBA6D7 /* b3ResourcePath.cpp in Sources */,
 				B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */,
 				B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */,
+				B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
 				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
+				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
 				B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */,
 				B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */,

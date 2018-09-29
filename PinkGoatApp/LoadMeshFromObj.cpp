@@ -5,7 +5,7 @@
 #include "Bullet3Common/b3AlignedObjectArray.h"
 #include <string>
 #include <vector>
-//#include "Wavefront2GLInstanceGraphicsShape.h"
+#include "Wavefront2GLInstanceGraphicsShape.h"
 #include "Bullet3Common/b3HashMap.h"
 
 struct CachedObjResult
@@ -67,9 +67,7 @@ GLInstanceGraphicsShape* LoadMeshFromObj(const char* relativeFileName, const cha
 
 	{
 		B3_PROFILE("btgCreateGraphicsShapeFromWavefrontObj");
-//        GLInstanceGraphicsShape* gfxShape = btgCreateGraphicsShapeFromWavefrontObj(shapes);
-        printf("Calling commented out code");
-        return NULL;
-//        return gfxShape;
+        GLInstanceGraphicsShape* gfxShape = btgCreateGraphicsShapeFromWavefrontObj(shapes);
+        return gfxShape;
 	}
 }

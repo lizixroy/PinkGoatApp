@@ -3,7 +3,7 @@
 #include <vector>
 #include"tiny_obj_loader.h"
 #include "LinearMath/btVector3.h"
-//#include "Wavefront2GLInstanceGraphicsShape.h"
+#include "Wavefront2GLInstanceGraphicsShape.h"
 #include "b3ResourcePath.h"
 #include "Bullet3Common/b3FileUtils.h"
 #include "stb_image.h"
@@ -76,7 +76,6 @@ bool b3ImportMeshUtility::loadAndRegisterMeshFromFileInternal(const std::string&
 			//std::string err = tinyobj::LoadObj(shapes, relativeFileName, pathPrefix);
 		}
 		
-        printf("Calling commentted out code\n");
         GLInstanceGraphicsShape* gfxShape = btgCreateGraphicsShapeFromWavefrontObj(shapes);
         {
             B3_PROFILE("Load Texture");
