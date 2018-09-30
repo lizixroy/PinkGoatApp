@@ -16,8 +16,11 @@
 #import "BulletDynamics/Featherstone/btMultiBodyConstraintSolver.h"
 #include "btDefaultCollisionConfiguration.h"
 #import "bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h"
+#import "bullet/BulletCollision/CollisionDispatch/btCollisionObject.h"
 #import "bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h"
 #import "bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h"
+
+#import "PGVertexFactory.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -65,21 +68,15 @@
             m_collisionShapes.push_back(u2b.getAllocatedCollisionShape(i));
         }
         m_multiBody = creation.getBulletMultiBody();
-        if (m_multiBody)
-        {
-            //kuka without joint control/constraints will gain energy explode soon due to timestep/integrator
-            //temporarily set some extreme damping factors until we have some joint control or constraints
-            m_multiBody->setAngularDamping(0*0.99);
-            m_multiBody->setLinearDamping(0*0.99);
-            printf("Root link name = %s",u2b.getLinkName(u2b.getRootLinkIndex()).c_str());
+        btCollisionObjectArray& collisionObjects = m_dynamicsWorld->getCollisionObjectArray();
+        PGVertexFactory *vertexFactory = [[PGVertexFactory alloc] init];
+        for (int i = 0; i < collisionObjects.size(); i++) {
+            btCollisionObject *object = collisionObjects[i];
+            GLInstanceVertex *vertex = [vertexFactory makeVertexFromCollisionObject:object];
+            NSLog(@"Create vertex: %@ from object: %p", vertex, object);
         }
         
-        // present multi body in SceneKit
-        
-//        [guiHelper generateGraphicsWithWorld: world];
-        
     }
-
 }
 
 - (void)createEmptyDynamicsWorld

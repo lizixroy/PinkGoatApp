@@ -17,6 +17,8 @@
 		B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B231214A283B00FBA6D7 /* LoadMeshFromCollada.cpp */; };
 		B526B237214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B235214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp */; };
 		B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B23A214A297100FBA6D7 /* stb_image.cpp */; };
+		B583BACA21603C9E005E1332 /* PGVertexFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B583BAC921603C9E005E1332 /* PGVertexFactory.mm */; };
+		B583BACE21608C06005E1332 /* CollisionShape2TriangleMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B583BACC21608C06005E1332 /* CollisionShape2TriangleMesh.cpp */; };
 		B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5859C44213F83EF00C71222 /* AppDelegate.swift */; };
 		B5859C47213F83EF00C71222 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5859C46213F83EF00C71222 /* ViewController.swift */; };
 		B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5859C48213F83EF00C71222 /* Assets.xcassets */; };
@@ -91,6 +93,11 @@
 		B526B238214A297000FBA6D7 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		B526B239214A297100FBA6D7 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
 		B526B23A214A297100FBA6D7 /* stb_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
+		B583BAC821603C9E005E1332 /* PGVertexFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGVertexFactory.h; sourceTree = "<group>"; };
+		B583BAC921603C9E005E1332 /* PGVertexFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGVertexFactory.mm; sourceTree = "<group>"; };
+		B583BACB21607285005E1332 /* ShapeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShapeData.h; sourceTree = "<group>"; };
+		B583BACC21608C06005E1332 /* CollisionShape2TriangleMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionShape2TriangleMesh.cpp; sourceTree = "<group>"; };
+		B583BACD21608C06005E1332 /* CollisionShape2TriangleMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionShape2TriangleMesh.h; sourceTree = "<group>"; };
 		B5859C41213F83EF00C71222 /* PinkGoatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinkGoatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5859C44213F83EF00C71222 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5859C46213F83EF00C71222 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +219,15 @@
 			path = TinyXML;
 			sourceTree = "<group>";
 		};
+		B583BAC721603C7A005E1332 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				B583BAC821603C9E005E1332 /* PGVertexFactory.h */,
+				B583BAC921603C9E005E1332 /* PGVertexFactory.mm */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 		B5859C38213F83EF00C71222 = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +250,9 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B583BAC721603C7A005E1332 /* Factories */,
+				B583BACC21608C06005E1332 /* CollisionShape2TriangleMesh.cpp */,
+				B583BACD21608C06005E1332 /* CollisionShape2TriangleMesh.h */,
 				B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */,
 				B5EBA408214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.h */,
 				B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */,
@@ -246,6 +265,7 @@
 				B526B231214A283B00FBA6D7 /* LoadMeshFromCollada.cpp */,
 				B526B232214A283B00FBA6D7 /* LoadMeshFromCollada.h */,
 				B526B230214A280500FBA6D7 /* ColladaGraphicsInstance.h */,
+				B583BACB21607285005E1332 /* ShapeData.h */,
 				B526B22F214A27C500FBA6D7 /* LoadMeshFromSTL.h */,
 				B526B229214A275700FBA6D7 /* LoadMeshFromObj.cpp */,
 				B526B22A214A275700FBA6D7 /* LoadMeshFromObj.h */,
@@ -431,8 +451,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5EBA404214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp in Sources */,
+				B583BACA21603C9E005E1332 /* PGVertexFactory.mm in Sources */,
 				B526B237214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp in Sources */,
 				B526B22B214A275800FBA6D7 /* LoadMeshFromObj.cpp in Sources */,
+				B583BACE21608C06005E1332 /* CollisionShape2TriangleMesh.cpp in Sources */,
 				B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */,
 				B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */,
 				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
