@@ -20,19 +20,20 @@ enum
 
 @implementation PGVertexFactory
 
-- (GLInstanceVertex *)makeVertexFromCollisionObject:(btCollisionObject *)collisionObject
+- (void)makeVerticesFromCollisionObject:(btCollisionObject *)collisionObject
+                                                                 vertices:(btAlignedObjectArray<GLInstanceVertex>&)vertices indices:(btAlignedObjectArray<int>&)indices;
 {
-    return nil;
+//    btAlignedObjectArray<GLInstanceVertex> gfxVertices;
+//    btAlignedObjectArray<int> indices;
+    createCollisionShapeGraphicsObject(collisionObject->getCollisionShape(), vertices, indices);
 }
 
-void createCollisionShapeGraphicsObject(btCollisionShape* collisionShape)
+void createCollisionShapeGraphicsObject(btCollisionShape* collisionShape,
+                                        btAlignedObjectArray<GLInstanceVertex>& gfxVertices,
+                                        btAlignedObjectArray<int>& indices)
 {
-    //already has a graphics object?
-    if (collisionShape->getUserIndex()>=0)
-        return;
-    
-    btAlignedObjectArray<GLInstanceVertex> gfxVertices;
-    btAlignedObjectArray<int> indices;
+//    btAlignedObjectArray<GLInstanceVertex> gfxVertices;
+//    btAlignedObjectArray<int> indices;
     
     btTransform startTrans;startTrans.setIdentity();
     //todo: create some textured objects for popular objects, like plane, cube, sphere, capsule
@@ -59,13 +60,6 @@ void createCollisionShapeGraphicsObject(btCollisionShape* collisionShape)
             }
         }
     }
-    
-    if (gfxVertices.size() && indices.size())
-    {
-        int shapeId = registerGraphicsShape(&gfxVertices[0].xyzw[0],gfxVertices.size(),&indices[0],indices.size(),B3_GL_TRIANGLES,-1);
-        collisionShape->setUserIndex(shapeId);
-    }
-    
 }
 
 int registerGraphicsShape(const float* vertices,

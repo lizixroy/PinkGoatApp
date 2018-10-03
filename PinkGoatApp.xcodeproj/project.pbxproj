@@ -47,6 +47,7 @@
 		B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C93213F994E00C71222 /* URDF2Bullet.mm */; };
 		B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */; };
 		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
+		B5E607B12165155100858EF7 /* PGRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B02165155100858EF7 /* PGRenderer.m */; };
 		B5EBA404214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */; };
 		B5EBA406214E1ADC00DB4CD6 /* kuka_iiwa in Resources */ = {isa = PBXBuildFile; fileRef = B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */; };
 		B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */; };
@@ -141,6 +142,8 @@
 		B5859C9A213F9B8300C71222 /* PGRobotFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotFactory.h; sourceTree = "<group>"; };
 		B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobotFactory.mm; sourceTree = "<group>"; };
 		B5859C9D213F9CDF00C71222 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		B5E607AF2165155100858EF7 /* PGRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRenderer.h; sourceTree = "<group>"; };
+		B5E607B02165155100858EF7 /* PGRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGRenderer.m; sourceTree = "<group>"; };
 		B5EBA402214E0D3900DB4CD6 /* MyMultiBodyCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMultiBodyCreator.h; sourceTree = "<group>"; };
 		B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyMultiBodyCreator.cpp; sourceTree = "<group>"; };
 		B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = kuka_iiwa; sourceTree = "<group>"; };
@@ -250,6 +253,7 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5E607AE2165154100858EF7 /* Rendering */,
 				B583BAC721603C7A005E1332 /* Factories */,
 				B583BACC21608C06005E1332 /* CollisionShape2TriangleMesh.cpp */,
 				B583BACD21608C06005E1332 /* CollisionShape2TriangleMesh.h */,
@@ -340,6 +344,15 @@
 				B5859C8E213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm */,
 			);
 			path = bulletWrappers;
+			sourceTree = "<group>";
+		};
+		B5E607AE2165154100858EF7 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				B5E607AF2165155100858EF7 /* PGRenderer.h */,
+				B5E607B02165155100858EF7 /* PGRenderer.m */,
+			);
+			path = Rendering;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,6 +484,7 @@
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
+				B5E607B12165155100858EF7 /* PGRenderer.m in Sources */,
 				B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */,
 				B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */,
 			);

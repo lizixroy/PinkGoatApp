@@ -155,6 +155,9 @@ void CollisionShape2TriangleMesh(btCollisionShape* collisionShape, const btTrans
 							int index0 = hull->getIndexPointer()[t*3+0];
 							int index1 = hull->getIndexPointer()[t*3+1];
 							int index2 = hull->getIndexPointer()[t*3+2];
+                            
+                            printf("parent transform: x: %f y: %f, z: %f\n", parentTransform.getOrigin().x(), parentTransform.getOrigin().y(), parentTransform.getOrigin().z());
+
 							btVector3 pos0 =parentTransform*hull->getVertexPointer()[index0];
 							btVector3 pos1 =parentTransform*hull->getVertexPointer()[index1];
 							btVector3 pos2 =parentTransform*hull->getVertexPointer()[index2];

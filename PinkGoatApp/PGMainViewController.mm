@@ -19,8 +19,10 @@
 #import "bullet/BulletCollision/CollisionDispatch/btCollisionObject.h"
 #import "bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h"
 #import "bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h"
-
 #import "PGVertexFactory.h"
+
+#import <SceneKit/SceneKit.h>
+#import <SceneKit/ModelIO.h>
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -44,7 +46,50 @@
 
 - (void)viewDidAppear {
     [super viewDidAppear];
+    [self setupScene];
     [self importRobotModel];
+}
+
+- (void)setupScene
+{
+    SCNScene *scene = [[SCNScene alloc] init];
+    
+    // create and add a camera to the scene
+    SCNNode *cameraNode = [SCNNode node];
+    cameraNode.camera = [SCNCamera camera];
+    [scene.rootNode addChildNode:cameraNode];
+    
+    // place the camera
+    cameraNode.position = SCNVector3Make(0, 0, 15);
+    
+    // create and add a light to the scene
+    SCNNode *lightNode = [SCNNode node];
+    lightNode.light = [SCNLight light];
+    lightNode.light.type = SCNLightTypeOmni;
+    lightNode.position = SCNVector3Make(0, 10, 10);
+    [scene.rootNode addChildNode:lightNode];
+    
+    // create and add an ambient light to the scene
+    SCNNode *ambientLightNode = [SCNNode node];
+    ambientLightNode.light = [SCNLight light];
+    ambientLightNode.light.type = SCNLightTypeAmbient;
+    ambientLightNode.light.color = [NSColor darkGrayColor];
+    [scene.rootNode addChildNode:ambientLightNode];
+
+    SCNView *scnView = (SCNView *)self.view;
+    
+    // set the scene to the view
+    scnView.scene = scene;
+    
+    // allows the user to manipulate the camera
+    scnView.allowsCameraControl = YES;
+    
+    // show statistics such as fps and timing information
+    scnView.showsStatistics = YES;
+    
+    // configure the view
+    scnView.backgroundColor = [NSColor blackColor];
+
 }
 
 // TODO: move this to model layer.
@@ -70,13 +115,61 @@
         m_multiBody = creation.getBulletMultiBody();
         btCollisionObjectArray& collisionObjects = m_dynamicsWorld->getCollisionObjectArray();
         PGVertexFactory *vertexFactory = [[PGVertexFactory alloc] init];
+        
+        NSMutableArray *sceneNodes = [[NSMutableArray alloc] init];
+        
         for (int i = 0; i < collisionObjects.size(); i++) {
             btCollisionObject *object = collisionObjects[i];
-            GLInstanceVertex *vertex = [vertexFactory makeVertexFromCollisionObject:object];
-            NSLog(@"Create vertex: %@ from object: %p", vertex, object);
+            btAlignedObjectArray<GLInstanceVertex> vertices;
+            btAlignedObjectArray<int> indices;
+            [vertexFactory makeVerticesFromCollisionObject:object vertices:vertices indices:indices];
+            NSLog(@"Create %d vertices from object: %p", vertices.size(), object);
+            
+            SCNNode *node = [self makeSceneFromVertices:vertices indices:indices];
+            if (node != nil) {
+                [sceneNodes addObject:node];
+            }
         }
+
+        NSLog(@"Loaded %lu nodes", sceneNodes.count);
         
+        SCNView *scnView = (SCNView *)self.view;
+        
+        for (int i = 0; i < sceneNodes.count; i++) {
+            SCNNode *node = sceneNodes[i];
+            [scnView.scene.rootNode addChildNode:node];
+            NSLog(@"node position: %f %f %f", node.position.x, node.position.y, node.position.z);
+        }
     }
+}
+
+- (SCNNode *)makeSceneFromVertices:(btAlignedObjectArray<GLInstanceVertex>&)vertices
+                            indices:(btAlignedObjectArray<int>&)indices
+{
+    SCNVector3 positions[vertices.size()];
+    SCNVector3 normals[vertices.size()];
+    
+    for (int i = 0; i < vertices.size(); i++) {
+        GLInstanceVertex vertex = vertices[i];
+        SCNVector3 position = SCNVector3Make(vertex.xyzw[0], vertex.xyzw[1], vertex.xyzw[2]);
+        SCNVector3 normal = SCNVector3Make(vertex.normal[0], vertex.normal[1], vertex.normal[2]);
+        positions[i] = position;
+        normals[i] = normal;
+    }
+    
+    SCNGeometrySource *positionSource = [SCNGeometrySource geometrySourceWithVertices:positions count:vertices.size()];
+    SCNGeometrySource *normalSource = [SCNGeometrySource geometrySourceWithVertices:normals count:vertices.size()];
+    
+    NSData *data = [NSData dataWithBytes:&indices[0]
+                                  length:indices.size()];
+    SCNGeometryElement *element = [SCNGeometryElement geometryElementWithData:data
+                                                                primitiveType:SCNGeometryPrimitiveTypeTriangles
+                                                               primitiveCount:indices.size()
+                                                                bytesPerIndex:sizeof(int)];
+    
+    SCNGeometry *geometry = [SCNGeometry geometryWithSources:@[positionSource, normalSource] elements:@[element]];
+    SCNNode *node = [SCNNode nodeWithGeometry:geometry];
+    return node;
 }
 
 - (void)createEmptyDynamicsWorld
