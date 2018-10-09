@@ -131,14 +131,14 @@ typedef struct
     
     static const PGVertex vertices[] =
     {
-    {.position={-1, 1, 1,1},.color={0,1,1,1}},
-    {.position={-1,-1, 1,1},.color={0,0,1,1}},
-    {.position={ 1,-1, 1,1},.color={1,0,1,1}},
-    {.position={ 1, 1, 1,1},.color={1,1,1,1}},
-    {.position={-1, 1,-1,1},.color={0,1,0,1}},
-    {.position={-1,-1,-1,1},.color={0,0,0,1}},
-    {.position={ 1,-1,-1,1},.color={1,0,0,1}},
-    {.position={ 1, 1,-1,1},.color={1,1,0,1}}
+        {.position={-1, 1, 1,1}, .normal={0,0,0}, .color={0,1,1,1}},
+        {.position={-1,-1, 1,1}, .normal={0,0,0}, .color={0,0,1,1}},
+        {.position={ 1,-1, 1,1}, .normal={0,0,0}, .color={1,0,1,1}},
+        {.position={ 1, 1, 1,1}, .normal={0,0,0}, .color={1,1,1,1}},
+        {.position={-1, 1,-1,1}, .normal={0,0,0}, .color={0,1,0,1}},
+        {.position={-1,-1,-1,1}, .normal={0,0,0}, .color={0,0,0,1}},
+        {.position={ 1,-1,-1,1}, .normal={0,0,0}, .color={1,0,0,1}},
+        {.position={ 1, 1,-1,1}, .normal={0,0,0}, .color={1,1,0,1}}
     };
     
     const PGIndex indices[] =

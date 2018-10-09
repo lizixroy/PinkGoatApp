@@ -78,6 +78,7 @@ fragment float4 fragmentShader(RasterizerData in [[stage_in]])
 struct Vertex
 {
     vector_float4 position [[position]];
+    vector_float3 normal;
     vector_float4 color;
 };
 

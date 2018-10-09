@@ -18,4 +18,6 @@
 - (instancetype)initWithVertices:(NSArray<PGVertexObject *> *)vertices
                          indices:(NSArray<NSNumber *> *)indices;
 
+- (void)makeVertices:(PGVertex *)verticesBuffer count:(NSUInteger)count;
+
 @end

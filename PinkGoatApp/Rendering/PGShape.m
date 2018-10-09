@@ -7,6 +7,7 @@
 //
 
 #import "PGShape.h"
+#include <simd/simd.h>
 
 @implementation PGShape
 
@@ -19,6 +20,19 @@
         _indices = indices;
     }
     return self;
+}
+
+- (void)makeVertices:(nonnull PGVertex *)verticesBuffer count:(NSUInteger)count;
+{
+    for (int i = 0; i < count; i++) {
+        if (i >= self.vertices.count) {
+            break;
+        }
+        PGVertexObject *vertexObject = self.vertices[i];
+        vector_float4 position = { vertexObject.position.x, vertexObject.position.y, vertexObject.position.z, 1 };
+        PGVertex vertex = { position, vertexObject.normal, vertexObject.color };
+        memcpy(&verticesBuffer[i], &vertex, sizeof(vertex));
+    }
 }
 
 @end
