@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14121438B6700FBA6D7 /* UrdfParser.mm */; };
+		B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14521438BFD00FBA6D7 /* tinyxml2.mm */; };
+		B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */; };
+		B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B21E2148D29100FBA6D7 /* BulletUrdfImporter.mm */; };
+		B526B224214A25CB00FBA6D7 /* b3ResourcePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B222214A25CA00FBA6D7 /* b3ResourcePath.cpp */; };
+		B526B227214A263D00FBA6D7 /* tiny_obj_loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B226214A263C00FBA6D7 /* tiny_obj_loader.cpp */; };
+		B526B22B214A275800FBA6D7 /* LoadMeshFromObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B229214A275700FBA6D7 /* LoadMeshFromObj.cpp */; };
+		B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B231214A283B00FBA6D7 /* LoadMeshFromCollada.cpp */; };
+		B526B237214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B235214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp */; };
+		B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B23A214A297100FBA6D7 /* stb_image.cpp */; };
+		B583BACA21603C9E005E1332 /* PGVertexFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B583BAC921603C9E005E1332 /* PGVertexFactory.mm */; };
+		B583BACE21608C06005E1332 /* CollisionShape2TriangleMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B583BACC21608C06005E1332 /* CollisionShape2TriangleMesh.cpp */; };
 		B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5859C44213F83EF00C71222 /* AppDelegate.swift */; };
 		B5859C47213F83EF00C71222 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5859C46213F83EF00C71222 /* ViewController.swift */; };
 		B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5859C48213F83EF00C71222 /* Assets.xcassets */; };
@@ -35,6 +47,18 @@
 		B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C93213F994E00C71222 /* URDF2Bullet.mm */; };
 		B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */; };
 		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
+		B5E607B12165155100858EF7 /* PGRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B02165155100858EF7 /* PGRenderer.m */; };
+		B5E607B52165AEE300858EF7 /* PGShape.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B42165AEE300858EF7 /* PGShape.m */; };
+		B5E607B82165B8AE00858EF7 /* PGVertexObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B72165B8AE00858EF7 /* PGVertexObject.m */; };
+		B5E607BA216706FC00858EF7 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E607B9216706FC00858EF7 /* Metal.framework */; };
+		B5E607BC2167070300858EF7 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E607BB2167070300858EF7 /* MetalKit.framework */; };
+		B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = B5E607BE2167097100858EF7 /* PGShaders.metal */; };
+		B5EBA404214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */; };
+		B5EBA406214E1ADC00DB4CD6 /* kuka_iiwa in Resources */ = {isa = PBXBuildFile; fileRef = B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */; };
+		B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */; };
+		B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA40B214ECA7900DB4CD6 /* WavefrontObjConverter.m */; };
+		B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA40D214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp */; };
+		B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE186216957DC00EC3CA0 /* PGMathUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +72,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B526B14021438B6700FBA6D7 /* UrdfParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrdfParser.h; sourceTree = "<group>"; };
+		B526B14121438B6700FBA6D7 /* UrdfParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UrdfParser.mm; sourceTree = "<group>"; };
+		B526B14421438BFD00FBA6D7 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
+		B526B14521438BFD00FBA6D7 /* tinyxml2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = tinyxml2.mm; sourceTree = "<group>"; };
+		B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = urdfStringSplit.mm; sourceTree = "<group>"; };
+		B526B14821438C4F00FBA6D7 /* urdfStringSplit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = urdfStringSplit.h; sourceTree = "<group>"; };
+		B526B14A21438C6F00FBA6D7 /* SDFAudioTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDFAudioTypes.h; sourceTree = "<group>"; };
+		B526B14B2143943D00FBA6D7 /* urdfLexicalCast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = urdfLexicalCast.h; sourceTree = "<group>"; };
+		B526B21E2148D29100FBA6D7 /* BulletUrdfImporter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BulletUrdfImporter.mm; sourceTree = "<group>"; };
+		B526B21F2148D29100FBA6D7 /* BulletUrdfImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletUrdfImporter.h; sourceTree = "<group>"; };
+		B526B2212148D30200FBA6D7 /* UrdfRenderingInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UrdfRenderingInterface.h; sourceTree = "<group>"; };
+		B526B222214A25CA00FBA6D7 /* b3ResourcePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b3ResourcePath.cpp; sourceTree = "<group>"; };
+		B526B223214A25CB00FBA6D7 /* b3ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b3ResourcePath.h; sourceTree = "<group>"; };
+		B526B225214A263C00FBA6D7 /* tiny_obj_loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiny_obj_loader.h; sourceTree = "<group>"; };
+		B526B226214A263C00FBA6D7 /* tiny_obj_loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tiny_obj_loader.cpp; sourceTree = "<group>"; };
+		B526B228214A26A200FBA6D7 /* GLInstanceGraphicsShape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLInstanceGraphicsShape.h; sourceTree = "<group>"; };
+		B526B229214A275700FBA6D7 /* LoadMeshFromObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMeshFromObj.cpp; sourceTree = "<group>"; };
+		B526B22A214A275700FBA6D7 /* LoadMeshFromObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMeshFromObj.h; sourceTree = "<group>"; };
+		B526B22F214A27C500FBA6D7 /* LoadMeshFromSTL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMeshFromSTL.h; sourceTree = "<group>"; };
+		B526B230214A280500FBA6D7 /* ColladaGraphicsInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColladaGraphicsInstance.h; sourceTree = "<group>"; };
+		B526B231214A283B00FBA6D7 /* LoadMeshFromCollada.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadMeshFromCollada.cpp; sourceTree = "<group>"; };
+		B526B232214A283B00FBA6D7 /* LoadMeshFromCollada.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMeshFromCollada.h; sourceTree = "<group>"; };
+		B526B234214A28A700FBA6D7 /* btMatrix4x4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = btMatrix4x4.h; sourceTree = "<group>"; };
+		B526B235214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b3ImportMeshUtility.cpp; sourceTree = "<group>"; };
+		B526B236214A28CA00FBA6D7 /* b3ImportMeshUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b3ImportMeshUtility.h; sourceTree = "<group>"; };
+		B526B238214A297000FBA6D7 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		B526B239214A297100FBA6D7 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
+		B526B23A214A297100FBA6D7 /* stb_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
+		B583BAC821603C9E005E1332 /* PGVertexFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGVertexFactory.h; sourceTree = "<group>"; };
+		B583BAC921603C9E005E1332 /* PGVertexFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGVertexFactory.mm; sourceTree = "<group>"; };
+		B583BACB21607285005E1332 /* ShapeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShapeData.h; sourceTree = "<group>"; };
+		B583BACC21608C06005E1332 /* CollisionShape2TriangleMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionShape2TriangleMesh.cpp; sourceTree = "<group>"; };
+		B583BACD21608C06005E1332 /* CollisionShape2TriangleMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionShape2TriangleMesh.h; sourceTree = "<group>"; };
 		B5859C41213F83EF00C71222 /* PinkGoatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinkGoatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5859C44213F83EF00C71222 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5859C46213F83EF00C71222 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +148,27 @@
 		B5859C9A213F9B8300C71222 /* PGRobotFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotFactory.h; sourceTree = "<group>"; };
 		B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobotFactory.mm; sourceTree = "<group>"; };
 		B5859C9D213F9CDF00C71222 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		B5E607AF2165155100858EF7 /* PGRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRenderer.h; sourceTree = "<group>"; };
+		B5E607B02165155100858EF7 /* PGRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGRenderer.m; sourceTree = "<group>"; };
+		B5E607B22165AD5300858EF7 /* PGShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShaderTypes.h; sourceTree = "<group>"; };
+		B5E607B32165AEE300858EF7 /* PGShape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShape.h; sourceTree = "<group>"; };
+		B5E607B42165AEE300858EF7 /* PGShape.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGShape.m; sourceTree = "<group>"; };
+		B5E607B62165B8AE00858EF7 /* PGVertexObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGVertexObject.h; sourceTree = "<group>"; };
+		B5E607B72165B8AE00858EF7 /* PGVertexObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGVertexObject.m; sourceTree = "<group>"; };
+		B5E607B9216706FC00858EF7 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		B5E607BB2167070300858EF7 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		B5E607BE2167097100858EF7 /* PGShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PGShaders.metal; sourceTree = "<group>"; };
+		B5EBA402214E0D3900DB4CD6 /* MyMultiBodyCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMultiBodyCreator.h; sourceTree = "<group>"; };
+		B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyMultiBodyCreator.cpp; sourceTree = "<group>"; };
+		B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = kuka_iiwa; sourceTree = "<group>"; };
+		B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = btDefaultCollisionConfiguration.cpp; sourceTree = "<group>"; };
+		B5EBA408214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btDefaultCollisionConfiguration.h; sourceTree = "<group>"; };
+		B5EBA40A214ECA7900DB4CD6 /* WavefrontObjConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WavefrontObjConverter.h; sourceTree = "<group>"; };
+		B5EBA40B214ECA7900DB4CD6 /* WavefrontObjConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WavefrontObjConverter.m; sourceTree = "<group>"; };
+		B5EBA40D214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wavefront2GLInstanceGraphicsShape.cpp; sourceTree = "<group>"; };
+		B5EBA40E214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wavefront2GLInstanceGraphicsShape.h; sourceTree = "<group>"; };
+		B5EDE185216957DC00EC3CA0 /* PGMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMathUtilities.h; sourceTree = "<group>"; };
+		B5EDE186216957DC00EC3CA0 /* PGMathUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMathUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +176,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E607BC2167070300858EF7 /* MetalKit.framework in Frameworks */,
+				B5E607BA216706FC00858EF7 /* Metal.framework in Frameworks */,
 				B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */,
 				B5859C75213F84E800C71222 /* libBullet3Dynamics.a in Frameworks */,
 				B5859C76213F84E800C71222 /* libBullet3Geometry.a in Frameworks */,
@@ -128,6 +208,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B526B13F21438B5300FBA6D7 /* URDF */ = {
+			isa = PBXGroup;
+			children = (
+				B5EBA40D214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp */,
+				B5EBA40E214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.h */,
+				B5EBA403214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp */,
+				B5EBA402214E0D3900DB4CD6 /* MyMultiBodyCreator.h */,
+				B526B2212148D30200FBA6D7 /* UrdfRenderingInterface.h */,
+				B526B21E2148D29100FBA6D7 /* BulletUrdfImporter.mm */,
+				B526B21F2148D29100FBA6D7 /* BulletUrdfImporter.h */,
+				B526B14B2143943D00FBA6D7 /* urdfLexicalCast.h */,
+				B526B14A21438C6F00FBA6D7 /* SDFAudioTypes.h */,
+				B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */,
+				B526B14821438C4F00FBA6D7 /* urdfStringSplit.h */,
+				B526B14321438BF200FBA6D7 /* TinyXML */,
+				B526B14021438B6700FBA6D7 /* UrdfParser.h */,
+				B5EBA40A214ECA7900DB4CD6 /* WavefrontObjConverter.h */,
+				B5EBA40B214ECA7900DB4CD6 /* WavefrontObjConverter.m */,
+			);
+			path = URDF;
+			sourceTree = "<group>";
+		};
+		B526B14321438BF200FBA6D7 /* TinyXML */ = {
+			isa = PBXGroup;
+			children = (
+				B526B14521438BFD00FBA6D7 /* tinyxml2.mm */,
+				B526B14121438B6700FBA6D7 /* UrdfParser.mm */,
+				B526B14421438BFD00FBA6D7 /* tinyxml2.h */,
+			);
+			path = TinyXML;
+			sourceTree = "<group>";
+		};
+		B583BAC721603C7A005E1332 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				B583BAC821603C9E005E1332 /* PGVertexFactory.h */,
+				B583BAC921603C9E005E1332 /* PGVertexFactory.mm */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 		B5859C38213F83EF00C71222 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +271,34 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5EDE184216957C500EC3CA0 /* Maths */,
+				B5E607BD2167095000858EF7 /* Shaders */,
+				B5E607AE2165154100858EF7 /* Rendering */,
+				B583BAC721603C7A005E1332 /* Factories */,
+				B583BACC21608C06005E1332 /* CollisionShape2TriangleMesh.cpp */,
+				B583BACD21608C06005E1332 /* CollisionShape2TriangleMesh.h */,
+				B5EBA407214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp */,
+				B5EBA408214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.h */,
+				B5EBA405214E1ADC00DB4CD6 /* kuka_iiwa */,
+				B526B239214A297100FBA6D7 /* stb_image_write.h */,
+				B526B23A214A297100FBA6D7 /* stb_image.cpp */,
+				B526B238214A297000FBA6D7 /* stb_image.h */,
+				B526B235214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp */,
+				B526B236214A28CA00FBA6D7 /* b3ImportMeshUtility.h */,
+				B526B234214A28A700FBA6D7 /* btMatrix4x4.h */,
+				B526B231214A283B00FBA6D7 /* LoadMeshFromCollada.cpp */,
+				B526B232214A283B00FBA6D7 /* LoadMeshFromCollada.h */,
+				B526B230214A280500FBA6D7 /* ColladaGraphicsInstance.h */,
+				B583BACB21607285005E1332 /* ShapeData.h */,
+				B526B22F214A27C500FBA6D7 /* LoadMeshFromSTL.h */,
+				B526B229214A275700FBA6D7 /* LoadMeshFromObj.cpp */,
+				B526B22A214A275700FBA6D7 /* LoadMeshFromObj.h */,
+				B526B228214A26A200FBA6D7 /* GLInstanceGraphicsShape.h */,
+				B526B226214A263C00FBA6D7 /* tiny_obj_loader.cpp */,
+				B526B225214A263C00FBA6D7 /* tiny_obj_loader.h */,
+				B526B222214A25CA00FBA6D7 /* b3ResourcePath.cpp */,
+				B526B223214A25CB00FBA6D7 /* b3ResourcePath.h */,
+				B526B13F21438B5300FBA6D7 /* URDF */,
 				B5859C99213F9A2200C71222 /* MultiBodyCreationInterface.h */,
 				B5859C98213F9A0300C71222 /* SDFAudioTypes.h */,
 				B5859C97213F99E000C71222 /* URDFImporterInterface.h */,
@@ -187,6 +336,8 @@
 		B5859C64213F84E700C71222 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5E607BB2167070300858EF7 /* MetalKit.framework */,
+				B5E607B9216706FC00858EF7 /* Metal.framework */,
 				B5859C9D213F9CDF00C71222 /* SceneKit.framework */,
 				B5859C74213F84E800C71222 /* libBullet2FileLoader.a */,
 				B5859C67213F84E800C71222 /* libBullet3Collision.a */,
@@ -215,6 +366,37 @@
 				B5859C8E213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm */,
 			);
 			path = bulletWrappers;
+			sourceTree = "<group>";
+		};
+		B5E607AE2165154100858EF7 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				B5E607BE2167097100858EF7 /* PGShaders.metal */,
+				B5E607AF2165155100858EF7 /* PGRenderer.h */,
+				B5E607B02165155100858EF7 /* PGRenderer.m */,
+				B5E607B22165AD5300858EF7 /* PGShaderTypes.h */,
+				B5E607B32165AEE300858EF7 /* PGShape.h */,
+				B5E607B42165AEE300858EF7 /* PGShape.m */,
+				B5E607B62165B8AE00858EF7 /* PGVertexObject.h */,
+				B5E607B72165B8AE00858EF7 /* PGVertexObject.m */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		B5E607BD2167095000858EF7 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		B5EDE184216957C500EC3CA0 /* Maths */ = {
+			isa = PBXGroup;
+			children = (
+				B5EDE185216957DC00EC3CA0 /* PGMathUtilities.h */,
+				B5EDE186216957DC00EC3CA0 /* PGMathUtilities.m */,
+			);
+			path = Maths;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +450,11 @@
 					B5859C40213F83EF00C71222 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					B5859C52213F83F000C71222 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -301,6 +488,7 @@
 			files = (
 				B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */,
 				B5859C4C213F83EF00C71222 /* Main.storyboard in Resources */,
+				B5EBA406214E1ADC00DB4CD6 /* kuka_iiwa in Resources */,
 				B5859C63213F849A00C71222 /* bullet in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,12 +507,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EBA404214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp in Sources */,
+				B583BACA21603C9E005E1332 /* PGVertexFactory.mm in Sources */,
+				B526B237214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp in Sources */,
+				B526B22B214A275800FBA6D7 /* LoadMeshFromObj.cpp in Sources */,
+				B5E607B52165AEE300858EF7 /* PGShape.m in Sources */,
+				B583BACE21608C06005E1332 /* CollisionShape2TriangleMesh.cpp in Sources */,
+				B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */,
+				B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */,
 				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
+				B5E607B82165B8AE00858EF7 /* PGVertexObject.m in Sources */,
 				B5859C92213F971A00C71222 /* PGMainViewController.mm in Sources */,
+				B526B227214A263D00FBA6D7 /* tiny_obj_loader.cpp in Sources */,
 				B5859C88213F87B800C71222 /* BulletDynamicsWorldFactory.mm in Sources */,
+				B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */,
+				B526B224214A25CB00FBA6D7 /* b3ResourcePath.cpp in Sources */,
 				B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */,
+				B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */,
+				B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
+				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
+				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
+				B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */,
+				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
+				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
+				B5E607B12165155100858EF7 /* PGRenderer.m in Sources */,
+				B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */,
 				B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,7 +686,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = PinkGoatApp/PinkGoatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;
@@ -501,7 +709,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = PinkGoatApp/PinkGoatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;
