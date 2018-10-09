@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PGShaderTypes.h"
+#import "PGShape.h"
 
-@interface PGRenderer : NSObject
+#import <MetalKit/MetalKit.h>
+
+@interface PGRenderer : NSObject <MTKViewDelegate>
+
+- (nonnull instancetype)initWithMetalKitView:(nonnull MTKView *)mtkView;
+- (void)registerShape:(nonnull PGShape *)shape;
 
 @end

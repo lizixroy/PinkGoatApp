@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "../bullet/BulletCollision/CollisionDispatch/btCollisionObject.h"
 #import "../bullet/BulletCollision/CollisionShapes/btCollisionShape.h"
+#import "PGShape.h"
 
 struct GLInstanceVertex
 {
@@ -69,6 +70,8 @@ struct MyHashShape
 };
 
 @interface PGVertexFactory : NSObject
+
+- (PGShape *)makeShapeFromCollisionObject:(btCollisionObject *)collisionObject;
 
 - (void)makeVerticesFromCollisionObject:(btCollisionObject *)collisionObject
                                vertices:(btAlignedObjectArray<GLInstanceVertex>&)vertices indices:(btAlignedObjectArray<int>&)indices;
