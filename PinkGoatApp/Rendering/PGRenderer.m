@@ -8,9 +8,10 @@
 
 #import "PGRenderer.h"
 #import "PGMathUtilities.h"
+//#import "PGDataTypes.h"
 
 typedef uint16_t PGIndex;
-const MTLIndexType PGIndexType = MTLIndexTypeUInt16;
+//const MTLIndexType PGIndexType = MTLIndexTypeUInt16;
 
 typedef struct
 {
@@ -33,7 +34,10 @@ typedef struct
 @property (assign) float rotationX;
 @property (assign) float rotationY;
 
+@property (nonatomic, strong) NSMutableArray<PGShape *> *shapes;
+
 @end
+
 
 @implementation PGRenderer
 
@@ -42,6 +46,7 @@ typedef struct
     self = [super init];
     if (self)
     {
+        _shapes = [[NSMutableArray alloc] init];
         NSError *error = NULL;
         _device = mtkView.device;
         
@@ -84,9 +89,7 @@ typedef struct
 
 - (void)drawInMTKView:(nonnull MTKView *)view
 {
-    
     [self updateUniformsWithDrawable:view.drawableSize];
-    
     id<MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];
     commandBuffer.label = @"draw buffer";
     MTLRenderPassDescriptor *renderPassDescriptor = view.currentRenderPassDescriptor;
@@ -101,14 +104,19 @@ typedef struct
         [renderEncoder setCullMode:MTLCullModeBack];
         
         [renderEncoder setRenderPipelineState:_pipelineState];
-        [renderEncoder setVertexBuffer:self.vertexBuffer offset:0 atIndex:PGVertexInputIndexVertices];
-        [renderEncoder setVertexBuffer:self.uniformBuffer offset:0 atIndex:PGVertexInputIndexUniforms];
         
-        [renderEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle
-                                  indexCount:[self.indexBuffer length] / sizeof(PGIndex)
-                                   indexType:PGIndexType
-                                 indexBuffer:self.indexBuffer
-                           indexBufferOffset:0];
+//        [renderEncoder setVertexBuffer:self.vertexBuffer offset:0 atIndex:PGVertexInputIndexVertices];
+        [renderEncoder setVertexBuffer:self.uniformBuffer offset:0 atIndex:PGVertexInputIndexUniforms];
+
+        for (PGShape *shape in self.shapes) {
+            [shape drawWithCommandEncoder:renderEncoder device:self.device];
+        }
+        
+//        [renderEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle
+//                                  indexCount:[self.indexBuffer length] / sizeof(PGIndex)
+//                                   indexType:MTLIndexTypeUInt16
+//                                 indexBuffer:self.indexBuffer
+//                           indexBufferOffset:0];
         [renderEncoder endEncoding];
         [commandBuffer presentDrawable:view.currentDrawable];
 
@@ -123,51 +131,33 @@ typedef struct
     _viewportSize.y = size.height;
 }
 
+- (void)renderShapes
+{
+    
+}
+
 - (void)registerShape:(nonnull PGShape *)shape
 {
-    // TEST: make sure the pipeline is correct.
-    
-    // TODO: our pipeline is fine, we need to figure out how to render 3D shapes
-    
-    static const PGVertex vertices[] =
-    {
-        {.position={-1, 1, 1,1}, .normal={0,0,0}, .color={0,1,1,1}},
-        {.position={-1,-1, 1,1}, .normal={0,0,0}, .color={0,0,1,1}},
-        {.position={ 1,-1, 1,1}, .normal={0,0,0}, .color={1,0,1,1}},
-        {.position={ 1, 1, 1,1}, .normal={0,0,0}, .color={1,1,1,1}},
-        {.position={-1, 1,-1,1}, .normal={0,0,0}, .color={0,1,0,1}},
-        {.position={-1,-1,-1,1}, .normal={0,0,0}, .color={0,0,0,1}},
-        {.position={ 1,-1,-1,1}, .normal={0,0,0}, .color={1,0,0,1}},
-        {.position={ 1, 1,-1,1}, .normal={0,0,0}, .color={1,1,0,1}}
-    };
-    
-    const PGIndex indices[] =
-    {
-        3,2,6,6,7,3, 4,5,1,1,0,4, 4,0,3,3,7,4, 1,5,6,6,2,1, 0,1,2,2,3,0, 7,6,5,5,4,7
-    };
+    [self.shapes addObject:shape];
     
 //    PGVertex vertices[shape.vertices.count];
-//    for (int i = 0; i < shape.vertices.count; i++) {
-//        PGVertexObject *v = shape.vertices[i];
-//        PGVertex vertex = { v.position, { 1, 0, 0, 1 } };
-//        vertices[i] = vertex;
-//    }
-    
-    NSUInteger dataSize = sizeof(vertices);
-    NSMutableData *vertexData = [[NSMutableData alloc] initWithLength:dataSize];
-    memcpy(vertexData.mutableBytes, vertices, sizeof(vertices));
-    NSLog(@"Now we have %lu bytes of data", vertexData.length);
-    self.vertexData = [NSData dataWithBytes:vertexData.bytes length:vertexData.length];
-    self.vertexBuffer = [self.device newBufferWithLength:self.vertexData.length
-                                                 options:MTLResourceStorageModeShared];
-    self.vertexBuffer.label = @"Vertex Buffer";
-    memcpy(self.vertexBuffer.contents, vertexData.mutableBytes, vertexData.length);
-    self.numVertices = vertexData.length / sizeof(PGVertex);
-    self.indexBuffer = [self.device newBufferWithLength:sizeof(indices)
-                                                options:MTLResourceStorageModeShared];
-    self.indexBuffer.label = @"Index Buffer";
-    memcpy(self.indexBuffer.contents, indices, sizeof(indices));
-    
+//    uint16_t indices[shape.vertices.count];
+//    [shape makeVertices:&vertices[0] indices:&indices[0] count:shape.vertices.count];
+//
+//    NSUInteger dataSize = sizeof(vertices);
+//    NSMutableData *vertexData = [[NSMutableData alloc] initWithLength:dataSize];
+//    memcpy(vertexData.mutableBytes, vertices, sizeof(vertices));
+//    NSLog(@"Now we have %lu bytes of data", vertexData.length);
+//    self.vertexData = [NSData dataWithBytes:vertexData.bytes length:vertexData.length];
+//    self.vertexBuffer = [self.device newBufferWithLength:self.vertexData.length
+//                                                 options:MTLResourceStorageModeShared];
+//    self.vertexBuffer.label = @"Vertex Buffer";
+//    memcpy(self.vertexBuffer.contents, vertexData.mutableBytes, vertexData.length);
+//    self.numVertices = vertexData.length / sizeof(PGVertex);
+//    self.indexBuffer = [self.device newBufferWithLength:sizeof(indices)
+//                                                options:MTLResourceStorageModeShared];
+//    self.indexBuffer.label = @"Index Buffer";
+//    memcpy(self.indexBuffer.contents, indices, sizeof(indices));
 }
 
 // TODO: for now, let's ignore duration as we are not animating things.

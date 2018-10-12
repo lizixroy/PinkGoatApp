@@ -58,11 +58,12 @@ enum
         n.y = normal.getY();
         n.z = normal.getZ();
         
-        vector_float4 color = { 0, 0, 0, 1 }; // use default color for now.
+        vector_float4 color = { 1, 1, 1, 1 }; // use default color for now.
         PGVertexObject *vertex = [[PGVertexObject alloc] initWithPosition:p normal:n color:color];
         [vertices addObject:vertex];
         
         int index = indices[i];
+        NSLog(@"index: %d", indices[i]);
         [newIndices addObject:[NSNumber numberWithInt:index]];
     }
     PGShape *shape = [[PGShape alloc] initWithVertices:[NSArray arrayWithArray:vertices]

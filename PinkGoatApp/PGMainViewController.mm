@@ -88,14 +88,11 @@
             btCollisionObject *object = collisionObjects[i];
             btAlignedObjectArray<GLInstanceVertex> vertices;
             btAlignedObjectArray<int> indices;
-//            [vertexFactory makeVerticesFromCollisionObject:object vertices:vertices indices:indices];
             PGShape *shape = [vertexFactory makeShapeFromCollisionObject:object];
-            //NSLog(@"Create %d vertices from object: %p", vertices.size(), object);
+            [self.renderer registerShape:shape];
             [shapes addObject:shape];
         }
         
-        PGShape *shape = shapes.firstObject;
-        [self.renderer registerShape:shape];
     }
 }
 
