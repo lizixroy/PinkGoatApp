@@ -15,6 +15,8 @@
 #include <string>
 #include "Bullet3Common/b3Logging.h"
 
+#include <iostream>
+
 //static int bodyCollisionFilterGroup=btBroadphaseProxy::CharacterFilter;
 //static int bodyCollisionFilterMask=btBroadphaseProxy::AllFilter&(~btBroadphaseProxy::CharacterFilter);
 static bool enableConstraints = true;
@@ -243,6 +245,7 @@ void ConvertURDF2BulletInternal(
 
 
     bool hasParentJoint = u2b.getJointInfo2(urdfLinkIndex, parent2joint, linkTransformInWorldSpace, jointAxisInJointSpace, jointType,jointLowerLimit,jointUpperLimit, jointDamping, jointFriction,jointMaxForce,jointMaxVelocity);
+        
 	std::string linkName = u2b.getLinkName(urdfLinkIndex);
                           
     if (flags & CUF_USE_SDF)

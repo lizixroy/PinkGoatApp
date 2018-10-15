@@ -11,18 +11,20 @@
 #import "PGVertexObject.h"
 #import "PGDataTypes.h"
 #import <Metal/Metal.h>
+#import <simd/simd.h>
 
 @interface PGShape : NSObject
 
 @property (nonatomic, strong) NSArray<PGVertexObject *> *vertices;
 @property (nonatomic, strong) NSArray<NSNumber *> *indices;
+@property (assign) matrix_float4x4 localToWorld;
 
 - (instancetype)initWithVertices:(NSArray<PGVertexObject *> *)vertices
                          indices:(NSArray<NSNumber *> *)indices;
 
 - (void)makeVertices:(PGVertex *)verticesBuffer indices:(uint16_t *)indices count:(NSUInteger)count;
 - (void)makeVertices:(PGVertex *)verticesBuffer count:(NSUInteger)count;
-- (void)drawWithCommandEncoder:(nonnull id<MTLRenderCommandEncoder>)commandEncoder
-                        device:(nonnull id<MTLDevice>)device;
+- (void)drawWithCommandEncoder:(id<MTLRenderCommandEncoder>)commandEncoder
+                        device:(id<MTLDevice>)device;
 
 @end

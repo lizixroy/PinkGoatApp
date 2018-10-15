@@ -85,10 +85,29 @@
         
         NSMutableArray<PGShape *> *shapes = [[NSMutableArray alloc] init];
         for (int i = 0; i < collisionObjects.size(); i++) {
+            
+            // Get rotation and translation info
+            
+            btTransform parent2joint;
+            parent2joint.setIdentity();
+            btTransform linkTransformInWorldSpace;
+            linkTransformInWorldSpace.setIdentity();
+            
+            btVector3 jointAxisInJointSpace;
+            btScalar jointLowerLimit;
+            btScalar jointUpperLimit;
+            btScalar jointDamping;
+            btScalar jointFriction;
+            btScalar jointMaxForce;
+            btScalar jointMaxVelocity;
+            int jointType;
+
+            bool hasParentJoint = u2b.getJointInfo2(i, parent2joint, linkTransformInWorldSpace, jointAxisInJointSpace, jointType,jointLowerLimit,jointUpperLimit, jointDamping, jointFriction,jointMaxForce,jointMaxVelocity);
+            
             btCollisionObject *object = collisionObjects[i];
             btAlignedObjectArray<GLInstanceVertex> vertices;
             btAlignedObjectArray<int> indices;
-            PGShape *shape = [vertexFactory makeShapeFromCollisionObject:object];
+            PGShape *shape = [vertexFactory makeShapeFromCollisionObject:object localToWorld:&parent2joint];            
             [self.renderer registerShape:shape];
             [shapes addObject:shape];
         }

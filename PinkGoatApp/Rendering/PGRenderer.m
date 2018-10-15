@@ -99,24 +99,14 @@ typedef struct
         [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
         renderEncoder.label = @"MyRenderEncoder";
         
-        // TODO: this two fixed the weird square in the middle of the square
         [renderEncoder setFrontFacingWinding:MTLWindingCounterClockwise];
         [renderEncoder setCullMode:MTLCullModeBack];
-        
         [renderEncoder setRenderPipelineState:_pipelineState];
-        
-//        [renderEncoder setVertexBuffer:self.vertexBuffer offset:0 atIndex:PGVertexInputIndexVertices];
         [renderEncoder setVertexBuffer:self.uniformBuffer offset:0 atIndex:PGVertexInputIndexUniforms];
 
         for (PGShape *shape in self.shapes) {
             [shape drawWithCommandEncoder:renderEncoder device:self.device];
         }
-        
-//        [renderEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle
-//                                  indexCount:[self.indexBuffer length] / sizeof(PGIndex)
-//                                   indexType:MTLIndexTypeUInt16
-//                                 indexBuffer:self.indexBuffer
-//                           indexBufferOffset:0];
         [renderEncoder endEncoding];
         [commandBuffer presentDrawable:view.currentDrawable];
 

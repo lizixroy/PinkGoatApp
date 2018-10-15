@@ -71,8 +71,7 @@ struct MyHashShape
 
 @interface PGVertexFactory : NSObject
 
-- (PGShape *)makeShapeFromCollisionObject:(btCollisionObject *)collisionObject;
-
+- (PGShape *)makeShapeFromCollisionObject:(btCollisionObject *)collisionObject localToWorld:(btTransform *)localToWorld;
 - (void)makeVerticesFromCollisionObject:(btCollisionObject *)collisionObject
                                vertices:(btAlignedObjectArray<GLInstanceVertex>&)vertices indices:(btAlignedObjectArray<int>&)indices;
 

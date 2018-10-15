@@ -53,8 +53,8 @@
     }
 }
 
-- (void)drawWithCommandEncoder:(nonnull id<MTLRenderCommandEncoder>)commandEncoder
-                        device:(nonnull id<MTLDevice>)device;
+- (void)drawWithCommandEncoder:(id<MTLRenderCommandEncoder>)commandEncoder
+                        device:(id<MTLDevice>)device;
 {
     id<MTLBuffer> vertexBuffer = [device newBufferWithLength:self.vertices.count * sizeof(PGVertex)
                                                      options:MTLResourceStorageModeShared];

@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/Rendering/PGShape.m"
-            timestampString = "561015377.312142"
+            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
+            timestampString = "561269703.323105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-drawWithCommandEncoder:device:"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
+            landmarkName = "BulletURDFImporter::getJointInfo2(int urdfLinkIndex, btTransform&amp; parent2joint, btTransform&amp; linkTransformInWorld, btVector3&amp; jointAxisInJointSpace, int&amp; jointType, btScalar&amp; jointLowerLimit, btScalar&amp; jointUpperLimit, btScalar&amp; jointDamping, btScalar&amp; jointFriction, btScalar&amp; jointMaxForce, btScalar&amp; jointMaxVelocity)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,29 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/Rendering/PGShape.m"
-            timestampString = "561015377.3124011"
+            filePath = "PinkGoatApp/PGMainViewController.mm"
+            timestampString = "561274686.098902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-drawWithCommandEncoder:device:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/Rendering/PGShape.m"
-            timestampString = "561015377.312564"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-drawWithCommandEncoder:device:"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-importRobotModel"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

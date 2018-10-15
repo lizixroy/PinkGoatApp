@@ -277,6 +277,7 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5EDE3C42174607A00EC3CA0 /* Logging */,
 				B5EDE184216957C500EC3CA0 /* Maths */,
 				B5E607BD2167095000858EF7 /* Shaders */,
 				B5E607AE2165154100858EF7 /* Rendering */,
@@ -406,6 +407,13 @@
 				B5EDE186216957DC00EC3CA0 /* PGMathUtilities.m */,
 			);
 			path = Maths;
+			sourceTree = "<group>";
+		};
+		B5EDE3C42174607A00EC3CA0 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

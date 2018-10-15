@@ -28,7 +28,8 @@ enum
     createCollisionShapeGraphicsObject(collisionObject->getCollisionShape(), vertices, indices);
 }
 
-- (PGShape *)makeShapeFromCollisionObject:(btCollisionObject *)collisionObject;
+- (PGShape *)makeShapeFromCollisionObject:(btCollisionObject *)collisionObject
+                             localToWorld:(btTransform *)localToWorld;
 {
     
     btTransform startTrans;startTrans.setIdentity();
@@ -63,12 +64,25 @@ enum
         [vertices addObject:vertex];
         
         int index = indices[i];
-        NSLog(@"index: %d", indices[i]);
         [newIndices addObject:[NSNumber numberWithInt:index]];
     }
     PGShape *shape = [[PGShape alloc] initWithVertices:[NSArray arrayWithArray:vertices]
                                                indices:[NSArray arrayWithArray:newIndices]];
+    shape.localToWorld = [self getMatrixFromTransfrom:*localToWorld];
     return shape;
+}
+
+- (matrix_float4x4)getMatrixFromTransfrom:(btTransform)transform
+{
+    btMatrix3x3 basis = transform.getBasis();
+    btVector3 origin = transform.getOrigin();
+    
+    vector_float4 column0 = { basis.getColumn(0).getX(), basis.getColumn(0).getY(), basis.getColumn(0).getZ(), 0 };
+    vector_float4 column1 = { basis.getColumn(1).getX(), basis.getColumn(1).getY(), basis.getColumn(1).getZ(), 0 };
+    vector_float4 column2 = { basis.getColumn(2).getX(), basis.getColumn(2).getY(), basis.getColumn(2).getZ(), 0 };
+    vector_float4 column3 = { origin.getX(), origin.getY(), origin.getZ(), 1 };
+    matrix_float4x4 matrix = { column0, column1, column2, column3 };
+    return matrix;
 }
 
 void createCollisionShapeGraphicsObject(btCollisionShape* collisionShape,
