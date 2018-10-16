@@ -637,9 +637,11 @@ void ConvertURDF2BulletInternal(
 
     btAlignedObjectArray<int> urdfChildIndices;
     u2b.getLinkChildIndices(urdfLinkIndex,urdfChildIndices);
-
+    printf("Using urdfLinkIndex %d to get %d urdfCHildIndices", urdfLinkIndex, urdfChildIndices.size());
+    
     int numChildren = urdfChildIndices.size();
 
+    
     for (int i=0;i<numChildren;i++)
     {
         int urdfChildLinkIndex = urdfChildIndices[i];

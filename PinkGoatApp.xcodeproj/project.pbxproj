@@ -62,6 +62,7 @@
 		B5EDE18A216C6BC300EC3CA0 /* PGShapeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE189216C6BC300EC3CA0 /* PGShapeTests.m */; };
 		B5EDE18B216C6DD900EC3CA0 /* PGVertexObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B72165B8AE00858EF7 /* PGVertexObject.m */; };
 		B5EDE18C216C6E6D00EC3CA0 /* PGShape.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B42165AEE300858EF7 /* PGShape.m */; };
+		B5EDE3C721763E8000EC3CA0 /* PGLogger.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE3C621763E8000EC3CA0 /* PGLogger.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,8 @@
 		B5EDE188216C6BC300EC3CA0 /* PinkGoatAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinkGoatAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		B5EDE189216C6BC300EC3CA0 /* PGShapeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGShapeTests.m; sourceTree = "<group>"; };
 		B5EDE18D216DBEAA00EC3CA0 /* PGDataTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGDataTypes.h; sourceTree = "<group>"; };
+		B5EDE3C521763E8000EC3CA0 /* PGLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGLogger.h; sourceTree = "<group>"; };
+		B5EDE3C621763E8000EC3CA0 /* PGLogger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGLogger.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +415,8 @@
 		B5EDE3C42174607A00EC3CA0 /* Logging */ = {
 			isa = PBXGroup;
 			children = (
+				B5EDE3C521763E8000EC3CA0 /* PGLogger.h */,
+				B5EDE3C621763E8000EC3CA0 /* PGLogger.mm */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 				B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */,
 				B526B224214A25CB00FBA6D7 /* b3ResourcePath.cpp in Sources */,
 				B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */,
+				B5EDE3C721763E8000EC3CA0 /* PGLogger.mm in Sources */,
 				B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */,
 				B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,

@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSArray<PGVertexObject *> *vertices;
 @property (nonatomic, strong) NSArray<NSNumber *> *indices;
 @property (assign) matrix_float4x4 localToWorld;
+@property (nonatomic, strong) PGShape *parent;
+@property (nonatomic, strong) NSMutableArray<PGShape *> *children;
 
 - (instancetype)initWithVertices:(NSArray<PGVertexObject *> *)vertices
                          indices:(NSArray<NSNumber *> *)indices;

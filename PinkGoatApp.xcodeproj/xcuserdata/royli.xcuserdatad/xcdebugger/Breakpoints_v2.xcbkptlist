@@ -6,33 +6,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "561269703.323105"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
-            landmarkName = "BulletURDFImporter::getJointInfo2(int urdfLinkIndex, btTransform&amp; parent2joint, btTransform&amp; linkTransformInWorld, btVector3&amp; jointAxisInJointSpace, int&amp; jointType, btScalar&amp; jointLowerLimit, btScalar&amp; jointUpperLimit, btScalar&amp; jointDamping, btScalar&amp; jointFriction, btScalar&amp; jointMaxForce, btScalar&amp; jointMaxVelocity)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/PGMainViewController.mm"
-            timestampString = "561274686.098902"
+            filePath = "PinkGoatApp/URDF2Bullet.mm"
+            timestampString = "561398344.579656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-importRobotModel"
-            landmarkType = "7">
+            startingLineNumber = "633"
+            endingLineNumber = "633"
+            landmarkName = "ConvertURDF2BulletInternal( const URDFImporterInterface&amp; u2b, MultiBodyCreationInterface&amp; creation, URDF2BulletCachedData&amp; cache, int urdfLinkIndex, const btTransform&amp; parentTransformInWorldSpace, btMultiBodyDynamicsWorld* world1, bool createMultiBody, const char* pathPrefix, int flags = 0, UrdfVisualShapeCache* cachedLinkGraphicsShapesIn=0, UrdfVisualShapeCache* cachedLinkGraphicsShapesOut=0)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

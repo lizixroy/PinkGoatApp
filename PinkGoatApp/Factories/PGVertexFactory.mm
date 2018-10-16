@@ -30,8 +30,7 @@ enum
 
 - (PGShape *)makeShapeFromCollisionObject:(btCollisionObject *)collisionObject
                              localToWorld:(btTransform *)localToWorld;
-{
-    
+{    
     btTransform startTrans;startTrans.setIdentity();
     btAlignedObjectArray<btVector3> vertexPositions;
     btAlignedObjectArray<btVector3> vertexNormals;

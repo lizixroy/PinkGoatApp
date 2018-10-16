@@ -25,6 +25,7 @@
 #import "PGRenderer.h"
 #import <Metal/Metal.h>
 #import <MetalKit/MetalKit.h>
+#import "PGLogger.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -70,11 +71,19 @@
     if (loadOk)
     {
         int rootLinkIndex = u2b.getRootLinkIndex();
+        
+        
+        
+        
         MyMultiBodyCreator creation;
         btTransform identityTrans;
         identityTrans.setIdentity();
         
         ConvertURDF2Bullet(u2b, creation, identityTrans, m_dynamicsWorld, true,u2b.getPathPrefix());
+        
+        // TODO: can we get scene graph off of u2b or creation
+        
+        
         for (int i = 0; i < u2b.getNumAllocatedCollisionShapes(); i++)
         {
             m_collisionShapes.push_back(u2b.getAllocatedCollisionShape(i));
@@ -107,7 +116,13 @@
             btCollisionObject *object = collisionObjects[i];
             btAlignedObjectArray<GLInstanceVertex> vertices;
             btAlignedObjectArray<int> indices;
-            PGShape *shape = [vertexFactory makeShapeFromCollisionObject:object localToWorld:&parent2joint];            
+            
+            object->getCollisionShape();
+            object->getWorldTransform();
+            
+            [PGLogger logTransform:&object->getWorldTransform()];
+            
+            PGShape *shape = [vertexFactory makeShapeFromCollisionObject:object localToWorld:&parent2joint];
             [self.renderer registerShape:shape];
             [shapes addObject:shape];
         }

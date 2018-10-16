@@ -39,7 +39,8 @@ struct UrdfVisualShapeCache
 	btAlignedObjectArray<int> m_cachedUrdfLinkVisualShapeIndices;
 };
 
-
+// TODO: we need to implement this method to convert URDF into PGEntity that has physical representation (maybe btCollisionShape) and graphical one (PGSceneNode).
+// makeEntityFromURDF() -> PGEntity
 void ConvertURDF2Bullet(const URDFImporterInterface& u2b,
 			MultiBodyCreationInterface& creationCallback,
 			const btTransform& rootTransformInWorldSpace,
