@@ -27,5 +27,11 @@ typedef struct
     
 } PGVertex;
 
+typedef struct
+{
+    matrix_float4x4 viewProjectionMatrix;
+    matrix_float4x4 modelMatrix;
+    matrix_float3x3 normalMatrix;
+} PGUniforms;
 
 #endif /* PGShaderTypes_h */

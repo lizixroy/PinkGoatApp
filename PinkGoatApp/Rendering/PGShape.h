@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray<PGVertexObject *> *vertices;
 @property (nonatomic, strong) NSArray<NSNumber *> *indices;
 
+@property (assign) matrix_float4x4 modelMatrix;
 @property (assign) matrix_float4x4 parentJointTransform;
 @property (assign) matrix_float4x4 parentTransformInWorldSpace;
 @property (assign) matrix_float4x4 transfromInWorldSpace;
@@ -28,9 +29,13 @@
 - (instancetype)initWithVertices:(NSArray<PGVertexObject *> *)vertices
                          indices:(NSArray<NSNumber *> *)indices;
 
-- (void)makeVertices:(PGVertex *)verticesBuffer indices:(uint16_t *)indices count:(NSUInteger)count;
+- (void)makeVertices:(PGVertex *)verticesBuffer indices:(uint16_t *)indices
+               count:(NSUInteger)count;
 - (void)makeVertices:(PGVertex *)verticesBuffer count:(NSUInteger)count;
+
 - (void)drawWithCommandEncoder:(id<MTLRenderCommandEncoder>)commandEncoder
-                        device:(id<MTLDevice>)device;
+                        device:(id<MTLDevice>)device
+          viewProjectionMatrix:(matrix_float4x4)viewProjectionMatrix
+               parentTransform:(matrix_float4x4)parentTransform;
 
 @end

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "561869010.505306"
+            timestampString = "561875953.3125629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1303"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "561869010.5055521"
+            timestampString = "561875953.312862"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1038"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "561869010.505615"
+            timestampString = "561875953.312925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1014"
@@ -100,12 +100,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "561869010.505672"
+            timestampString = "561875953.312983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "239"
             endingLineNumber = "239"
             landmarkName = "BulletURDFImporter::~BulletURDFImporter()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/Rendering/PGRenderer.m"
+            timestampString = "561875953.313035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-updateUniformsWithDrawable:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

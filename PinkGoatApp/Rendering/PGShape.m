@@ -8,6 +8,7 @@
 
 #import "PGShape.h"
 #include <simd/simd.h>
+#import "PGShaderTypes.h"
 
 @implementation PGShape
 
@@ -19,6 +20,10 @@
         _vertices = vertices;
         _indices = indices;
         _children = [[NSMutableArray alloc] init];
+        _modelMatrix = matrix_identity_float4x4;
+        _parentJointTransform = matrix_identity_float4x4;
+        _parentTransformInWorldSpace = matrix_identity_float4x4;
+        _transfromInWorldSpace = matrix_identity_float4x4;
     }
     return self;
 }
@@ -55,7 +60,9 @@
 }
 
 - (void)drawWithCommandEncoder:(id<MTLRenderCommandEncoder>)commandEncoder
-                        device:(id<MTLDevice>)device;
+                        device:(id<MTLDevice>)device
+          viewProjectionMatrix:(matrix_float4x4)viewProjectionMatrix
+               parentTransform:(matrix_float4x4)parentTransform
 {
     id<MTLBuffer> vertexBuffer = [device newBufferWithLength:self.vertices.count * sizeof(PGVertex)
                                                      options:MTLResourceStorageModeShared];
@@ -71,6 +78,19 @@
     memcpy(indexBuffer.contents, &indices[0], self.indices.count * sizeof(uint16_t));
     [commandEncoder setVertexBuffer:vertexBuffer offset:0 atIndex:0];
     
+    matrix_float4x4 modelMatrix = matrix_multiply(parentTransform, matrix_multiply(self.parentJointTransform, self.modelMatrix));
+    
+    PGUniforms uniform = {
+        .viewProjectionMatrix = viewProjectionMatrix,
+        .modelMatrix = modelMatrix,
+        .normalMatrix = matrix_identity_float3x3
+    };
+    
+    id<MTLBuffer> uniformBuffer = [device newBufferWithLength:sizeof(PGUniforms)
+                                                     options:MTLResourceStorageModeShared];
+    memcpy(uniformBuffer.contents, &uniform, sizeof(uniform));
+    [commandEncoder setVertexBuffer:uniformBuffer offset:0 atIndex:1];
+    
     if (self.indices.count > 0) {
         [commandEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle
                                    indexCount:self.indices.count
@@ -80,7 +100,13 @@
     } else {
         [commandEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:self.vertices.count];
     }
+    
+    for (PGShape *child in self.children) {
+        [child drawWithCommandEncoder:commandEncoder
+                               device:device
+                 viewProjectionMatrix:viewProjectionMatrix
+                      parentTransform:modelMatrix];
+    }
 }
-
 
 @end

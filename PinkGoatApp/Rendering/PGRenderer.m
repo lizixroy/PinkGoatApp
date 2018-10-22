@@ -8,15 +8,9 @@
 
 #import "PGRenderer.h"
 #import "PGMathUtilities.h"
-//#import "PGDataTypes.h"
+#import "PGShaderTypes.h"
 
 typedef uint16_t PGIndex;
-//const MTLIndexType PGIndexType = MTLIndexTypeUInt16;
-
-typedef struct
-{
-    matrix_float4x4 modelViewProjectionMatrix;
-} PGUniforms;
 
 @interface PGRenderer()
 
@@ -33,11 +27,10 @@ typedef struct
 // TODO: move this shape specific data into shapes themselves.
 @property (assign) float rotationX;
 @property (assign) float rotationY;
-
 @property (nonatomic, strong) NSMutableArray<PGShape *> *shapes;
+@property (assign) matrix_float4x4 viewProjectionMatrix;
 
 @end
-
 
 @implementation PGRenderer
 
@@ -105,7 +98,10 @@ typedef struct
         [renderEncoder setVertexBuffer:self.uniformBuffer offset:0 atIndex:PGVertexInputIndexUniforms];
 
         for (PGShape *shape in self.shapes) {
-            [shape drawWithCommandEncoder:renderEncoder device:self.device];
+            [shape drawWithCommandEncoder:renderEncoder
+                                   device:self.device
+                     viewProjectionMatrix:self.viewProjectionMatrix
+                          parentTransform:matrix_identity_float4x4];
         }
         [renderEncoder endEncoding];
         [commandBuffer presentDrawable:view.currentDrawable];
@@ -175,9 +171,7 @@ typedef struct
     const float near = 1;
     const float far = 100;
     const matrix_float4x4 projectionMatrix = matrix_float4x4_perspective(aspect, fov, near, far);
-    PGUniforms uniforms;
-    uniforms.modelViewProjectionMatrix = matrix_multiply(projectionMatrix, matrix_multiply(viewMatrix, modelMatrix));
-    memcpy(self.uniformBuffer.contents, &uniforms, sizeof(uniforms));
+    self.viewProjectionMatrix = matrix_multiply(projectionMatrix, matrix_multiply(viewMatrix, modelMatrix));
 }
 
 @end
