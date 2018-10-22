@@ -93,7 +93,7 @@ vertex Vertex vertex_project(device Vertex *vertices [[buffer(0)]],
                              constant Uniforms *uniforms [[buffer(1)]],
                              uint vid [[vertex_id]])
 {
-    Vertex vertexOut;    
+    Vertex vertexOut;
     matrix_float4x4 modelViewProjectionMatrix = uniforms->viewProjectionMatrix * uniforms->modelMatrix;
     vertexOut.position = modelViewProjectionMatrix * vertices[vid].position;
     vertexOut.color = vertices[vid].color;

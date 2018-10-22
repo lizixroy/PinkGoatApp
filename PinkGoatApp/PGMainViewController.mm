@@ -66,7 +66,7 @@
     [self createEmptyDynamicsWorld];
     BulletURDFImporter u2b(NULL,0,1,0);
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cylinder" ofType:@"urdf"];
     NSLog(@"path: %@", path);
 
     bool loadOk = u2b.loadURDF(path.UTF8String);// lwr / kuka.urdf");

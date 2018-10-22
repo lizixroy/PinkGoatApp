@@ -975,8 +975,7 @@ void BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visu
 			{
 
 				btScalar cylRadius = visual->m_geometry.m_capsuleRadius;
-				btScalar cylLength = visual->m_geometry.m_capsuleHeight;
-				
+				btScalar cylLength = visual->m_geometry.m_capsuleHeight;				
 				btVector3 vert(cylRadius*btSin(SIMD_2_PI*(float(i) / numSteps)), cylRadius*btCos(SIMD_2_PI*(float(i) / numSteps)), cylLength / 2.);
 				vertices.push_back(vert);
 				vert[2] = -cylLength / 2.;
