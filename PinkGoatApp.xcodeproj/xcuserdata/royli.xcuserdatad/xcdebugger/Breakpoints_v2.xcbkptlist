@@ -6,17 +6,107 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
+            timestampString = "561869010.505306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1303"
+            endingLineNumber = "1303"
+            landmarkName = "BulletURDFImporter::convertLinkVisualShapes(int linkIndex, const char* pathPrefix, const btTransform&amp; localInertiaFrame)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/URDF2Bullet.mm"
-            timestampString = "561398344.579656"
+            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
+            timestampString = "561869010.5055521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "633"
-            endingLineNumber = "633"
-            landmarkName = "ConvertURDF2BulletInternal( const URDFImporterInterface&amp; u2b, MultiBodyCreationInterface&amp; creation, URDF2BulletCachedData&amp; cache, int urdfLinkIndex, const btTransform&amp; parentTransformInWorldSpace, btMultiBodyDynamicsWorld* world1, bool createMultiBody, const char* pathPrefix, int flags = 0, UrdfVisualShapeCache* cachedLinkGraphicsShapesIn=0, UrdfVisualShapeCache* cachedLinkGraphicsShapesOut=0)"
-            landmarkType = "9">
+            startingLineNumber = "1038"
+            endingLineNumber = "1038"
+            landmarkName = "BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visual, const char* urdfPathPrefix, const btTransform&amp; visualTransform, btAlignedObjectArray&lt;GLInstanceVertex&gt;&amp; verticesOut, btAlignedObjectArray&lt;int&gt;&amp; indicesOut, btAlignedObjectArray&lt;BulletURDFTexture&gt;&amp; texturesOut)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
+            timestampString = "561869010.505615"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1014"
+            endingLineNumber = "1014"
+            landmarkName = "BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visual, const char* urdfPathPrefix, const btTransform&amp; visualTransform, btAlignedObjectArray&lt;GLInstanceVertex&gt;&amp; verticesOut, btAlignedObjectArray&lt;int&gt;&amp; indicesOut, btAlignedObjectArray&lt;BulletURDFTexture&gt;&amp; texturesOut)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            moduleName = "">
+            <Locations>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "malloc_error_break"
+            moduleName = "">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "malloc_error_break"
+                  moduleName = "libsystem_malloc.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
+            timestampString = "561869010.505672"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "BulletURDFImporter::~BulletURDFImporter()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

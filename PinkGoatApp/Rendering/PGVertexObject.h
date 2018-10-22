@@ -19,4 +19,8 @@
                                   normal:(vector_float3)normal
                                    color:(vector_float4)color;
 
+// Instantiate PGVertexObject with default color (white).
+- (nonnull instancetype)initWithPosition:(vector_float3)position
+                                  normal:(vector_float3)normal;
+
 @end

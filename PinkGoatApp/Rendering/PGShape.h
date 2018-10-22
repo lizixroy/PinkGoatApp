@@ -17,7 +17,11 @@
 
 @property (nonatomic, strong) NSArray<PGVertexObject *> *vertices;
 @property (nonatomic, strong) NSArray<NSNumber *> *indices;
-@property (assign) matrix_float4x4 localToWorld;
+
+@property (assign) matrix_float4x4 parentJointTransform;
+@property (assign) matrix_float4x4 parentTransformInWorldSpace;
+@property (assign) matrix_float4x4 transfromInWorldSpace;
+
 @property (nonatomic, strong) PGShape *parent;
 @property (nonatomic, strong) NSMutableArray<PGShape *> *children;
 

@@ -168,7 +168,7 @@ typedef struct
     const matrix_float4x4 yRot = matrix_float4x4_rotation(yAxis, self.rotationY);
     const matrix_float4x4 modelMatrix = matrix_multiply(xRot, yRot);
     
-    const vector_float3 cameraTranslation = { 0, 0, -5 };
+    const vector_float3 cameraTranslation = { 0, 0, -3 };
     const matrix_float4x4 viewMatrix = matrix_float4x4_translation(cameraTranslation);
     const float aspect = drawableSize.width / drawableSize.height;
     const float fov = (2 * M_PI) / 5;

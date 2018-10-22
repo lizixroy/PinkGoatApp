@@ -11,6 +11,6 @@
 
 @interface PGLogger : NSObject
 
-+ (void)logTransform:(btTransform *)transform;
++ (void)logTransform:(btTransform)transform;
 
 @end

@@ -26,6 +26,7 @@
 #import <Metal/Metal.h>
 #import <MetalKit/MetalKit.h>
 #import "PGLogger.h"
+#import "PGSceneNodeBuilder.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -70,63 +71,22 @@
     bool loadOk = u2b.loadURDF("/Users/royli/Documents/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
     if (loadOk)
     {
+        // Creating physical representation.
         int rootLinkIndex = u2b.getRootLinkIndex();
-        
-        
-        
-        
         MyMultiBodyCreator creation;
         btTransform identityTrans;
         identityTrans.setIdentity();
-        
         ConvertURDF2Bullet(u2b, creation, identityTrans, m_dynamicsWorld, true,u2b.getPathPrefix());
-        
-        // TODO: can we get scene graph off of u2b or creation
-        
-        
         for (int i = 0; i < u2b.getNumAllocatedCollisionShapes(); i++)
         {
             m_collisionShapes.push_back(u2b.getAllocatedCollisionShape(i));
         }
         m_multiBody = creation.getBulletMultiBody();
-        btCollisionObjectArray& collisionObjects = m_dynamicsWorld->getCollisionObjectArray();
-        PGVertexFactory *vertexFactory = [[PGVertexFactory alloc] init];
         
-        NSMutableArray<PGShape *> *shapes = [[NSMutableArray alloc] init];
-        for (int i = 0; i < collisionObjects.size(); i++) {
-            
-            // Get rotation and translation info
-            
-            btTransform parent2joint;
-            parent2joint.setIdentity();
-            btTransform linkTransformInWorldSpace;
-            linkTransformInWorldSpace.setIdentity();
-            
-            btVector3 jointAxisInJointSpace;
-            btScalar jointLowerLimit;
-            btScalar jointUpperLimit;
-            btScalar jointDamping;
-            btScalar jointFriction;
-            btScalar jointMaxForce;
-            btScalar jointMaxVelocity;
-            int jointType;
-
-            bool hasParentJoint = u2b.getJointInfo2(i, parent2joint, linkTransformInWorldSpace, jointAxisInJointSpace, jointType,jointLowerLimit,jointUpperLimit, jointDamping, jointFriction,jointMaxForce,jointMaxVelocity);
-            
-            btCollisionObject *object = collisionObjects[i];
-            btAlignedObjectArray<GLInstanceVertex> vertices;
-            btAlignedObjectArray<int> indices;
-            
-            object->getCollisionShape();
-            object->getWorldTransform();
-            
-            [PGLogger logTransform:&object->getWorldTransform()];
-            
-            PGShape *shape = [vertexFactory makeShapeFromCollisionObject:object localToWorld:&parent2joint];
-            [self.renderer registerShape:shape];
-            [shapes addObject:shape];
-        }
-        
+        // Creating graphical representation:
+        PGSceneNodeBuilder *builder = [[PGSceneNodeBuilder alloc] init];
+        PGShape *rootShape = [builder buildSceneNodeWithURDFImporter:u2b linkIndex:rootLinkIndex];        
+        [self.renderer registerShape:rootShape];
     }
 }
 

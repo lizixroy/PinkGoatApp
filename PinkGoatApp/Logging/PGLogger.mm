@@ -11,10 +11,10 @@
 
 @implementation PGLogger
 
-+ (void)logTransform:(btTransform *)transform;
++ (void)logTransform:(btTransform)transform;
 {
-    btMatrix3x3 rotation = transform->getBasis();
-    btVector3 origin = transform->getOrigin();
+    btMatrix3x3 rotation = transform.getBasis();
+    btVector3 origin = transform.getOrigin();
     NSLog(@"\n\nrotation:\n[ %f %f %f ]\n[ %f %f %f ]\n[ %f %f %f ]\norigin:\n %f %f %f\n\n",
           rotation.getColumn(0).getX(),
           rotation.getColumn(1).getX(),

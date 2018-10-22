@@ -4,6 +4,7 @@
 #include "LinearMath/btTransform.h"
 #include <string>
 #include "URDFJointTypes.h"//for UrdfMaterialColor cache
+#include "PGShape.h"
 
 class btVector3;
 class btTransform;
@@ -48,7 +49,7 @@ void ConvertURDF2Bullet(const URDFImporterInterface& u2b,
 			bool createMultiBody,
 			const char* pathPrefix,
             int flags = 0,
-			UrdfVisualShapeCache* cachedLinkGraphicsShapes= 0
+			UrdfVisualShapeCache* cachedLinkGraphicsShapes= 0, PGShape *shape = nullptr                    
 			);
 
 

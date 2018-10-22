@@ -67,7 +67,7 @@ enum
     }
     PGShape *shape = [[PGShape alloc] initWithVertices:[NSArray arrayWithArray:vertices]
                                                indices:[NSArray arrayWithArray:newIndices]];
-    shape.localToWorld = [self getMatrixFromTransfrom:*localToWorld];
+//    shape.localToWorld = [self getMatrixFromTransfrom:*localToWorld];
     return shape;
 }
 

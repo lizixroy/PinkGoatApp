@@ -18,6 +18,7 @@
     if (self) {
         _vertices = vertices;
         _indices = indices;
+        _children = [[NSMutableArray alloc] init];
     }
     return self;
 }
