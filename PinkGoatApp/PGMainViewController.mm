@@ -63,12 +63,15 @@
 
 // TODO: move this to model layer.
 - (void)importRobotModel {
-    
     [self createEmptyDynamicsWorld];
-    
     BulletURDFImporter u2b(NULL,0,1,0);
     
-    bool loadOk = u2b.loadURDF("/Users/royli/Documents/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
+    NSLog(@"path: %@", path);
+
+    bool loadOk = u2b.loadURDF(path.UTF8String);// lwr / kuka.urdf");
+    
+//    bool loadOk = u2b.loadURDF("/Users/royli/Documents/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
     if (loadOk)
     {
         // Creating physical representation.
@@ -85,7 +88,7 @@
         
         // Creating graphical representation:
         PGSceneNodeBuilder *builder = [[PGSceneNodeBuilder alloc] init];
-        PGShape *rootShape = [builder buildSceneNodeWithURDFImporter:u2b linkIndex:rootLinkIndex];        
+        PGShape *rootShape = [builder buildSceneNodeWithURDFImporter:u2b linkIndex:rootLinkIndex];
         [self.renderer registerShape:rootShape];
     }
 }

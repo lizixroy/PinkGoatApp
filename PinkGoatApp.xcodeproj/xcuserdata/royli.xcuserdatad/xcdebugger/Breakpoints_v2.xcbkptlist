@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "561875953.3125629"
+            timestampString = "561876601.200989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1303"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "561875953.312862"
+            timestampString = "561876601.201525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1038"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "561875953.312925"
+            timestampString = "561876601.201781"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1014"
@@ -96,32 +96,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "561875953.312983"
+            filePath = "PinkGoatApp/Rendering/PGRenderer.m"
+            timestampString = "561876601.202028"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "BulletURDFImporter::~BulletURDFImporter()"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-updateUniformsWithDrawable:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/Rendering/PGRenderer.m"
-            timestampString = "561875953.313035"
+            filePath = "PinkGoatApp/PGMainViewController.mm"
+            timestampString = "561876601.202191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-updateUniformsWithDrawable:"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-importRobotModel"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/PGMainViewController.mm"
+            timestampString = "561876601.20234"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-importRobotModel"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatApp/PGMainViewController.mm"
+            timestampString = "561876601.202382"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-importRobotModel"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -64,41 +64,44 @@
           viewProjectionMatrix:(matrix_float4x4)viewProjectionMatrix
                parentTransform:(matrix_float4x4)parentTransform
 {
-    id<MTLBuffer> vertexBuffer = [device newBufferWithLength:self.vertices.count * sizeof(PGVertex)
-                                                     options:MTLResourceStorageModeShared];
-    vertexBuffer.label = @"Vertex Buffer";
-    PGVertex vertices[self.vertices.count];
-    uint16_t indices[self.vertices.count];
-    [self makeVertices:&vertices[0] indices:&indices[0] count:self.vertices.count];
-    memcpy(vertexBuffer.contents, &vertices[0], self.vertices.count * sizeof(PGVertex));
-    
-    id<MTLBuffer> indexBuffer = [device newBufferWithLength:self.indices.count * sizeof(uint16_t)
-                                                    options:MTLResourceStorageModeShared];
-    indexBuffer.label = @"Index Buffer";
-    memcpy(indexBuffer.contents, &indices[0], self.indices.count * sizeof(uint16_t));
-    [commandEncoder setVertexBuffer:vertexBuffer offset:0 atIndex:0];
-    
     matrix_float4x4 modelMatrix = matrix_multiply(parentTransform, matrix_multiply(self.parentJointTransform, self.modelMatrix));
-    
-    PGUniforms uniform = {
-        .viewProjectionMatrix = viewProjectionMatrix,
-        .modelMatrix = modelMatrix,
-        .normalMatrix = matrix_identity_float3x3
-    };
-    
-    id<MTLBuffer> uniformBuffer = [device newBufferWithLength:sizeof(PGUniforms)
-                                                     options:MTLResourceStorageModeShared];
-    memcpy(uniformBuffer.contents, &uniform, sizeof(uniform));
-    [commandEncoder setVertexBuffer:uniformBuffer offset:0 atIndex:1];
-    
-    if (self.indices.count > 0) {
-        [commandEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle
-                                   indexCount:self.indices.count
-                                    indexType:MTLIndexTypeUInt16
-                                  indexBuffer:indexBuffer
-                            indexBufferOffset:0];
-    } else {
-        [commandEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:self.vertices.count];
+
+    if (self.vertices.count > 0) {
+        id<MTLBuffer> vertexBuffer = [device newBufferWithLength:self.vertices.count * sizeof(PGVertex)
+                                                         options:MTLResourceStorageModeShared];
+        vertexBuffer.label = @"Vertex Buffer";
+        PGVertex vertices[self.vertices.count];
+        uint16_t indices[self.vertices.count];
+        [self makeVertices:&vertices[0] indices:&indices[0] count:self.vertices.count];
+        memcpy(vertexBuffer.contents, &vertices[0], self.vertices.count * sizeof(PGVertex));
+        
+        id<MTLBuffer> indexBuffer = [device newBufferWithLength:self.indices.count * sizeof(uint16_t)
+                                                        options:MTLResourceStorageModeShared];
+        indexBuffer.label = @"Index Buffer";
+        memcpy(indexBuffer.contents, &indices[0], self.indices.count * sizeof(uint16_t));
+        [commandEncoder setVertexBuffer:vertexBuffer offset:0 atIndex:0];
+        
+        PGUniforms uniform = {
+            .viewProjectionMatrix = viewProjectionMatrix,
+            .modelMatrix = modelMatrix,
+            .normalMatrix = matrix_identity_float3x3
+        };
+        
+        id<MTLBuffer> uniformBuffer = [device newBufferWithLength:sizeof(PGUniforms)
+                                                          options:MTLResourceStorageModeShared];
+        memcpy(uniformBuffer.contents, &uniform, sizeof(uniform));
+        [commandEncoder setVertexBuffer:uniformBuffer offset:0 atIndex:1];
+        
+        if (self.indices.count > 0) {
+            [commandEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle
+                                       indexCount:self.indices.count
+                                        indexType:MTLIndexTypeUInt16
+                                      indexBuffer:indexBuffer
+                                indexBufferOffset:0];
+        } else {
+            [commandEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:self.vertices.count];
+        }
+
     }
     
     for (PGShape *child in self.children) {
