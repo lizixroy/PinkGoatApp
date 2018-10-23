@@ -29,13 +29,13 @@
 
 - (void)testMakeVertices
 {
-    vector_float3 position1 = { 1.0, 1.0, 1.0 };
+    vector_float4 position1 = { 1.0, 1.0, 1.0, 1.0 };
     vector_float3 normal1 = { 0.0, 0.0, 0.0 };
     vector_float4 color1 = { 1.1, 1.1, 1.1, 1.1 };
     PGVertexObject *vertex1 = [[PGVertexObject alloc] initWithPosition:position1
                                                                 normal: normal1
                                                                  color: color1];
-    vector_float3 position2 = { 2.0, 2.0, 2.0 };
+    vector_float4 position2 = { 2.0, 2.0, 2.0, 1.0 };
     vector_float3 normal2 = { 0.0, 0.0, 0.0 };
     vector_float4 color2 = { 1.2, 1.2, 1.2, 1.2 };
     PGVertexObject *vertex2 = [[PGVertexObject alloc] initWithPosition:position2

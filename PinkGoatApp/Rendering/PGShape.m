@@ -28,34 +28,22 @@
     return self;
 }
 
-- (void)makeVertices:(PGVertex *)verticesBuffer indices:(uint16_t *)indices count:(NSUInteger)count;
-{
-    for (int i = 0; i < count; i++) {
-        if (i >= self.vertices.count) {
-            break;
-        }
-        PGVertexObject *vertexObject = self.vertices[i];
-        NSNumber *indexObject = self.indices[i];
-        
-        vector_float4 position = { vertexObject.position.x, vertexObject.position.y, vertexObject.position.z, 1 };
-        PGVertex vertex = { position, vertexObject.normal, vertexObject.color };
-        memcpy(&verticesBuffer[i], &vertex, sizeof(vertex));
-        
-        uint16_t index = (uint16_t) indexObject.unsignedIntValue;
-        memcpy(&indices[i], &index, sizeof(int));
-    }
-}
-
 - (void)makeVertices:(nonnull PGVertex *)verticesBuffer count:(NSUInteger)count;
 {
     for (int i = 0; i < count; i++) {
-        if (i >= self.vertices.count) {
-            break;
-        }
         PGVertexObject *vertexObject = self.vertices[i];
         vector_float4 position = { vertexObject.position.x, vertexObject.position.y, vertexObject.position.z, 1 };
         PGVertex vertex = { position, vertexObject.normal, vertexObject.color };
         memcpy(&verticesBuffer[i], &vertex, sizeof(vertex));
+    }
+}
+
+- (void)makeIndices:(nonnull uint16_t *)indicesBuffer count:(NSUInteger)count;
+{
+    for (int i = 0; i < count; i++) {
+        NSNumber *indexObject = self.indices[i];
+        uint16_t index = indexObject.unsignedIntValue;
+        memcpy(&indicesBuffer[i], &index, sizeof(index));
     }
 }
 
@@ -71,10 +59,11 @@
                                                          options:MTLResourceStorageModeShared];
         vertexBuffer.label = @"Vertex Buffer";
         PGVertex vertices[self.vertices.count];
-        uint16_t indices[self.vertices.count];
-        [self makeVertices:&vertices[0] indices:&indices[0] count:self.vertices.count];
-        memcpy(vertexBuffer.contents, &vertices[0], self.vertices.count * sizeof(PGVertex));
+        uint16_t indices[self.indices.count];
+        [self makeVertices:&vertices[0] count:self.vertices.count];
+        [self makeIndices:&indices[0] count:self.indices.count];
         
+        memcpy(vertexBuffer.contents, &vertices[0], self.vertices.count * sizeof(PGVertex));
         id<MTLBuffer> indexBuffer = [device newBufferWithLength:self.indices.count * sizeof(uint16_t)
                                                         options:MTLResourceStorageModeShared];
         indexBuffer.label = @"Index Buffer";
@@ -101,7 +90,6 @@
         } else {
             [commandEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:self.vertices.count];
         }
-
     }
     
     for (PGShape *child in self.children) {

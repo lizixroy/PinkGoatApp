@@ -117,11 +117,6 @@ typedef uint16_t PGIndex;
     _viewportSize.y = size.height;
 }
 
-- (void)renderShapes
-{
-    
-}
-
 - (void)registerShape:(nonnull PGShape *)shape
 {
     [self.shapes addObject:shape];

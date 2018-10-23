@@ -64,7 +64,7 @@
     NSMutableArray<PGVertexObject *> *vertices = [[NSMutableArray alloc] init];
     for (int i = 0; i < vertexArray.size(); i++) {
         GLInstanceVertex v = vertexArray[i];
-        vector_float3 position = { v.xyzw[0], v.xyzw[1], v.xyzw[2] };
+        vector_float4 position = { v.xyzw[0], v.xyzw[1], v.xyzw[2], v.xyzw[3] };
         vector_float3 normal = { v.normal[0], v.normal[1], v.normal[2] };
         PGVertexObject *vertex = [[PGVertexObject alloc] initWithPosition:position normal:normal];
 

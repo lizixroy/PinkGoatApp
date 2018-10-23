@@ -10,7 +10,7 @@
 
 @implementation PGVertexObject
 
-- (nonnull instancetype)initWithPosition:(vector_float3)position
+- (nonnull instancetype)initWithPosition:(vector_float4)position
                                   normal:(vector_float3)normal
                                    color:(vector_float4)color;
 {
@@ -23,7 +23,7 @@
     return self;
 }
 
-- (nonnull instancetype)initWithPosition:(vector_float3)position
+- (nonnull instancetype)initWithPosition:(vector_float4)position
                                   normal:(vector_float3)normal
 {
     self = [super init];

@@ -19,7 +19,6 @@
 #import "bullet/BulletCollision/CollisionDispatch/btCollisionObject.h"
 #import "bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h"
 #import "bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h"
-#import "PGVertexFactory.h"
 #import "PGShape.h"
 #import "PGVertexObject.h"
 #import "PGRenderer.h"
@@ -66,11 +65,8 @@
     [self createEmptyDynamicsWorld];
     BulletURDFImporter u2b(NULL,0,1,0);
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"cylinder" ofType:@"urdf"];
-    NSLog(@"path: %@", path);
-
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
     bool loadOk = u2b.loadURDF(path.UTF8String);// lwr / kuka.urdf");
-    
 //    bool loadOk = u2b.loadURDF("/Users/royli/Documents/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
     if (loadOk)
     {

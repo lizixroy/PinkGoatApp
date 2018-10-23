@@ -29,10 +29,6 @@
 - (instancetype)initWithVertices:(NSArray<PGVertexObject *> *)vertices
                          indices:(NSArray<NSNumber *> *)indices;
 
-- (void)makeVertices:(PGVertex *)verticesBuffer indices:(uint16_t *)indices
-               count:(NSUInteger)count;
-- (void)makeVertices:(PGVertex *)verticesBuffer count:(NSUInteger)count;
-
 - (void)drawWithCommandEncoder:(id<MTLRenderCommandEncoder>)commandEncoder
                         device:(id<MTLDevice>)device
           viewProjectionMatrix:(matrix_float4x4)viewProjectionMatrix
