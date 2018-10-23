@@ -37,18 +37,22 @@
     btAlignedObjectArray<GLInstanceVertex> vertices;
     btAlignedObjectArray<int> indices;
     urdfImporter.getVerticesAndIndicesForLinkIndex(vertices, indices, linkIndex);
+    
+    btTransform inertialFrame;
+    urdfImporter.getLocalInertialFrame(linkIndex, inertialFrame);
+    
+    
     NSArray<PGVertexObject *> *vertexObjects = [self createVertexObjectsFromGLInstanceVertexArray:vertices];
     NSArray<NSNumber *> *indexObjects = [self createIndexObjectsFromIndexArray:indices];
     PGShape *shape = [[PGShape alloc] initWithVertices:vertexObjects indices:indexObjects];
     
+    
     shape.parentJointTransform = [PGObjcMathUtilities getMatrixFromTransfrom:parent2joint];
     // TODO: parentTransformInWorldSpace is not valid. We also need to get local inertia to get all the info we need for rendering
     shape.parentTransformInWorldSpace = [PGObjcMathUtilities getMatrixFromTransfrom:linkTransformInWorldSpace];
+    shape.modelMatrix = [PGObjcMathUtilities getMatrixFromTransfrom:inertialFrame];
     
-//    NSLog(@"parentJointTransform:");
-//    [PGLogger logTransform:parent2joint];
-//    NSLog(@"linkTransformInWorldSpace:");
-//    [PGLogger logTransform:linkTransformInWorldSpace];
+    shape.name = [NSString stringWithUTF8String: urdfImporter.getLinkName(linkIndex).c_str()];
     
     btAlignedObjectArray<int> childLinkIndices;
     urdfImporter.getLinkChildIndices(linkIndex, childLinkIndices);

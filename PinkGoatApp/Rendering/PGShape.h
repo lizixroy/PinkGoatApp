@@ -25,6 +25,7 @@
 
 @property (nonatomic, strong) PGShape *parent;
 @property (nonatomic, strong) NSMutableArray<PGShape *> *children;
+@property (nonatomic, strong) NSString *name;
 
 - (instancetype)initWithVertices:(NSArray<PGVertexObject *> *)vertices
                          indices:(NSArray<NSNumber *> *)indices;

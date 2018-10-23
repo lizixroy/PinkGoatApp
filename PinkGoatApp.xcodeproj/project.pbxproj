@@ -48,6 +48,7 @@
 		B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */; };
 		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
 		B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5998FC1217E8B5500413FDC /* cylinder.urdf */; };
+		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
 		B5E35469217BA2510034FB97 /* PGSceneNodeBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGSceneNodeBuilder.mm */; };
 		B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */; };
 		B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5E3553B217D8D090034FB97 /* cougarbot.urdf */; };
@@ -157,6 +158,8 @@
 		B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobotFactory.mm; sourceTree = "<group>"; };
 		B5859C9D213F9CDF00C71222 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
+		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
+		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
 		B5E35467217BA2510034FB97 /* PGSceneNodeBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGSceneNodeBuilder.h; sourceTree = "<group>"; };
 		B5E35468217BA2510034FB97 /* PGSceneNodeBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGSceneNodeBuilder.mm; sourceTree = "<group>"; };
 		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
@@ -292,6 +295,7 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5AC6892217F990C00D0F11F /* Utilities */,
 				B5E3553A217D8CFB0034FB97 /* Resources */,
 				B526B13F21438B5300FBA6D7 /* URDF */,
 				B5EDE3C42174607A00EC3CA0 /* Logging */,
@@ -391,6 +395,15 @@
 				B5859C8E213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm */,
 			);
 			path = bulletWrappers;
+			sourceTree = "<group>";
+		};
+		B5AC6892217F990C00D0F11F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */,
+				B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		B5E3553A217D8CFB0034FB97 /* Resources */ = {
@@ -578,6 +591,7 @@
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
 				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
 				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
+				B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */,
 				B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */,
 				B5E35469217BA2510034FB97 /* PGSceneNodeBuilder.mm in Sources */,
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,

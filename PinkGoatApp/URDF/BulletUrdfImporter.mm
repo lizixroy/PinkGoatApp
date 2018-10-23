@@ -36,8 +36,7 @@ static btScalar gUrdfDefaultCollisionMargin = 0.001;
 #include <fstream>
 #include <list>
 #include "UrdfParser.h"
-
-
+#import "PGLogger.h"
 
 ATTRIBUTE_ALIGNED16(struct) BulletURDFInternalData
 {
@@ -958,7 +957,8 @@ void BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visu
 {
 	BT_PROFILE("convertURDFToVisualShapeInternal");
 
-	
+    [PGLogger logTransform:visualTransform];
+    
 	GLInstanceGraphicsShape* glmesh = 0;
 
 	btConvexShape* convexColShape = 0;

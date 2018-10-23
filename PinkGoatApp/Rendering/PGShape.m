@@ -9,6 +9,7 @@
 #import "PGShape.h"
 #include <simd/simd.h>
 #import "PGShaderTypes.h"
+#import "PGMatrixLogger.h"
 
 @implementation PGShape
 
@@ -53,7 +54,6 @@
                parentTransform:(matrix_float4x4)parentTransform
 {
     matrix_float4x4 modelMatrix = matrix_multiply(parentTransform, matrix_multiply(self.parentJointTransform, self.modelMatrix));
-
     if (self.vertices.count > 0) {
         id<MTLBuffer> vertexBuffer = [device newBufferWithLength:self.vertices.count * sizeof(PGVertex)
                                                          options:MTLResourceStorageModeShared];
@@ -92,11 +92,13 @@
         }
     }
     
+    matrix_float4x4 parentMatrixForChild = matrix_multiply(parentTransform, self.parentJointTransform);
+    
     for (PGShape *child in self.children) {
         [child drawWithCommandEncoder:commandEncoder
                                device:device
                  viewProjectionMatrix:viewProjectionMatrix
-                      parentTransform:modelMatrix];
+                      parentTransform:parentMatrixForChild];
     }
 }
 
