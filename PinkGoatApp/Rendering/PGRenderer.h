@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "PGShaderTypes.h"
 #import "PGShape.h"
-
 #import <MetalKit/MetalKit.h>
 
 @interface PGRenderer : NSObject <MTKViewDelegate>

@@ -92,7 +92,10 @@ public:
 	
 	virtual void setEnableTinyRenderer(bool enable);
 	void convertURDFToVisualShapeInternal(const struct UrdfVisual* visual, const char* urdfPathPrefix, const class btTransform& visualTransform, btAlignedObjectArray<struct GLInstanceVertex>& verticesOut, btAlignedObjectArray<int>& indicesOut, btAlignedObjectArray<struct BulletURDFTexture>& texturesOut) const;
-
+    
+    void getVerticesAndIndicesForLinkIndex(btAlignedObjectArray<GLInstanceVertex>& verticesOut, btAlignedObjectArray<int>& indicesOut, int linkIndex) const;
+    // Get local inertial frame of a link. If link cannot be found in the model for the provided urdfLinkIndex, then inertialFrame would be set to identity
+    void getLocalInertialFrame(int urdfLinkIndex, btTransform& inertialFrame) const;
 
 };
 

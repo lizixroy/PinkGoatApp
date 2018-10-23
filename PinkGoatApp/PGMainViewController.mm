@@ -19,12 +19,13 @@
 #import "bullet/BulletCollision/CollisionDispatch/btCollisionObject.h"
 #import "bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h"
 #import "bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h"
-#import "PGVertexFactory.h"
 #import "PGShape.h"
 #import "PGVertexObject.h"
 #import "PGRenderer.h"
 #import <Metal/Metal.h>
 #import <MetalKit/MetalKit.h>
+#import "PGLogger.h"
+#import "PGSceneNodeBuilder.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -61,41 +62,30 @@
 
 // TODO: move this to model layer.
 - (void)importRobotModel {
-    
     [self createEmptyDynamicsWorld];
-    
     BulletURDFImporter u2b(NULL,0,1,0);
     
-    bool loadOk = u2b.loadURDF("/Users/royli/Documents/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
+    bool loadOk = u2b.loadURDF(path.UTF8String);// lwr / kuka.urdf");
+//    bool loadOk = u2b.loadURDF("/Users/royli/Documents/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
     if (loadOk)
     {
+        // Creating physical representation.
         int rootLinkIndex = u2b.getRootLinkIndex();
         MyMultiBodyCreator creation;
         btTransform identityTrans;
         identityTrans.setIdentity();
-        
         ConvertURDF2Bullet(u2b, creation, identityTrans, m_dynamicsWorld, true,u2b.getPathPrefix());
         for (int i = 0; i < u2b.getNumAllocatedCollisionShapes(); i++)
         {
             m_collisionShapes.push_back(u2b.getAllocatedCollisionShape(i));
         }
         m_multiBody = creation.getBulletMultiBody();
-        btCollisionObjectArray& collisionObjects = m_dynamicsWorld->getCollisionObjectArray();
-        PGVertexFactory *vertexFactory = [[PGVertexFactory alloc] init];
         
-        NSMutableArray<PGShape *> *shapes = [[NSMutableArray alloc] init];
-        for (int i = 0; i < collisionObjects.size(); i++) {
-            btCollisionObject *object = collisionObjects[i];
-            btAlignedObjectArray<GLInstanceVertex> vertices;
-            btAlignedObjectArray<int> indices;
-//            [vertexFactory makeVerticesFromCollisionObject:object vertices:vertices indices:indices];
-            PGShape *shape = [vertexFactory makeShapeFromCollisionObject:object];
-            //NSLog(@"Create %d vertices from object: %p", vertices.size(), object);
-            [shapes addObject:shape];
-        }
-        
-        PGShape *shape = shapes.firstObject;
-        [self.renderer registerShape:shape];
+        // Creating graphical representation:
+        PGSceneNodeBuilder *builder = [[PGSceneNodeBuilder alloc] init];
+        PGShape *rootShape = [builder buildSceneNodeWithURDFImporter:u2b linkIndex:rootLinkIndex];
+        [self.renderer registerShape:rootShape];
     }
 }
 

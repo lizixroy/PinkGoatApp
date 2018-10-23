@@ -78,12 +78,15 @@ fragment float4 fragmentShader(RasterizerData in [[stage_in]])
 struct Vertex
 {
     vector_float4 position [[position]];
+    vector_float3 normal;
     vector_float4 color;
 };
 
 struct Uniforms
 {
-    matrix_float4x4 modelViewProjectionMatrix;
+    matrix_float4x4 viewProjectionMatrix;
+    matrix_float4x4 modelMatrix;
+    matrix_float3x3 normalMatrix;
 };
 
 vertex Vertex vertex_project(device Vertex *vertices [[buffer(0)]],
@@ -91,7 +94,8 @@ vertex Vertex vertex_project(device Vertex *vertices [[buffer(0)]],
                              uint vid [[vertex_id]])
 {
     Vertex vertexOut;
-    vertexOut.position = uniforms->modelViewProjectionMatrix * vertices[vid].position;
+    matrix_float4x4 modelViewProjectionMatrix = uniforms->viewProjectionMatrix * uniforms->modelMatrix;
+    vertexOut.position = modelViewProjectionMatrix * vertices[vid].position;
     vertexOut.color = vertices[vid].color;
     return vertexOut;
 }

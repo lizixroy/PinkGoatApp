@@ -8,14 +8,9 @@
 
 #import "PGRenderer.h"
 #import "PGMathUtilities.h"
+#import "PGShaderTypes.h"
 
 typedef uint16_t PGIndex;
-const MTLIndexType PGIndexType = MTLIndexTypeUInt16;
-
-typedef struct
-{
-    matrix_float4x4 modelViewProjectionMatrix;
-} PGUniforms;
 
 @interface PGRenderer()
 
@@ -32,6 +27,8 @@ typedef struct
 // TODO: move this shape specific data into shapes themselves.
 @property (assign) float rotationX;
 @property (assign) float rotationY;
+@property (nonatomic, strong) NSMutableArray<PGShape *> *shapes;
+@property (assign) matrix_float4x4 viewProjectionMatrix;
 
 @end
 
@@ -42,6 +39,7 @@ typedef struct
     self = [super init];
     if (self)
     {
+        _shapes = [[NSMutableArray alloc] init];
         NSError *error = NULL;
         _device = mtkView.device;
         
@@ -84,9 +82,7 @@ typedef struct
 
 - (void)drawInMTKView:(nonnull MTKView *)view
 {
-    
     [self updateUniformsWithDrawable:view.drawableSize];
-    
     id<MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];
     commandBuffer.label = @"draw buffer";
     MTLRenderPassDescriptor *renderPassDescriptor = view.currentRenderPassDescriptor;
@@ -96,19 +92,17 @@ typedef struct
         [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
         renderEncoder.label = @"MyRenderEncoder";
         
-        // TODO: this two fixed the weird square in the middle of the square
         [renderEncoder setFrontFacingWinding:MTLWindingCounterClockwise];
         [renderEncoder setCullMode:MTLCullModeBack];
-        
         [renderEncoder setRenderPipelineState:_pipelineState];
-        [renderEncoder setVertexBuffer:self.vertexBuffer offset:0 atIndex:PGVertexInputIndexVertices];
         [renderEncoder setVertexBuffer:self.uniformBuffer offset:0 atIndex:PGVertexInputIndexUniforms];
-        
-        [renderEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle
-                                  indexCount:[self.indexBuffer length] / sizeof(PGIndex)
-                                   indexType:PGIndexType
-                                 indexBuffer:self.indexBuffer
-                           indexBufferOffset:0];
+
+        for (PGShape *shape in self.shapes) {
+            [shape drawWithCommandEncoder:renderEncoder
+                                   device:self.device
+                     viewProjectionMatrix:self.viewProjectionMatrix
+                          parentTransform:matrix_identity_float4x4];
+        }
         [renderEncoder endEncoding];
         [commandBuffer presentDrawable:view.currentDrawable];
 
@@ -125,49 +119,26 @@ typedef struct
 
 - (void)registerShape:(nonnull PGShape *)shape
 {
-    // TEST: make sure the pipeline is correct.
-    
-    // TODO: our pipeline is fine, we need to figure out how to render 3D shapes
-    
-    static const PGVertex vertices[] =
-    {
-    {.position={-1, 1, 1,1},.color={0,1,1,1}},
-    {.position={-1,-1, 1,1},.color={0,0,1,1}},
-    {.position={ 1,-1, 1,1},.color={1,0,1,1}},
-    {.position={ 1, 1, 1,1},.color={1,1,1,1}},
-    {.position={-1, 1,-1,1},.color={0,1,0,1}},
-    {.position={-1,-1,-1,1},.color={0,0,0,1}},
-    {.position={ 1,-1,-1,1},.color={1,0,0,1}},
-    {.position={ 1, 1,-1,1},.color={1,1,0,1}}
-    };
-    
-    const PGIndex indices[] =
-    {
-        3,2,6,6,7,3, 4,5,1,1,0,4, 4,0,3,3,7,4, 1,5,6,6,2,1, 0,1,2,2,3,0, 7,6,5,5,4,7
-    };
+    [self.shapes addObject:shape];
     
 //    PGVertex vertices[shape.vertices.count];
-//    for (int i = 0; i < shape.vertices.count; i++) {
-//        PGVertexObject *v = shape.vertices[i];
-//        PGVertex vertex = { v.position, { 1, 0, 0, 1 } };
-//        vertices[i] = vertex;
-//    }
-    
-    NSUInteger dataSize = sizeof(vertices);
-    NSMutableData *vertexData = [[NSMutableData alloc] initWithLength:dataSize];
-    memcpy(vertexData.mutableBytes, vertices, sizeof(vertices));
-    NSLog(@"Now we have %lu bytes of data", vertexData.length);
-    self.vertexData = [NSData dataWithBytes:vertexData.bytes length:vertexData.length];
-    self.vertexBuffer = [self.device newBufferWithLength:self.vertexData.length
-                                                 options:MTLResourceStorageModeShared];
-    self.vertexBuffer.label = @"Vertex Buffer";
-    memcpy(self.vertexBuffer.contents, vertexData.mutableBytes, vertexData.length);
-    self.numVertices = vertexData.length / sizeof(PGVertex);
-    self.indexBuffer = [self.device newBufferWithLength:sizeof(indices)
-                                                options:MTLResourceStorageModeShared];
-    self.indexBuffer.label = @"Index Buffer";
-    memcpy(self.indexBuffer.contents, indices, sizeof(indices));
-    
+//    uint16_t indices[shape.vertices.count];
+//    [shape makeVertices:&vertices[0] indices:&indices[0] count:shape.vertices.count];
+//
+//    NSUInteger dataSize = sizeof(vertices);
+//    NSMutableData *vertexData = [[NSMutableData alloc] initWithLength:dataSize];
+//    memcpy(vertexData.mutableBytes, vertices, sizeof(vertices));
+//    NSLog(@"Now we have %lu bytes of data", vertexData.length);
+//    self.vertexData = [NSData dataWithBytes:vertexData.bytes length:vertexData.length];
+//    self.vertexBuffer = [self.device newBufferWithLength:self.vertexData.length
+//                                                 options:MTLResourceStorageModeShared];
+//    self.vertexBuffer.label = @"Vertex Buffer";
+//    memcpy(self.vertexBuffer.contents, vertexData.mutableBytes, vertexData.length);
+//    self.numVertices = vertexData.length / sizeof(PGVertex);
+//    self.indexBuffer = [self.device newBufferWithLength:sizeof(indices)
+//                                                options:MTLResourceStorageModeShared];
+//    self.indexBuffer.label = @"Index Buffer";
+//    memcpy(self.indexBuffer.contents, indices, sizeof(indices));
 }
 
 // TODO: for now, let's ignore duration as we are not animating things.
@@ -188,16 +159,14 @@ typedef struct
     const matrix_float4x4 yRot = matrix_float4x4_rotation(yAxis, self.rotationY);
     const matrix_float4x4 modelMatrix = matrix_multiply(xRot, yRot);
     
-    const vector_float3 cameraTranslation = { 0, 0, -5 };
+    const vector_float3 cameraTranslation = { 0, 0, -3 };
     const matrix_float4x4 viewMatrix = matrix_float4x4_translation(cameraTranslation);
     const float aspect = drawableSize.width / drawableSize.height;
     const float fov = (2 * M_PI) / 5;
     const float near = 1;
     const float far = 100;
     const matrix_float4x4 projectionMatrix = matrix_float4x4_perspective(aspect, fov, near, far);
-    PGUniforms uniforms;
-    uniforms.modelViewProjectionMatrix = matrix_multiply(projectionMatrix, matrix_multiply(viewMatrix, modelMatrix));
-    memcpy(self.uniformBuffer.contents, &uniforms, sizeof(uniforms));
+    self.viewProjectionMatrix = matrix_multiply(projectionMatrix, matrix_multiply(viewMatrix, modelMatrix));
 }
 
 @end

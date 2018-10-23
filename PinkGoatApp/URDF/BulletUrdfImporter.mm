@@ -36,8 +36,7 @@ static btScalar gUrdfDefaultCollisionMargin = 0.001;
 #include <fstream>
 #include <list>
 #include "UrdfParser.h"
-
-
+#import "PGLogger.h"
 
 ATTRIBUTE_ALIGNED16(struct) BulletURDFInternalData
 {
@@ -92,8 +91,6 @@ BulletURDFImporter::BulletURDFImporter(struct GUIHelperInterface* helper, UrdfRe
 	m_data->m_flags = flags;
 	m_data->m_guiHelper = helper;
 	m_data->m_customVisualShapesConverter = customConverter;
-
-  
 }
 
 struct BulletErrorLogger : public ErrorLogger
@@ -300,7 +297,19 @@ std::string BulletURDFImporter::getJointName(int linkIndex) const
 	}
 	return "";
 }
-    
+
+void BulletURDFImporter::getLocalInertialFrame(int urdfLinkIndex, btTransform& inertialFrame) const
+{
+    UrdfLink* const* linkPtr = m_data->m_urdfParser.getModel().m_links.getAtIndex(urdfLinkIndex);
+    if (linkPtr) {
+        UrdfLink* link = *linkPtr;
+        inertialFrame.setOrigin(link->m_inertia.m_linkLocalFrame.getOrigin());
+        inertialFrame.setBasis(link->m_inertia.m_linkLocalFrame.getBasis());
+    } else {
+        inertialFrame.setIdentity();
+    }
+}
+
 void  BulletURDFImporter::getMassAndInertia2(int urdfLinkIndex, btScalar& mass, btVector3& localInertiaDiagonal, btTransform& inertialFrame, int flags) const
 {
 	if (flags & CUF_USE_URDF_INERTIA)
@@ -948,7 +957,8 @@ void BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visu
 {
 	BT_PROFILE("convertURDFToVisualShapeInternal");
 
-	
+    [PGLogger logTransform:visualTransform];
+    
 	GLInstanceGraphicsShape* glmesh = 0;
 
 	btConvexShape* convexColShape = 0;
@@ -960,13 +970,12 @@ void BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visu
 			btAlignedObjectArray<btVector3> vertices;
 		
 			//int numVerts = sizeof(barrel_vertices)/(9*sizeof(float));
-			int numSteps = 32;
+            int numSteps = 320;//32;
 			for (int i = 0; i<numSteps; i++)
 			{
 
 				btScalar cylRadius = visual->m_geometry.m_capsuleRadius;
 				btScalar cylLength = visual->m_geometry.m_capsuleHeight;
-				
 				btVector3 vert(cylRadius*btSin(SIMD_2_PI*(float(i) / numSteps)), cylRadius*btCos(SIMD_2_PI*(float(i) / numSteps)), cylLength / 2.);
 				vertices.push_back(vert);
 				vert[2] = -cylLength / 2.;
@@ -1192,9 +1201,6 @@ void BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visu
 	{
 		BT_PROFILE("glmesh");
 		int baseIndex = verticesOut.size();
-
-
-
 		for (int i = 0; i < glmesh->m_indices->size(); i++)
 		{
 			indicesOut.push_back(glmesh->m_indices->at(i) + baseIndex);
@@ -1220,6 +1226,39 @@ void BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visu
     
 }
 
+void BulletURDFImporter::getVerticesAndIndicesForLinkIndex(btAlignedObjectArray<GLInstanceVertex>& verticesOut,
+                                       btAlignedObjectArray<int>& indicesOut,
+                                       int linkIndex) const
+{
+    const UrdfModel& model = m_data->m_urdfParser.getModel();
+    UrdfLink* const* linkPtr = model.m_links.getAtIndex(linkIndex);
+    if (linkPtr)
+    {
+        const UrdfLink* link = *linkPtr;
+
+        for (int v = 0; v < link->m_visualArray.size();v++)
+        {
+            const UrdfVisual& vis = link->m_visualArray[v];
+            btTransform childTrans = vis.m_linkLocalFrame;
+            btHashString matName(vis.m_materialName.c_str());
+            UrdfMaterial *const * matPtr = model.m_materials[matName];
+            if (matPtr)
+            {
+                UrdfMaterial *const  mat = *matPtr;
+                //printf("UrdfMaterial %s, rgba = %f,%f,%f,%f\n",mat->m_name.c_str(),mat->m_rgbaColor[0],mat->m_rgbaColor[1],mat->m_rgbaColor[2],mat->m_rgbaColor[3]);
+                UrdfMaterialColor matCol;
+                matCol.m_rgbaColor = mat->m_matColor.m_rgbaColor;
+                matCol.m_specularColor = mat->m_matColor.m_specularColor;
+                m_data->m_linkColors.insert(linkIndex,matCol);
+            }
+            
+            btTransform localInertiaFrame;
+            getLocalInertialFrame(linkIndex, localInertiaFrame);
+            btAlignedObjectArray<BulletURDFTexture> textures;
+            convertURDFToVisualShapeInternal(&vis, NULL, localInertiaFrame.inverse()*childTrans, verticesOut, indicesOut, textures);
+        }
+    }
+}
 
 int BulletURDFImporter::convertLinkVisualShapes(int linkIndex, const char* pathPrefix, const btTransform& localInertiaFrame) const
 {
@@ -1252,10 +1291,11 @@ int BulletURDFImporter::convertLinkVisualShapes(int linkIndex, const char* pathP
 				m_data->m_linkColors.insert(linkIndex,matCol);
 			}
 			convertURDFToVisualShapeInternal(&vis, pathPrefix, localInertiaFrame.inverse()*childTrans, vertices, indices,textures);
-		
-		
 		}
 	}
+    
+    
+    
 	if (vertices.size() && indices.size())
 	{
 //		graphicsIndex  = m_data->m_guiHelper->registerGraphicsShape(&vertices[0].xyzw[0], vertices.size(), &indices[0], indices.size());

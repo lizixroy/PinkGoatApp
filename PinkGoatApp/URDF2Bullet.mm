@@ -15,6 +15,9 @@
 #include <string>
 #include "Bullet3Common/b3Logging.h"
 
+#include <iostream>
+#include "Logging/PGLogger.h"
+
 //static int bodyCollisionFilterGroup=btBroadphaseProxy::CharacterFilter;
 //static int bodyCollisionFilterMask=btBroadphaseProxy::AllFilter&(~btBroadphaseProxy::CharacterFilter);
 static bool enableConstraints = true;
@@ -185,7 +188,7 @@ void ConvertURDF2BulletInternal(
     URDF2BulletCachedData& cache, int urdfLinkIndex,
     const btTransform& parentTransformInWorldSpace, btMultiBodyDynamicsWorld* world1,
     bool createMultiBody, const char* pathPrefix,
-    int flags = 0, UrdfVisualShapeCache* cachedLinkGraphicsShapesIn=0, UrdfVisualShapeCache* cachedLinkGraphicsShapesOut=0)
+    int flags = 0, UrdfVisualShapeCache* cachedLinkGraphicsShapesIn=0, UrdfVisualShapeCache* cachedLinkGraphicsShapesOut=0, PGShape *shape=nullptr)
 {
 	B3_PROFILE("ConvertURDF2BulletInternal2");
     //b3Printf("start converting/extracting data from URDF interface\n");
@@ -243,6 +246,7 @@ void ConvertURDF2BulletInternal(
 
 
     bool hasParentJoint = u2b.getJointInfo2(urdfLinkIndex, parent2joint, linkTransformInWorldSpace, jointAxisInJointSpace, jointType,jointLowerLimit,jointUpperLimit, jointDamping, jointFriction,jointMaxForce,jointMaxVelocity);
+        
 	std::string linkName = u2b.getLinkName(urdfLinkIndex);
                           
     if (flags & CUF_USE_SDF)
@@ -259,8 +263,12 @@ void ConvertURDF2BulletInternal(
 	        linkTransformInWorldSpace =parentTransformInWorldSpace*parent2joint;
 		}
     }
-    
-    
+//    NSLog(@"parentTransformInWorldSpace:");
+//    [PGLogger logTransform:parentTransformInWorldSpace];
+//    NSLog(@"parent2joint:");
+//    [PGLogger logTransform:parent2joint];
+//    NSLog(@"linkTransformInWorldSpace:");
+//    [PGLogger logTransform:linkTransformInWorldSpace];
 
     btCompoundShape* tmpShape = u2b.convertLinkCollisionShapes(urdfLinkIndex,pathPrefix,localInertialFrame);
 	btCollisionShape* compoundShape = tmpShape;
@@ -269,7 +277,6 @@ void ConvertURDF2BulletInternal(
 		compoundShape = tmpShape->getChildShape(0);
 	}
 	
-
 	int graphicsIndex;
 	{
 		B3_PROFILE("convertLinkVisualShapes");
@@ -556,7 +563,7 @@ void ConvertURDF2BulletInternal(
                 tr = linkTransformInWorldSpace;
                 //if we don't set the initial pose of the btCollisionObject, the simulator will do this
                 //when syncing the btMultiBody link transforms to the btMultiBodyLinkCollider
-
+                
                 col->setWorldTransform(tr);
 				
 				//base and fixed? -> static, otherwise flag as dynamic
@@ -634,13 +641,12 @@ void ConvertURDF2BulletInternal(
 
     btAlignedObjectArray<int> urdfChildIndices;
     u2b.getLinkChildIndices(urdfLinkIndex,urdfChildIndices);
-
+    
     int numChildren = urdfChildIndices.size();
-
+    
     for (int i=0;i<numChildren;i++)
     {
         int urdfChildLinkIndex = urdfChildIndices[i];
-
         ConvertURDF2BulletInternal(u2b,creation, cache,urdfChildLinkIndex,linkTransformInWorldSpace,world1,createMultiBody,pathPrefix,flags, cachedLinkGraphicsShapesIn, cachedLinkGraphicsShapesOut);
     }
 
@@ -649,7 +655,7 @@ void ConvertURDF2Bullet(
     const URDFImporterInterface& u2b, MultiBodyCreationInterface& creation,
     const btTransform& rootTransformInWorldSpace,
     btMultiBodyDynamicsWorld* world1,
-    bool createMultiBody, const char* pathPrefix, int flags, UrdfVisualShapeCache* cachedLinkGraphicsShapes)
+    bool createMultiBody, const char* pathPrefix, int flags, UrdfVisualShapeCache* cachedLinkGraphicsShapes, PGShape *shape)
 {
 
 	URDF2BulletCachedData cache;

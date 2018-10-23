@@ -11,12 +11,16 @@
 
 @interface PGVertexObject : NSObject
 
-@property (assign) vector_float3 position;
+@property (assign) vector_float4 position;
 @property (assign) vector_float3 normal;
 @property (assign) vector_float4 color;
 
-- (nonnull instancetype)initWithPosition:(vector_float3)position
+- (nonnull instancetype)initWithPosition:(vector_float4)position
                                   normal:(vector_float3)normal
                                    color:(vector_float4)color;
+
+// Instantiate PGVertexObject with default color (white).
+- (nonnull instancetype)initWithPosition:(vector_float4)position
+                                  normal:(vector_float3)normal;
 
 @end

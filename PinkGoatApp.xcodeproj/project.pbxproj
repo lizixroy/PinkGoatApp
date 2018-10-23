@@ -47,6 +47,11 @@
 		B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C93213F994E00C71222 /* URDF2Bullet.mm */; };
 		B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */; };
 		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
+		B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5998FC1217E8B5500413FDC /* cylinder.urdf */; };
+		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
+		B5E35469217BA2510034FB97 /* PGSceneNodeBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGSceneNodeBuilder.mm */; };
+		B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */; };
+		B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5E3553B217D8D090034FB97 /* cougarbot.urdf */; };
 		B5E607B12165155100858EF7 /* PGRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B02165155100858EF7 /* PGRenderer.m */; };
 		B5E607B52165AEE300858EF7 /* PGShape.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B42165AEE300858EF7 /* PGShape.m */; };
 		B5E607B82165B8AE00858EF7 /* PGVertexObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B72165B8AE00858EF7 /* PGVertexObject.m */; };
@@ -59,6 +64,10 @@
 		B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA40B214ECA7900DB4CD6 /* WavefrontObjConverter.m */; };
 		B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA40D214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp */; };
 		B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE186216957DC00EC3CA0 /* PGMathUtilities.m */; };
+		B5EDE18A216C6BC300EC3CA0 /* PGShapeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE189216C6BC300EC3CA0 /* PGShapeTests.m */; };
+		B5EDE18B216C6DD900EC3CA0 /* PGVertexObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B72165B8AE00858EF7 /* PGVertexObject.m */; };
+		B5EDE18C216C6E6D00EC3CA0 /* PGShape.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B42165AEE300858EF7 /* PGShape.m */; };
+		B5EDE3C721763E8000EC3CA0 /* PGLogger.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5EDE3C621763E8000EC3CA0 /* PGLogger.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +157,14 @@
 		B5859C9A213F9B8300C71222 /* PGRobotFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotFactory.h; sourceTree = "<group>"; };
 		B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobotFactory.mm; sourceTree = "<group>"; };
 		B5859C9D213F9CDF00C71222 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
+		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
+		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
+		B5E35467217BA2510034FB97 /* PGSceneNodeBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGSceneNodeBuilder.h; sourceTree = "<group>"; };
+		B5E35468217BA2510034FB97 /* PGSceneNodeBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGSceneNodeBuilder.mm; sourceTree = "<group>"; };
+		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
+		B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGObjcMathUtilities.mm; sourceTree = "<group>"; };
+		B5E3553B217D8D090034FB97 /* cougarbot.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cougarbot.urdf; sourceTree = "<group>"; };
 		B5E607AF2165155100858EF7 /* PGRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRenderer.h; sourceTree = "<group>"; };
 		B5E607B02165155100858EF7 /* PGRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGRenderer.m; sourceTree = "<group>"; };
 		B5E607B22165AD5300858EF7 /* PGShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShaderTypes.h; sourceTree = "<group>"; };
@@ -169,6 +186,11 @@
 		B5EBA40E214ECB7A00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wavefront2GLInstanceGraphicsShape.h; sourceTree = "<group>"; };
 		B5EDE185216957DC00EC3CA0 /* PGMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMathUtilities.h; sourceTree = "<group>"; };
 		B5EDE186216957DC00EC3CA0 /* PGMathUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMathUtilities.m; sourceTree = "<group>"; };
+		B5EDE188216C6BC300EC3CA0 /* PinkGoatAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinkGoatAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		B5EDE189216C6BC300EC3CA0 /* PGShapeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGShapeTests.m; sourceTree = "<group>"; };
+		B5EDE18D216DBEAA00EC3CA0 /* PGDataTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGDataTypes.h; sourceTree = "<group>"; };
+		B5EDE3C521763E8000EC3CA0 /* PGLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGLogger.h; sourceTree = "<group>"; };
+		B5EDE3C621763E8000EC3CA0 /* PGLogger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGLogger.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +248,8 @@
 				B526B14021438B6700FBA6D7 /* UrdfParser.h */,
 				B5EBA40A214ECA7900DB4CD6 /* WavefrontObjConverter.h */,
 				B5EBA40B214ECA7900DB4CD6 /* WavefrontObjConverter.m */,
+				B5E35467217BA2510034FB97 /* PGSceneNodeBuilder.h */,
+				B5E35468217BA2510034FB97 /* PGSceneNodeBuilder.mm */,
 			);
 			path = URDF;
 			sourceTree = "<group>";
@@ -271,6 +295,10 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5AC6892217F990C00D0F11F /* Utilities */,
+				B5E3553A217D8CFB0034FB97 /* Resources */,
+				B526B13F21438B5300FBA6D7 /* URDF */,
+				B5EDE3C42174607A00EC3CA0 /* Logging */,
 				B5EDE184216957C500EC3CA0 /* Maths */,
 				B5E607BD2167095000858EF7 /* Shaders */,
 				B5E607AE2165154100858EF7 /* Rendering */,
@@ -298,7 +326,6 @@
 				B526B225214A263C00FBA6D7 /* tiny_obj_loader.h */,
 				B526B222214A25CA00FBA6D7 /* b3ResourcePath.cpp */,
 				B526B223214A25CB00FBA6D7 /* b3ResourcePath.h */,
-				B526B13F21438B5300FBA6D7 /* URDF */,
 				B5859C99213F9A2200C71222 /* MultiBodyCreationInterface.h */,
 				B5859C98213F9A0300C71222 /* SDFAudioTypes.h */,
 				B5859C97213F99E000C71222 /* URDFImporterInterface.h */,
@@ -329,6 +356,8 @@
 			children = (
 				B5859C57213F83F000C71222 /* PinkGoatAppTests.swift */,
 				B5859C59213F83F000C71222 /* Info.plist */,
+				B5EDE189216C6BC300EC3CA0 /* PGShapeTests.m */,
+				B5EDE188216C6BC300EC3CA0 /* PinkGoatAppTests-Bridging-Header.h */,
 			);
 			path = PinkGoatAppTests;
 			sourceTree = "<group>";
@@ -368,6 +397,24 @@
 			path = bulletWrappers;
 			sourceTree = "<group>";
 		};
+		B5AC6892217F990C00D0F11F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */,
+				B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B5E3553A217D8CFB0034FB97 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5998FC1217E8B5500413FDC /* cylinder.urdf */,
+				B5E3553B217D8D090034FB97 /* cougarbot.urdf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B5E607AE2165154100858EF7 /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +426,7 @@
 				B5E607B42165AEE300858EF7 /* PGShape.m */,
 				B5E607B62165B8AE00858EF7 /* PGVertexObject.h */,
 				B5E607B72165B8AE00858EF7 /* PGVertexObject.m */,
+				B5EDE18D216DBEAA00EC3CA0 /* PGDataTypes.h */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -395,8 +443,19 @@
 			children = (
 				B5EDE185216957DC00EC3CA0 /* PGMathUtilities.h */,
 				B5EDE186216957DC00EC3CA0 /* PGMathUtilities.m */,
+				B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */,
+				B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */,
 			);
 			path = Maths;
+			sourceTree = "<group>";
+		};
+		B5EDE3C42174607A00EC3CA0 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				B5EDE3C521763E8000EC3CA0 /* PGLogger.h */,
+				B5EDE3C621763E8000EC3CA0 /* PGLogger.mm */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,7 +517,7 @@
 					};
 					B5859C52213F83F000C71222 = {
 						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = B5859C40213F83EF00C71222;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -486,7 +545,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */,
 				B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */,
+				B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */,
 				B5859C4C213F83EF00C71222 /* Main.storyboard in Resources */,
 				B5EBA406214E1ADC00DB4CD6 /* kuka_iiwa in Resources */,
 				B5859C63213F849A00C71222 /* bullet in Resources */,
@@ -523,12 +584,16 @@
 				B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */,
 				B526B224214A25CB00FBA6D7 /* b3ResourcePath.cpp in Sources */,
 				B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */,
+				B5EDE3C721763E8000EC3CA0 /* PGLogger.mm in Sources */,
 				B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */,
+				B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */,
 				B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
 				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
 				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
+				B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */,
 				B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */,
+				B5E35469217BA2510034FB97 /* PGSceneNodeBuilder.mm in Sources */,
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
@@ -542,7 +607,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EDE18C216C6E6D00EC3CA0 /* PGShape.m in Sources */,
+				B5EDE18A216C6BC300EC3CA0 /* PGShapeTests.m in Sources */,
 				B5859C58213F83F000C71222 /* PinkGoatAppTests.swift in Sources */,
+				B5EDE18B216C6DD900EC3CA0 /* PGVertexObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,7 +798,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;
@@ -742,8 +810,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pinkgoat.PinkGoatAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinkGoatAppTests/PinkGoatAppTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PinkGoatApp.app/Contents/MacOS/PinkGoatApp";
 			};
 			name = Debug;
 		};
@@ -751,7 +820,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;
@@ -763,8 +832,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pinkgoat.PinkGoatAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinkGoatAppTests/PinkGoatAppTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PinkGoatApp.app/Contents/MacOS/PinkGoatApp";
 			};
 			name = Release;
 		};

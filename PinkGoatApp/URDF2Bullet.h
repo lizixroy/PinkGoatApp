@@ -4,6 +4,7 @@
 #include "LinearMath/btTransform.h"
 #include <string>
 #include "URDFJointTypes.h"//for UrdfMaterialColor cache
+#include "PGShape.h"
 
 class btVector3;
 class btTransform;
@@ -39,7 +40,8 @@ struct UrdfVisualShapeCache
 	btAlignedObjectArray<int> m_cachedUrdfLinkVisualShapeIndices;
 };
 
-
+// TODO: we need to implement this method to convert URDF into PGEntity that has physical representation (maybe btCollisionShape) and graphical one (PGSceneNode).
+// makeEntityFromURDF() -> PGEntity
 void ConvertURDF2Bullet(const URDFImporterInterface& u2b,
 			MultiBodyCreationInterface& creationCallback,
 			const btTransform& rootTransformInWorldSpace,
@@ -47,7 +49,7 @@ void ConvertURDF2Bullet(const URDFImporterInterface& u2b,
 			bool createMultiBody,
 			const char* pathPrefix,
             int flags = 0,
-			UrdfVisualShapeCache* cachedLinkGraphicsShapes= 0
+			UrdfVisualShapeCache* cachedLinkGraphicsShapes= 0, PGShape *shape = nullptr                    
 			);
 
 
