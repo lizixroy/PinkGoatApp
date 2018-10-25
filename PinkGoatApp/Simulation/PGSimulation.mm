@@ -7,10 +7,14 @@
 //
 
 #import "PGSimulation.h"
+#import "../bullet/BulletCollision/CollisionShapes/btCollisionShape.h"
+#import "GLInstanceGraphicsShape.h"
+#import "PGObjcMathUtilities.h"
 
 @interface PGSimulation()
 
 @property (assign) int lastIndex;
+@property (assign) NSTimeInterval lastUpdatedTime;
 
 @end
 
@@ -22,6 +26,7 @@
     if (self) {
         _lastIndex = -1;
         _graphicalShapesRegistery = [[NSMutableDictionary alloc] init];
+        _terminated = NO;
     }
     return self;
 }
@@ -39,6 +44,40 @@
     for(id key in self.graphicalShapesRegistery) {
         PGShape *shape = self.graphicalShapesRegistery[key];
         [self.renderer registerShape:shape];
+    }
+    __weak PGSimulation *weakSelf = self;
+    self.renderer.frameCompletion = ^{
+        CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
+        NSTimeInterval timeDelta = (weakSelf.lastUpdatedTime == 0) ? 0 : currentTime - self.lastUpdatedTime;
+        weakSelf.lastUpdatedTime = currentTime;
+//        NSLog(@"timeDelta: %f", timeDelta);
+//        NSLog(@"now update physics...");
+        //[weakSelf stepSimulationWithTimeDelta:timeDelta];
+        [weakSelf syncPhysicsToGraphics];
+    };
+}
+
+- (void)stepSimulationWithTimeDelta:(NSTimeInterval)timeDelta
+{
+    self->physicsWorld->stepSimulation(timeDelta);
+}
+
+- (void)syncPhysicsToGraphics
+{
+    int numCollisionObjects = physicsWorld->getNumCollisionObjects();
+    {
+        for (int i = 0; i < numCollisionObjects; i++)
+        {
+            btCollisionObject* colObj = physicsWorld->getCollisionObjectArray()[i];
+            btCollisionShape* collisionShape = colObj->getCollisionShape();
+            int index = collisionShape->getUserIndex();
+            if (index >= 0)
+            {
+                matrix_float4x4 transfromInWorldSpace = [PGObjcMathUtilities getMatrixFromTransfrom:colObj->getWorldTransform()];
+                PGShape *shape = self.graphicalShapesRegistery[[NSNumber numberWithInt:index]];
+                shape.transfromInWorldSpace = transfromInWorldSpace;
+            }
+        }
     }
 }
 
@@ -77,6 +116,4 @@
 //
 //    }
 //}
-
-
 @end

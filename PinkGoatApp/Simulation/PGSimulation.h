@@ -20,11 +20,13 @@
 
 @interface PGSimulation : NSObject
 {
+    @public
     btDiscreteDynamicsWorld *physicsWorld;
 }
 
 @property (nonatomic, strong) PGRenderer *renderer;
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, PGShape *>  *graphicalShapesRegistery;
+@property (assign) BOOL terminated;
 
 - (void)beginSimulation;
 

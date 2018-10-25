@@ -61,13 +61,15 @@
     
     _simulation = [[PGSimulation alloc] init];
     _simulation.renderer = self.renderer;
-    
     [self importRobotModel];
 }
 
 // TODO: move this to model layer.
 - (void)importRobotModel {
     [self createEmptyDynamicsWorld];
+    
+    self.simulation->physicsWorld = m_dynamicsWorld;
+    
     BulletURDFImporter u2b(NULL,0,1,0);
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
@@ -86,14 +88,7 @@
             m_collisionShapes.push_back(u2b.getAllocatedCollisionShape(i));
         }
         m_multiBody = creation.getBulletMultiBody();
-        
-        // Creating graphical representation:
-//        PGSceneNodeBuilder *builder = [[PGSceneNodeBuilder alloc] init];
-//        PGShape *rootShape = [builder buildSceneNodeWithURDFImporter:u2b linkIndex:rootLinkIndex];
-//        [self.renderer registerShape:rootShape];
-        
         [self.simulation beginSimulation];
-        
     }
 }
 
@@ -125,7 +120,7 @@
     
     m_dynamicsWorld = new btMultiBodyDynamicsWorld(m_dispatcher, m_broadphase, m_solver, m_collisionConfiguration);
     
-    m_dynamicsWorld->setGravity(btVector3(0, -10, 0));
+//    m_dynamicsWorld->setGravity(btVector3(0, -10, 0));
 
 }
 
