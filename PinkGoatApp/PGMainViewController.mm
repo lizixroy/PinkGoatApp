@@ -26,6 +26,7 @@
 #import <MetalKit/MetalKit.h>
 #import "PGLogger.h"
 #import "PGSceneNodeBuilder.h"
+#import "PGSimulation.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -40,6 +41,7 @@
 }
 
 @property (nonatomic, strong) PGRenderer *renderer;
+@property (nonatomic, strong) PGSimulation *simulation;
 
 @end
 
@@ -56,6 +58,9 @@
     self.renderer = [[PGRenderer alloc] initWithMetalKitView:((MTKView *)self.view)];
     [self.renderer mtkView:_view drawableSizeWillChange:_view.drawableSize];
     _view.delegate = self.renderer;
+    
+    _simulation = [[PGSimulation alloc] init];
+    _simulation.renderer = self.renderer;
     
     [self importRobotModel];
 }
@@ -75,7 +80,7 @@
         MyMultiBodyCreator creation;
         btTransform identityTrans;
         identityTrans.setIdentity();
-        ConvertURDF2Bullet(u2b, creation, identityTrans, m_dynamicsWorld, true,u2b.getPathPrefix());
+        ConvertURDF2Bullet(u2b, creation, identityTrans, m_dynamicsWorld, true,u2b.getPathPrefix(), self.simulation);
         for (int i = 0; i < u2b.getNumAllocatedCollisionShapes(); i++)
         {
             m_collisionShapes.push_back(u2b.getAllocatedCollisionShape(i));
@@ -83,10 +88,21 @@
         m_multiBody = creation.getBulletMultiBody();
         
         // Creating graphical representation:
-        PGSceneNodeBuilder *builder = [[PGSceneNodeBuilder alloc] init];
-        PGShape *rootShape = [builder buildSceneNodeWithURDFImporter:u2b linkIndex:rootLinkIndex];
-        [self.renderer registerShape:rootShape];
+//        PGSceneNodeBuilder *builder = [[PGSceneNodeBuilder alloc] init];
+//        PGShape *rootShape = [builder buildSceneNodeWithURDFImporter:u2b linkIndex:rootLinkIndex];
+//        [self.renderer registerShape:rootShape];
+        
+        [self.simulation beginSimulation];
+        
     }
+}
+
+// This is where basic physical objects are placed in the simulation
+- (void)setupPhysicalWorld
+{
+    // simulation.add(robot);
+    // simulation.add(ground);
+    // simulation.start();
 }
 
 - (void)createEmptyDynamicsWorld

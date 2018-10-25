@@ -4,14 +4,12 @@
 #include "LinearMath/btTransform.h"
 #include <string>
 #include "URDFJointTypes.h"//for UrdfMaterialColor cache
-#include "PGShape.h"
+#include "PGSimulation.h"
 
 class btVector3;
 class btTransform;
 class btMultiBodyDynamicsWorld;
 class btTransform;
-
-
 class URDFImporterInterface;
 class MultiBodyCreationInterface;
 
@@ -47,9 +45,10 @@ void ConvertURDF2Bullet(const URDFImporterInterface& u2b,
 			const btTransform& rootTransformInWorldSpace,
 			btMultiBodyDynamicsWorld* world,
 			bool createMultiBody,
-			const char* pathPrefix,
+			const char* pathPrefix,                        
+            PGSimulation *simulation,
             int flags = 0,
-			UrdfVisualShapeCache* cachedLinkGraphicsShapes= 0, PGShape *shape = nullptr                    
+			UrdfVisualShapeCache* cachedLinkGraphicsShapes= 0
 			);
 
 

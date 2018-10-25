@@ -8,7 +8,6 @@
 
 #import "PGSceneNodeBuilder.h"
 #import "PGLogger.h"
-#import "GLInstanceGraphicsShape.h"
 #include <simd/simd.h>
 #import "PGObjcMathUtilities.h"
 
@@ -84,6 +83,14 @@
         [indices addObject: [NSNumber numberWithInt:indexArray[i]]];
     }
     return [NSArray arrayWithArray:indices];
+}
+
+- (PGShape *)makeShapeFromVertices:(btAlignedObjectArray<GLInstanceVertex> &)vertices indices:(btAlignedObjectArray<int> &)indices;
+{
+    NSArray<PGVertexObject *> *vertexObjects = [self createVertexObjectsFromGLInstanceVertexArray:vertices];
+    NSArray<NSNumber *> *indexObjects = [self createIndexObjectsFromIndexArray:indices];
+    PGShape *shape = [[PGShape alloc] initWithVertices:vertexObjects indices:indexObjects];
+    return shape;
 }
 
 @end

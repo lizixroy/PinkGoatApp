@@ -17,6 +17,8 @@
 
 #include <iostream>
 #include "Logging/PGLogger.h"
+#import "GLInstanceGraphicsShape.h"
+#import "PGSceneNodeBuilder.h"
 
 //static int bodyCollisionFilterGroup=btBroadphaseProxy::CharacterFilter;
 //static int bodyCollisionFilterMask=btBroadphaseProxy::AllFilter&(~btBroadphaseProxy::CharacterFilter);
@@ -40,8 +42,6 @@ static btVector4 selectColor2()
     curColor&=3;
     return color;
 }
-
-
 
 struct URDF2BulletCachedData
 {
@@ -188,7 +188,7 @@ void ConvertURDF2BulletInternal(
     URDF2BulletCachedData& cache, int urdfLinkIndex,
     const btTransform& parentTransformInWorldSpace, btMultiBodyDynamicsWorld* world1,
     bool createMultiBody, const char* pathPrefix,
-    int flags = 0, UrdfVisualShapeCache* cachedLinkGraphicsShapesIn=0, UrdfVisualShapeCache* cachedLinkGraphicsShapesOut=0, PGShape *shape=nullptr)
+    int flags = 0, UrdfVisualShapeCache* cachedLinkGraphicsShapesIn=0, UrdfVisualShapeCache* cachedLinkGraphicsShapesOut=0, PGSimulation *simulation=nullptr)
 {
 	B3_PROFILE("ConvertURDF2BulletInternal2");
     //b3Printf("start converting/extracting data from URDF interface\n");
@@ -288,7 +288,17 @@ void ConvertURDF2BulletInternal(
 		}
 		else
 		{
-			graphicsIndex = u2b.convertLinkVisualShapes(urdfLinkIndex, pathPrefix, localInertialFrame);
+            btAlignedObjectArray<GLInstanceVertex> vertices;
+            btAlignedObjectArray<int> indices;
+            u2b.getVerticesAndIndicesForLinkIndex(vertices, indices, urdfLinkIndex);
+            if (vertices.size() > 0 && indices.size() > 0) {
+                PGSceneNodeBuilder *builder = [[PGSceneNodeBuilder alloc] init];
+                PGShape *shape = [builder makeShapeFromVertices:vertices indices:indices];
+                graphicsIndex = [simulation registerShape:shape];
+            }
+            
+//            graphicsIndex = u2b.convertLinkVisualShapes(urdfLinkIndex, pathPrefix, localInertialFrame);
+            
 			if (cachedLinkGraphicsShapesOut)
 			{
 				cachedLinkGraphicsShapesOut->m_cachedUrdfLinkVisualShapeIndices.push_back(graphicsIndex);
@@ -647,15 +657,20 @@ void ConvertURDF2BulletInternal(
     for (int i=0;i<numChildren;i++)
     {
         int urdfChildLinkIndex = urdfChildIndices[i];
-        ConvertURDF2BulletInternal(u2b,creation, cache,urdfChildLinkIndex,linkTransformInWorldSpace,world1,createMultiBody,pathPrefix,flags, cachedLinkGraphicsShapesIn, cachedLinkGraphicsShapesOut);
+        ConvertURDF2BulletInternal(u2b,creation, cache,urdfChildLinkIndex,linkTransformInWorldSpace,world1,createMultiBody,pathPrefix,flags, cachedLinkGraphicsShapesIn, cachedLinkGraphicsShapesOut, simulation);
     }
 
 }
-void ConvertURDF2Bullet(
-    const URDFImporterInterface& u2b, MultiBodyCreationInterface& creation,
-    const btTransform& rootTransformInWorldSpace,
-    btMultiBodyDynamicsWorld* world1,
-    bool createMultiBody, const char* pathPrefix, int flags, UrdfVisualShapeCache* cachedLinkGraphicsShapes, PGShape *shape)
+void ConvertURDF2Bullet(const URDFImporterInterface& u2b,
+                        MultiBodyCreationInterface& creation,
+                        const btTransform& rootTransformInWorldSpace,
+                        btMultiBodyDynamicsWorld* world1,
+                        bool createMultiBody,
+                        const char* pathPrefix,
+                        PGSimulation *simulation,
+                        int flags,
+                        UrdfVisualShapeCache* cachedLinkGraphicsShapes
+                        )
 {
 
 	URDF2BulletCachedData cache;
@@ -665,7 +680,7 @@ void ConvertURDF2Bullet(
 	
 	UrdfVisualShapeCache cachedLinkGraphicsShapesOut;
 
-	ConvertURDF2BulletInternal(u2b, creation, cache, urdfLinkIndex,rootTransformInWorldSpace,world1,createMultiBody,pathPrefix,flags, cachedLinkGraphicsShapes, &cachedLinkGraphicsShapesOut);
+	ConvertURDF2BulletInternal(u2b, creation, cache, urdfLinkIndex,rootTransformInWorldSpace,world1,createMultiBody,pathPrefix,flags, cachedLinkGraphicsShapes, &cachedLinkGraphicsShapesOut, simulation);
 	if (cachedLinkGraphicsShapes && cachedLinkGraphicsShapesOut.m_cachedUrdfLinkVisualShapeIndices.size() > cachedLinkGraphicsShapes->m_cachedUrdfLinkVisualShapeIndices.size())
 	{
 		*cachedLinkGraphicsShapes = cachedLinkGraphicsShapesOut;
