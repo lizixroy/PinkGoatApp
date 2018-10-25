@@ -25,8 +25,9 @@
 #import <Metal/Metal.h>
 #import <MetalKit/MetalKit.h>
 #import "PGLogger.h"
-#import "PGSceneNodeBuilder.h"
+#import "PGShapeFactory.h"
 #import "PGSimulation.h"
+#include "btBulletDynamicsCommon.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -61,24 +62,25 @@
     
     _simulation = [[PGSimulation alloc] init];
     _simulation.renderer = self.renderer;
+    
+    [self createEmptyDynamicsWorld];
+    self.simulation->physicsWorld = m_dynamicsWorld;
+
+    [self setupPhysicalWorld:m_dynamicsWorld];
     [self importRobotModel];
 }
 
 // TODO: move this to model layer.
 - (void)importRobotModel {
-    [self createEmptyDynamicsWorld];
-    
-    self.simulation->physicsWorld = m_dynamicsWorld;
     
     BulletURDFImporter u2b(NULL,0,1,0);
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
-    bool loadOk = u2b.loadURDF(path.UTF8String);// lwr / kuka.urdf");
-//    bool loadOk = u2b.loadURDF("/Users/royli/Documents/projects/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
+//    bool loadOk = u2b.loadURDF(path.UTF8String);// lwr / kuka.urdf");
+    bool loadOk = u2b.loadURDF("/Users/royli/Documents/projects/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
     if (loadOk)
     {
         // Creating physical representation.
-        int rootLinkIndex = u2b.getRootLinkIndex();
         MyMultiBodyCreator creation;
         btTransform identityTrans;
         identityTrans.setIdentity();
@@ -93,11 +95,46 @@
 }
 
 // This is where basic physical objects are placed in the simulation
-- (void)setupPhysicalWorld
+// This method will be replaced later on with ways to create new simulation in the app directly.
+- (void)setupPhysicalWorld:(btMultiBodyDynamicsWorld *)world
 {
-    // simulation.add(robot);
-    // simulation.add(ground);
-    // simulation.start();
+    // Add a box
+    
+    btTransform startTransform;
+    startTransform.setIdentity();
+    // TODO: study the coordinate frame of Metal
+    startTransform.setOrigin(btVector3(0, 1, 0));
+    btScalar mass(1.f);
+    btVector3 localInertia(0, 0, 0);
+    btBoxShape *colShape = new btBoxShape(btVector3(0.1, 0.1, 0.1));
+    colShape->calculateLocalInertia(mass, localInertia);
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, 0, colShape, localInertia);
+    rbInfo.m_startWorldTransform = startTransform;
+    btRigidBody* body = new btRigidBody(rbInfo);
+    body->setRollingFriction(0.03);
+    body->setSpinningFriction(0.03);
+    body->setFriction(1);
+    body->setAnisotropicFriction(colShape->getAnisotropicRollingFrictionDirection(), btCollisionObject::CF_ANISOTROPIC_ROLLING_FRICTION);
+    world->addRigidBody(body);
+    
+    // Add a cynlinder
+    
+    btTransform startTransform2;
+    startTransform2.setIdentity();
+    // TODO: study the coordinate frame of Metal
+    startTransform2.setOrigin(btVector3(0, 0, 2));
+    btScalar mass2(1.f);
+    btVector3 localInertia2(0, 0, 0);
+    btCylinderShape *colShape2 = new btCylinderShape(btVector3(0.2, 0.2, 0.2));
+    colShape2->calculateLocalInertia(mass, localInertia);
+    btRigidBody::btRigidBodyConstructionInfo rbInfo2(mass2, 0, colShape2, localInertia);
+    rbInfo2.m_startWorldTransform = startTransform2;
+    btRigidBody* body2 = new btRigidBody(rbInfo2);
+    body2->setRollingFriction(0.03);
+    body2->setSpinningFriction(0.03);
+    body2->setFriction(1);
+    body2->setAnisotropicFriction(colShape2->getAnisotropicRollingFrictionDirection(), btCollisionObject::CF_ANISOTROPIC_ROLLING_FRICTION);
+    world->addRigidBody(body2);
 }
 
 - (void)createEmptyDynamicsWorld
