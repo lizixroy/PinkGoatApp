@@ -18,7 +18,7 @@
 #include <iostream>
 #include "Logging/PGLogger.h"
 #import "GLInstanceGraphicsShape.h"
-#import "PGSceneNodeBuilder.h"
+#import "PGShapeFactory.h"
 
 //static int bodyCollisionFilterGroup=btBroadphaseProxy::CharacterFilter;
 //static int bodyCollisionFilterMask=btBroadphaseProxy::AllFilter&(~btBroadphaseProxy::CharacterFilter);
@@ -292,9 +292,10 @@ void ConvertURDF2BulletInternal(
             btAlignedObjectArray<int> indices;
             u2b.getVerticesAndIndicesForLinkIndex(vertices, indices, urdfLinkIndex);
             if (vertices.size() > 0 && indices.size() > 0) {
-                PGSceneNodeBuilder *builder = [[PGSceneNodeBuilder alloc] init];
+                PGShapeFactory *builder = [[PGShapeFactory alloc] init];
                 PGShape *shape = [builder makeShapeFromVertices:vertices indices:indices];
                 graphicsIndex = [simulation registerShape:shape];
+                NSLog(@"graphicsIndex: %d", graphicsIndex);
             }
             
 //            graphicsIndex = u2b.convertLinkVisualShapes(urdfLinkIndex, pathPrefix, localInertialFrame);

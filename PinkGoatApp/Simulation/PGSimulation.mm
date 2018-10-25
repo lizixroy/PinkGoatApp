@@ -10,6 +10,7 @@
 #import "../bullet/BulletCollision/CollisionShapes/btCollisionShape.h"
 #import "GLInstanceGraphicsShape.h"
 #import "PGObjcMathUtilities.h"
+#import "PGCollisionShapeGraphicsGenerator.h"
 
 @interface PGSimulation()
 
@@ -41,6 +42,7 @@
 
 - (void)beginSimulation
 {
+    [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
     for(id key in self.graphicalShapesRegistery) {
         PGShape *shape = self.graphicalShapesRegistery[key];
         [self.renderer registerShape:shape];
@@ -81,39 +83,24 @@
     }
 }
 
-//void OpenGLGuiHelper::autogenerateGraphicsObjects(btDiscreteDynamicsWorld* rbWorld)
-//{
-//    //sort the collision objects based on collision shape, the gfx library requires instances that re-use a shape to be added after eachother
-//
-//    btAlignedObjectArray<btCollisionObject*> sortedObjects;
-//    sortedObjects.reserve(rbWorld->getNumCollisionObjects());
-//    for (int i=0;i<rbWorld->getNumCollisionObjects();i++)
-//    {
-//        btCollisionObject* colObj = rbWorld->getCollisionObjectArray()[i];
-//        sortedObjects.push_back(colObj);
-//    }
-//    sortedObjects.quickSort(shapePointerCompareFunc);
-//    for (int i=0;i<sortedObjects.size();i++)
-//    {
-//        btCollisionObject* colObj = sortedObjects[i];
-//        //btRigidBody* body = btRigidBody::upcast(colObj);
-//        //does this also work for btMultiBody/btMultiBodyLinkCollider?
-//        btSoftBody* sb = btSoftBody::upcast(colObj);
-//        if (sb)
-//        {
-//            colObj->getCollisionShape()->setUserPointer(sb);
-//        }
-//        createCollisionShapeGraphicsObject(colObj->getCollisionShape());
-//        int colorIndex = colObj->getBroadphaseHandle()->getUid() & 3;
-//
-//        btVector4 color;
-//        color = sColors[colorIndex];
-//        if (colObj->getCollisionShape()->getShapeType()==STATIC_PLANE_PROXYTYPE)
-//        {
-//            color.setValue(1,1,1,1);
-//        }
-//        createCollisionObjectGraphicsObject(colObj,color);
-//
-//    }
-//}
+/*!
+ @abstract Generate graphical representation for collision shapes that do not have graphics yet (i.e., not imported from files)
+ @param world The Physics world whose shapes we try to generate graphics for.
+ */
+- (void)generateGraphicsForCollisionObjectsInWorld:(btDiscreteDynamicsWorld *)world
+{
+    btAlignedObjectArray<btCollisionObject *> collisionObjects = world->getCollisionObjectArray();
+    PGCollisionShapeGraphicsGenerator *graphicsGenerator = [[PGCollisionShapeGraphicsGenerator alloc] init];
+    for (int i = 0; i < collisionObjects.size(); i++) {
+        btCollisionObject *obj = collisionObjects[i];
+        btCollisionShape *shape = obj->getCollisionShape();
+        if ([self.graphicalShapesRegistery objectForKey:[NSNumber numberWithInt:shape->getUserIndex()]] != nil) {
+            continue;
+        }
+        PGShape *graphicalShape = [graphicsGenerator generateGraphicsForCollisionShape:shape];
+        int index = [self registerShape:graphicalShape];
+        shape->setUserIndex(index);
+    }
+}
+
 @end

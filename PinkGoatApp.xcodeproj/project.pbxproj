@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5213397218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5213396218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm */; };
 		B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14121438B6700FBA6D7 /* UrdfParser.mm */; };
 		B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14521438BFD00FBA6D7 /* tinyxml2.mm */; };
 		B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */; };
@@ -51,7 +52,7 @@
 		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
 		B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5998FC1217E8B5500413FDC /* cylinder.urdf */; };
 		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
-		B5E35469217BA2510034FB97 /* PGSceneNodeBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGSceneNodeBuilder.mm */; };
+		B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGShapeFactory.mm */; };
 		B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */; };
 		B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5E3553B217D8D090034FB97 /* cougarbot.urdf */; };
 		B5E607B12165155100858EF7 /* PGRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E607B02165155100858EF7 /* PGRenderer.m */; };
@@ -83,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B5213395218264F300875C68 /* PGCollisionShapeGraphicsGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGCollisionShapeGraphicsGenerator.h; sourceTree = "<group>"; };
+		B5213396218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGCollisionShapeGraphicsGenerator.mm; sourceTree = "<group>"; };
 		B526B14021438B6700FBA6D7 /* UrdfParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrdfParser.h; sourceTree = "<group>"; };
 		B526B14121438B6700FBA6D7 /* UrdfParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UrdfParser.mm; sourceTree = "<group>"; };
 		B526B14421438BFD00FBA6D7 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
@@ -166,8 +169,8 @@
 		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
 		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
 		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
-		B5E35467217BA2510034FB97 /* PGSceneNodeBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGSceneNodeBuilder.h; sourceTree = "<group>"; };
-		B5E35468217BA2510034FB97 /* PGSceneNodeBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGSceneNodeBuilder.mm; sourceTree = "<group>"; };
+		B5E35467217BA2510034FB97 /* PGShapeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShapeFactory.h; sourceTree = "<group>"; };
+		B5E35468217BA2510034FB97 /* PGShapeFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGShapeFactory.mm; sourceTree = "<group>"; };
 		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
 		B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGObjcMathUtilities.mm; sourceTree = "<group>"; };
 		B5E3553B217D8D090034FB97 /* cougarbot.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cougarbot.urdf; sourceTree = "<group>"; };
@@ -254,8 +257,8 @@
 				B526B14021438B6700FBA6D7 /* UrdfParser.h */,
 				B5EBA40A214ECA7900DB4CD6 /* WavefrontObjConverter.h */,
 				B5EBA40B214ECA7900DB4CD6 /* WavefrontObjConverter.m */,
-				B5E35467217BA2510034FB97 /* PGSceneNodeBuilder.h */,
-				B5E35468217BA2510034FB97 /* PGSceneNodeBuilder.mm */,
+				B5E35467217BA2510034FB97 /* PGShapeFactory.h */,
+				B5E35468217BA2510034FB97 /* PGShapeFactory.mm */,
 			);
 			path = URDF;
 			sourceTree = "<group>";
@@ -453,6 +456,8 @@
 				B5EDE18D216DBEAA00EC3CA0 /* PGDataTypes.h */,
 				B57BD2262180EB9200463D9F /* PGScene.h */,
 				B57BD2272180EB9200463D9F /* PGScene.m */,
+				B5213395218264F300875C68 /* PGCollisionShapeGraphicsGenerator.h */,
+				B5213396218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -600,6 +605,7 @@
 				B5E607B52165AEE300858EF7 /* PGShape.mm in Sources */,
 				B583BACE21608C06005E1332 /* CollisionShape2TriangleMesh.cpp in Sources */,
 				B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */,
+				B5213397218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm in Sources */,
 				B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */,
 				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
 				B5E607B82165B8AE00858EF7 /* PGVertexObject.m in Sources */,
@@ -619,7 +625,7 @@
 				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
 				B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */,
 				B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */,
-				B5E35469217BA2510034FB97 /* PGSceneNodeBuilder.mm in Sources */,
+				B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */,
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,

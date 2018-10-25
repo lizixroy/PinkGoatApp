@@ -11,10 +11,8 @@
 #import "BulletUrdfImporter.h"
 #import "GLInstanceGraphicsShape.h"
 
-@interface PGSceneNodeBuilder : NSObject
+@interface PGShapeFactory : NSObject
 
-- (PGShape *)buildSceneNodeWithURDFImporter:(BulletURDFImporter&)urdfImporter
-                                  linkIndex:(int)linkIndex;
 - (PGShape *)makeShapeFromVertices:(btAlignedObjectArray<GLInstanceVertex> &)vertices indices:(btAlignedObjectArray<int> &)indices;
 
 @end
