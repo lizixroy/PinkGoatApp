@@ -2,38 +2,4 @@
 <Bucket
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "562024773.3311599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1213"
-            endingLineNumber = "1213"
-            landmarkName = "BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visual, const char* urdfPathPrefix, const btTransform&amp; visualTransform, btAlignedObjectArray&lt;GLInstanceVertex&gt;&amp; verticesOut, btAlignedObjectArray&lt;int&gt;&amp; indicesOut, btAlignedObjectArray&lt;BulletURDFTexture&gt;&amp; texturesOut)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PinkGoatApp/URDF/BulletUrdfImporter.mm"
-            timestampString = "562024773.331395"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "962"
-            endingLineNumber = "962"
-            landmarkName = "BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visual, const char* urdfPathPrefix, const btTransform&amp; visualTransform, btAlignedObjectArray&lt;GLInstanceVertex&gt;&amp; verticesOut, btAlignedObjectArray&lt;int&gt;&amp; indicesOut, btAlignedObjectArray&lt;BulletURDFTexture&gt;&amp; texturesOut)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

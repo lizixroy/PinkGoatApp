@@ -13,6 +13,9 @@
 
 @interface PGRenderer : NSObject <MTKViewDelegate>
 
+// This completion will be invovked after every frame
+@property (nonatomic, strong) void (^ _Nullable frameCompletion)(void);
+
 - (nonnull instancetype)initWithMetalKitView:(nonnull MTKView *)mtkView;
 - (void)registerShape:(nonnull PGShape *)shape;
 

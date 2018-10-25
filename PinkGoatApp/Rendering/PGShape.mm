@@ -53,7 +53,7 @@
           viewProjectionMatrix:(matrix_float4x4)viewProjectionMatrix
                parentTransform:(matrix_float4x4)parentTransform
 {
-    matrix_float4x4 modelMatrix = matrix_multiply(parentTransform, matrix_multiply(self.parentJointTransform, self.modelMatrix));
+    matrix_float4x4 modelMatrix = self.transfromInWorldSpace; //matrix_multiply(parentTransform, matrix_multiply(self.parentJointTransform, self.modelMatrix));
     if (self.vertices.count > 0) {
         id<MTLBuffer> vertexBuffer = [device newBufferWithLength:self.vertices.count * sizeof(PGVertex)
                                                          options:MTLResourceStorageModeShared];
@@ -92,14 +92,14 @@
         }
     }
     
-    matrix_float4x4 parentMatrixForChild = matrix_multiply(parentTransform, self.parentJointTransform);
+//    matrix_float4x4 parentMatrixForChild = matrix_multiply(parentTransform, self.parentJointTransform);
     
-    for (PGShape *child in self.children) {
-        [child drawWithCommandEncoder:commandEncoder
-                               device:device
-                 viewProjectionMatrix:viewProjectionMatrix
-                      parentTransform:parentMatrixForChild];
-    }
+//    for (PGShape *child in self.children) {
+//        [child drawWithCommandEncoder:commandEncoder
+//                               device:device
+//                 viewProjectionMatrix:viewProjectionMatrix
+//                      parentTransform:parentMatrixForChild];
+//    }
 }
 
 @end

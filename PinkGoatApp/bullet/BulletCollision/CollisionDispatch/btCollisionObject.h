@@ -514,8 +514,6 @@ public:
 		return m_ccdMotionThreshold*m_ccdMotionThreshold;
 	}
 
-
-
 	/// Don't do continuous collision detection if the motion (in one step) is less then m_ccdMotionThreshold
 	void	setCcdMotionThreshold(btScalar ccdMotionThreshold)
 	{

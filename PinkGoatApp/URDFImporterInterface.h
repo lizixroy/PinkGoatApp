@@ -7,6 +7,8 @@
 #include "URDFJointTypes.h"
 #include "SDFAudioTypes.h"
 
+class GLInstanceVertex;
+
 class URDFImporterInterface
 {
 
@@ -95,6 +97,8 @@ public:
 
 	virtual class btStridingMeshInterface* getAllocatedMeshInterface(int index) {return 0;}
 
+    virtual void getVerticesAndIndicesForLinkIndex(btAlignedObjectArray<GLInstanceVertex>& verticesOut, btAlignedObjectArray<int>& indicesOut, int linkIndex) const = 0;
+    virtual void getLocalInertialFrame(int urdfLinkIndex, btTransform& inertialFrame) const = 0;    
 };
 
 #endif //URDF_IMPORTER_INTERFACE_H

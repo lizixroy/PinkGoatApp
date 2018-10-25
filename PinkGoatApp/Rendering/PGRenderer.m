@@ -29,6 +29,7 @@ typedef uint16_t PGIndex;
 @property (assign) float rotationY;
 @property (nonatomic, strong) NSMutableArray<PGShape *> *shapes;
 @property (assign) matrix_float4x4 viewProjectionMatrix;
+@property (nonatomic, strong) dispatch_semaphore_t semaphore;
 
 @end
 
@@ -74,6 +75,9 @@ typedef uint16_t PGIndex;
         
         // Create the command queue
         _commandQueue = [_device newCommandQueue];
+        
+        // TODO: adjust semaphore value
+        self.semaphore = dispatch_semaphore_create(1);
     }
     
     return self;
@@ -82,6 +86,7 @@ typedef uint16_t PGIndex;
 
 - (void)drawInMTKView:(nonnull MTKView *)view
 {
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
     [self updateUniformsWithDrawable:view.drawableSize];
     id<MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];
     commandBuffer.label = @"draw buffer";
@@ -105,10 +110,17 @@ typedef uint16_t PGIndex;
         }
         [renderEncoder endEncoding];
         [commandBuffer presentDrawable:view.currentDrawable];
-
     }
+    [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> _Nonnull buffer) {
+        dispatch_semaphore_signal(self.semaphore);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Completed!");
+            if (self.frameCompletion != nil) {
+                self.frameCompletion();
+            }
+        });
+    }];
     [commandBuffer commit];
-    
 }
 
 - (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size
@@ -120,25 +132,6 @@ typedef uint16_t PGIndex;
 - (void)registerShape:(nonnull PGShape *)shape
 {
     [self.shapes addObject:shape];
-    
-//    PGVertex vertices[shape.vertices.count];
-//    uint16_t indices[shape.vertices.count];
-//    [shape makeVertices:&vertices[0] indices:&indices[0] count:shape.vertices.count];
-//
-//    NSUInteger dataSize = sizeof(vertices);
-//    NSMutableData *vertexData = [[NSMutableData alloc] initWithLength:dataSize];
-//    memcpy(vertexData.mutableBytes, vertices, sizeof(vertices));
-//    NSLog(@"Now we have %lu bytes of data", vertexData.length);
-//    self.vertexData = [NSData dataWithBytes:vertexData.bytes length:vertexData.length];
-//    self.vertexBuffer = [self.device newBufferWithLength:self.vertexData.length
-//                                                 options:MTLResourceStorageModeShared];
-//    self.vertexBuffer.label = @"Vertex Buffer";
-//    memcpy(self.vertexBuffer.contents, vertexData.mutableBytes, vertexData.length);
-//    self.numVertices = vertexData.length / sizeof(PGVertex);
-//    self.indexBuffer = [self.device newBufferWithLength:sizeof(indices)
-//                                                options:MTLResourceStorageModeShared];
-//    self.indexBuffer.label = @"Index Buffer";
-//    memcpy(self.indexBuffer.contents, indices, sizeof(indices));
 }
 
 // TODO: for now, let's ignore duration as we are not animating things.
