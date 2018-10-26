@@ -28,6 +28,7 @@
 #import "PGShapeFactory.h"
 #import "PGSimulation.h"
 #include "btBulletDynamicsCommon.h"
+#import "PGMTKView.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -38,7 +39,7 @@
     btOverlappingPairCache* m_pairCache;
     btBroadphaseInterface*    m_broadphase;
     btMultiBodyConstraintSolver*    m_solver;
-    MTKView *_view;
+    PGMTKView *_view;
 }
 
 @property (nonatomic, strong) PGRenderer *renderer;
@@ -54,11 +55,12 @@
 
 - (void)viewDidAppear {
     [super viewDidAppear];
-    _view = (MTKView *)self.view;
+    _view = (PGMTKView *)self.view;
     _view.device = MTLCreateSystemDefaultDevice();
     self.renderer = [[PGRenderer alloc] initWithMetalKitView:((MTKView *)self.view)];
     [self.renderer mtkView:_view drawableSizeWillChange:_view.drawableSize];
     _view.delegate = self.renderer;
+    _view.controlDelegate = self.renderer;
     
     _simulation = [[PGSimulation alloc] init];
     _simulation.renderer = self.renderer;

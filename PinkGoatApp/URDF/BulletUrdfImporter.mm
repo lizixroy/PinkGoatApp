@@ -956,8 +956,6 @@ upAxisMat.setIdentity();
 void BulletURDFImporter::convertURDFToVisualShapeInternal(const UrdfVisual* visual, const char* urdfPathPrefix, const btTransform& visualTransform, btAlignedObjectArray<GLInstanceVertex>& verticesOut, btAlignedObjectArray<int>& indicesOut, btAlignedObjectArray<BulletURDFTexture>& texturesOut) const
 {
 	BT_PROFILE("convertURDFToVisualShapeInternal");
-
-    [PGLogger logTransform:visualTransform];
     
 	GLInstanceGraphicsShape* glmesh = 0;
 

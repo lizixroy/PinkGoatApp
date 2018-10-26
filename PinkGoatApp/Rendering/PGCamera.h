@@ -14,6 +14,7 @@
 @property (assign) vector_float3 position;
 @property (assign) vector_float3 up;
 @property (assign) vector_float3 direction;
+@property (assign) vector_float2 cameraAngles;
 
 - (matrix_float4x4)getViewMatrix;
 

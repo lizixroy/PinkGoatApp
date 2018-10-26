@@ -77,7 +77,6 @@
             if (index >= 0)
             {
                 matrix_float4x4 transfromInWorldSpace = [PGObjcMathUtilities getMatrixFromTransfrom:colObj->getWorldTransform()];
-                [PGMatrixLogger printMatrix4x4:transfromInWorldSpace];
                 PGShape *shape = self.graphicalShapesRegistery[[NSNumber numberWithInt:index]];
                 shape.transfromInWorldSpace = transfromInWorldSpace;
             }

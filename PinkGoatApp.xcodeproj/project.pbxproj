@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B5213397218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5213396218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm */; };
 		B521339A2182B7EE00875C68 /* PGCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = B52133992182B7EE00875C68 /* PGCamera.m */; };
+		B521339E2183905500875C68 /* PGMTKView.m in Sources */ = {isa = PBXBuildFile; fileRef = B521339D2183905500875C68 /* PGMTKView.m */; };
 		B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14121438B6700FBA6D7 /* UrdfParser.mm */; };
 		B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14521438BFD00FBA6D7 /* tinyxml2.mm */; };
 		B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14721438C4F00FBA6D7 /* urdfStringSplit.mm */; };
@@ -89,6 +90,9 @@
 		B5213396218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGCollisionShapeGraphicsGenerator.mm; sourceTree = "<group>"; };
 		B52133982182B7EE00875C68 /* PGCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGCamera.h; sourceTree = "<group>"; };
 		B52133992182B7EE00875C68 /* PGCamera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGCamera.m; sourceTree = "<group>"; };
+		B521339C2183905500875C68 /* PGMTKView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMTKView.h; sourceTree = "<group>"; };
+		B521339D2183905500875C68 /* PGMTKView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMTKView.m; sourceTree = "<group>"; };
+		B521339F2183BBC200875C68 /* PGMTKControlDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMTKControlDelegate.h; sourceTree = "<group>"; };
 		B526B14021438B6700FBA6D7 /* UrdfParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrdfParser.h; sourceTree = "<group>"; };
 		B526B14121438B6700FBA6D7 /* UrdfParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UrdfParser.mm; sourceTree = "<group>"; };
 		B526B14421438BFD00FBA6D7 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
@@ -242,6 +246,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B521339B2183903800875C68 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B521339C2183905500875C68 /* PGMTKView.h */,
+				B521339D2183905500875C68 /* PGMTKView.m */,
+				B521339F2183BBC200875C68 /* PGMTKControlDelegate.h */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B526B13F21438B5300FBA6D7 /* URDF */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +454,7 @@
 		B5E607AE2165154100858EF7 /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
+				B521339B2183903800875C68 /* Views */,
 				B5E607BE2167097100858EF7 /* PGShaders.metal */,
 				B5E607AF2165155100858EF7 /* PGRenderer.h */,
 				B5E607B02165155100858EF7 /* PGRenderer.m */,
@@ -603,6 +618,7 @@
 				B583BACE21608C06005E1332 /* CollisionShape2TriangleMesh.cpp in Sources */,
 				B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */,
 				B5213397218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm in Sources */,
+				B521339E2183905500875C68 /* PGMTKView.m in Sources */,
 				B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */,
 				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
 				B5E607B82165B8AE00858EF7 /* PGVertexObject.m in Sources */,
