@@ -9,6 +9,11 @@
 #import "PGRenderer.h"
 #import "PGMathUtilities.h"
 #import "PGShaderTypes.h"
+#import "PGCamera.h"
+
+const vector_float3 START_POSITION = { 0.0, -3.0, 0.0 };
+const vector_float3 START_CAMERA_VIEW_DIR = { 0.0, -1.0, 0.0 };
+const vector_float3 START_CAMERA_UP_DIR = { 0.0, 0.0, 1.0 };
 
 typedef uint16_t PGIndex;
 
@@ -23,13 +28,14 @@ typedef uint16_t PGIndex;
 @property (nonatomic, strong) id<MTLBuffer> indexBuffer;
 @property (nonatomic, strong) id<MTLBuffer> uniformBuffer;
 @property (assign) NSUInteger numVertices;
+@property (nonatomic, strong) NSMutableArray<PGShape *> *shapes;
+@property (assign) matrix_float4x4 viewProjectionMatrix;
+@property (nonatomic, strong) dispatch_semaphore_t semaphore;
+@property (nonatomic, strong) PGCamera *camera;
 
 // TODO: move this shape specific data into shapes themselves.
 @property (assign) float rotationX;
 @property (assign) float rotationY;
-@property (nonatomic, strong) NSMutableArray<PGShape *> *shapes;
-@property (assign) matrix_float4x4 viewProjectionMatrix;
-@property (nonatomic, strong) dispatch_semaphore_t semaphore;
 
 @end
 
@@ -43,6 +49,10 @@ typedef uint16_t PGIndex;
         _shapes = [[NSMutableArray alloc] init];
         NSError *error = NULL;
         _device = mtkView.device;
+        _camera = [[PGCamera alloc] init];
+        _camera.up = START_CAMERA_UP_DIR;
+        _camera.direction = START_CAMERA_VIEW_DIR;
+        _camera.position = START_POSITION;
         
         // Load all the shader files with a .metal file extension in the project
         id<MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
@@ -114,7 +124,6 @@ typedef uint16_t PGIndex;
     [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> _Nonnull buffer) {
         dispatch_semaphore_signal(self.semaphore);
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"Completed!");
             if (self.frameCompletion != nil) {
                 self.frameCompletion();
             }
@@ -141,19 +150,8 @@ typedef uint16_t PGIndex;
     self.uniformBuffer = [self.device newBufferWithLength:sizeof(PGUniforms)
                                                   options:MTLResourceStorageModeShared];
     self.uniformBuffer.label = @"Uniform Buffer";
-    
-    // Make model matrix
-    float duration = 0.01;
-    self.rotationX += duration * (M_PI / 2);
-    self.rotationY += duration * (M_PI / 3);
-    const vector_float3 xAxis = { 1, 0, 0 };
-    const vector_float3 yAxis = { 0, 1, 0 };
-    const matrix_float4x4 xRot = matrix_float4x4_rotation(xAxis, self.rotationX);
-    const matrix_float4x4 yRot = matrix_float4x4_rotation(yAxis, self.rotationY);
-    const matrix_float4x4 modelMatrix = matrix_multiply(xRot, yRot);
-    
-    const vector_float3 cameraTranslation = { 0, 0, -3 };
-    const matrix_float4x4 viewMatrix = matrix_float4x4_translation(cameraTranslation);
+    const matrix_float4x4 modelMatrix = matrix_identity_float4x4;
+    const matrix_float4x4 viewMatrix = [self.camera getViewMatrix];
     const float aspect = drawableSize.width / drawableSize.height;
     const float fov = (2 * M_PI) / 5;
     const float near = 1;

@@ -20,8 +20,6 @@
 #import "GLInstanceGraphicsShape.h"
 #import "PGShapeFactory.h"
 
-//static int bodyCollisionFilterGroup=btBroadphaseProxy::CharacterFilter;
-//static int bodyCollisionFilterMask=btBroadphaseProxy::AllFilter&(~btBroadphaseProxy::CharacterFilter);
 static bool enableConstraints = true;
 
 static btVector4 colors[4] =
