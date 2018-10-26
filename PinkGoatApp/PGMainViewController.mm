@@ -66,7 +66,7 @@
     [self createEmptyDynamicsWorld];
     self.simulation->physicsWorld = m_dynamicsWorld;
 
-    [self setupPhysicalWorld:m_dynamicsWorld];
+    //[self setupPhysicalWorld:m_dynamicsWorld];
     [self importRobotModel];
 }
 
@@ -75,9 +75,9 @@
     
     BulletURDFImporter u2b(NULL,0,1,0);
     
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
-//    bool loadOk = u2b.loadURDF(path.UTF8String);// lwr / kuka.urdf");
-    bool loadOk = u2b.loadURDF("/Users/royli/Documents/projects/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
+    bool loadOk = u2b.loadURDF(path.UTF8String);// lwr / kuka.urdf");
+//    bool loadOk = u2b.loadURDF("/Users/royli/Documents/projects/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
     if (loadOk)
     {
         // Creating physical representation.
@@ -135,6 +135,20 @@
     body2->setFriction(1);
     body2->setAnisotropicFriction(colShape2->getAnisotropicRollingFrictionDirection(), btCollisionObject::CF_ANISOTROPIC_ROLLING_FRICTION);
     world->addRigidBody(body2);
+    
+    // add ground plane, which should be part of simulation's default setup.
+    
+    btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(50.), btScalar(50.), btScalar(50.0)));
+    btTransform groundTransform;
+    groundTransform.setIdentity();
+    groundTransform.setOrigin(btVector3(0, 0, 0));
+    btScalar groundMass(0.);
+    btVector3 groundLocalInertia(0, 0, 0);
+    btDefaultMotionState* groundMotionState = new btDefaultMotionState(groundTransform);
+    btRigidBody::btRigidBodyConstructionInfo groundInfo(groundMass, groundMotionState, groundShape, groundLocalInertia);
+    btRigidBody* groundBody = new btRigidBody(groundInfo);
+    groundBody->setFriction(1);
+    world->addRigidBody(groundBody);
 }
 
 - (void)createEmptyDynamicsWorld
