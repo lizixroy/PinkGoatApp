@@ -160,4 +160,20 @@ typedef uint16_t PGIndex;
     self.viewProjectionMatrix = matrix_multiply(projectionMatrix, matrix_multiply(viewMatrix, modelMatrix));
 }
 
+#pragma mark - PGMTKViewControlDelegate
+- (void)cameraRotationUpdated:(vector_float2)rotation
+{
+    // y is the first component and x is the second because the difference occurred in the x direction generates rotation around the Y axis
+    // and difference occurred in the y direction generates rotation around the X axis.
+    vector_float2 cameraAngles = { 0.005 * rotation.y, 0.005 * rotation.x };
+    vector_float2 updatedCameraAngles = { self.camera.cameraAngles.x + cameraAngles.x, self.camera.cameraAngles.y + cameraAngles.y };
+    self.camera.cameraAngles = updatedCameraAngles;
+}
+
+- (void)cameraZoomUpdated:(float)delta
+{
+    vector_float3 updatedPosition = { self.camera.position.x, self.camera.position.y + delta * 0.005, self.camera.position.z };
+    self.camera.position = updatedPosition;
+}
+
 @end

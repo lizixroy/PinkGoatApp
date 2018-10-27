@@ -261,12 +261,6 @@ void ConvertURDF2BulletInternal(
 	        linkTransformInWorldSpace =parentTransformInWorldSpace*parent2joint;
 		}
     }
-//    NSLog(@"parentTransformInWorldSpace:");
-//    [PGLogger logTransform:parentTransformInWorldSpace];
-//    NSLog(@"parent2joint:");
-//    [PGLogger logTransform:parent2joint];
-//    NSLog(@"linkTransformInWorldSpace:");
-//    [PGLogger logTransform:linkTransformInWorldSpace];
 
     btCompoundShape* tmpShape = u2b.convertLinkCollisionShapes(urdfLinkIndex,pathPrefix,localInertialFrame);
 	btCollisionShape* compoundShape = tmpShape;
@@ -293,7 +287,6 @@ void ConvertURDF2BulletInternal(
                 PGShapeFactory *builder = [[PGShapeFactory alloc] init];
                 PGShape *shape = [builder makeShapeFromVertices:vertices indices:indices];
                 graphicsIndex = [simulation registerShape:shape];
-                NSLog(@"graphicsIndex: %d", graphicsIndex);
             }
             
 //            graphicsIndex = u2b.convertLinkVisualShapes(urdfLinkIndex, pathPrefix, localInertialFrame);
