@@ -38,6 +38,13 @@
     }
 }
 
+- (void)scrollWheel:(NSEvent *)event
+{
+    if (self.controlDelegate != nil) {
+        [self.controlDelegate cameraZoomUpdated:event.deltaY];
+    }
+}
+
 - (BOOL)acceptsFirstResponder
 {
     return YES;

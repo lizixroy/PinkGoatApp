@@ -12,6 +12,7 @@
 @protocol PGMTKViewControlDelegate
 
 - (void)cameraRotationUpdated:(vector_float2)rotation;
+- (void)cameraZoomUpdated:(float)delta;
 
 @end
 

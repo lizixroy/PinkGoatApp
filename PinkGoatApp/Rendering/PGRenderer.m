@@ -170,4 +170,10 @@ typedef uint16_t PGIndex;
     self.camera.cameraAngles = updatedCameraAngles;
 }
 
+- (void)cameraZoomUpdated:(float)delta
+{
+    vector_float3 updatedPosition = { self.camera.position.x, self.camera.position.y + delta * 0.005, self.camera.position.z };
+    self.camera.position = updatedPosition;
+}
+
 @end
