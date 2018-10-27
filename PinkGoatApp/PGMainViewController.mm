@@ -63,11 +63,9 @@
     _view.controlDelegate = self.renderer;
     
     _simulation = [[PGSimulation alloc] init];
-    _simulation.renderer = self.renderer;
-    
+    _simulation.renderer = self.renderer;    
     [self createEmptyDynamicsWorld];
     self.simulation->physicsWorld = m_dynamicsWorld;
-
     //[self setupPhysicalWorld:m_dynamicsWorld];
     [self importRobotModel];
 }

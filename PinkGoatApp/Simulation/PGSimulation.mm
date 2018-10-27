@@ -8,6 +8,8 @@
 
 #import "PGSimulation.h"
 #import "../bullet/BulletCollision/CollisionShapes/btCollisionShape.h"
+#include "btBulletDynamicsCommon.h"
+
 #import "GLInstanceGraphicsShape.h"
 #import "PGObjcMathUtilities.h"
 #import "PGCollisionShapeGraphicsGenerator.h"
@@ -43,6 +45,7 @@
 
 - (void)beginSimulation
 {
+    [self setup];
     [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
     for(id key in self.graphicalShapesRegistery) {
         PGShape *shape = self.graphicalShapesRegistery[key];
@@ -58,6 +61,34 @@
         //[weakSelf stepSimulationWithTimeDelta:timeDelta];
         [weakSelf syncPhysicsToGraphics];
     };
+}
+
+// Set up simulation to its default settings.
+- (void)setup
+{
+    // TODO create ground plane.
+    btRigidBody *body = [self createGroundPlane];
+    self->physicsWorld->addRigidBody(body);
+    
+    // TODO setup the lighting correctly.
+    
+    // TODO draw the grid correctly.
+}
+
+- (btRigidBody *)createGroundPlane
+{
+    btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(10.), btScalar(10.), btScalar(10.)));
+    // ground shape is static, therefore has mass of 0.
+    btScalar mass(0.);
+    btTransform groundTransform;
+    groundTransform.setIdentity();
+    groundTransform.setOrigin(btVector3(0, 0, -10));
+    btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
+    btVector3 localInertia(0, 0, 0);
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, groundShape, localInertia);
+    btRigidBody* body = new btRigidBody(rbInfo);
+    body->setFriction(1);
+    return body;
 }
 
 - (void)stepSimulationWithTimeDelta:(NSTimeInterval)timeDelta

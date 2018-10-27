@@ -33,10 +33,6 @@ typedef uint16_t PGIndex;
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
 @property (nonatomic, strong) PGCamera *camera;
 
-// TODO: move this shape specific data into shapes themselves.
-@property (assign) float rotationX;
-@property (assign) float rotationY;
-
 @end
 
 @implementation PGRenderer
@@ -108,7 +104,7 @@ typedef uint16_t PGIndex;
         renderEncoder.label = @"MyRenderEncoder";
         
         [renderEncoder setFrontFacingWinding:MTLWindingCounterClockwise];
-        [renderEncoder setCullMode:MTLCullModeBack];
+        [renderEncoder setCullMode:MTLCullModeFront];
         [renderEncoder setRenderPipelineState:_pipelineState];
         [renderEncoder setVertexBuffer:self.uniformBuffer offset:0 atIndex:PGVertexInputIndexUniforms];
 
@@ -154,7 +150,7 @@ typedef uint16_t PGIndex;
     const matrix_float4x4 viewMatrix = [self.camera getViewMatrix];
     const float aspect = drawableSize.width / drawableSize.height;
     const float fov = (2 * M_PI) / 5;
-    const float near = 1;
+    const float near = 0.0;
     const float far = 100;
     const matrix_float4x4 projectionMatrix = matrix_float4x4_perspective(aspect, fov, near, far);
     self.viewProjectionMatrix = matrix_multiply(projectionMatrix, matrix_multiply(viewMatrix, modelMatrix));
