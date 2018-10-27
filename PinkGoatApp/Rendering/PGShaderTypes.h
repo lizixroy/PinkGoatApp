@@ -24,7 +24,7 @@ typedef struct
     vector_float3 normal;
     // Floating point RGBA colors
     vector_float4 color;
-    
+    vector_float3 eye;
 } PGVertex;
 
 typedef struct

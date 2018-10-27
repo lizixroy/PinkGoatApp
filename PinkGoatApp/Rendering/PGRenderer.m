@@ -102,10 +102,9 @@ typedef uint16_t PGIndex;
         id<MTLRenderCommandEncoder> renderEncoder =
         [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
         renderEncoder.label = @"MyRenderEncoder";
-        
         [renderEncoder setFrontFacingWinding:MTLWindingCounterClockwise];
-        [renderEncoder setCullMode:MTLCullModeFront];
         [renderEncoder setRenderPipelineState:_pipelineState];
+        [renderEncoder setCullMode:MTLCullModeFront];
         [renderEncoder setVertexBuffer:self.uniformBuffer offset:0 atIndex:PGVertexInputIndexUniforms];
 
         for (PGShape *shape in self.shapes) {

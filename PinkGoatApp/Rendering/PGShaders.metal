@@ -13,6 +13,40 @@ using namespace metal;
 
 #import "PGShaderTypes.h"
 
+struct Light
+{
+    float3 direction;
+    float3 ambientColor;
+    float3 diffuseColor;
+    float3 specularColor;
+    float3 position;
+};
+
+constant Light light = {
+    .direction = { 0.13, 0.72, 0.68 },
+    .ambientColor = { 0.05, 0.05, 0.05 },
+    .diffuseColor = { 1, 1, 1 },
+    .specularColor = { 1, 1, 1 },
+    .position = { 0.0, 0.0, 225.0 }
+    
+};
+
+struct Material
+{
+    float3 ambientColor;
+    float3 diffuseColor;
+    float3 specularColor;
+    float specularPower;
+};
+
+constant Material material = {
+    .ambientColor = { 0.9, 0.1, 0 },
+    .diffuseColor = { 1, 1, 1 },
+    .specularColor = { 1, 1, 1 },
+    .specularPower = 100
+};
+
+
 // Vertex shader outputs and fragment shader inputs
 typedef struct
 {
@@ -80,6 +114,7 @@ struct Vertex
     vector_float4 position [[position]];
     vector_float3 normal;
     vector_float4 color;
+    vector_float3 eye;
 };
 
 struct Uniforms
@@ -97,10 +132,36 @@ vertex Vertex vertex_project(device Vertex *vertices [[buffer(0)]],
     matrix_float4x4 modelViewProjectionMatrix = uniforms->viewProjectionMatrix * uniforms->modelMatrix;
     vertexOut.position = modelViewProjectionMatrix * vertices[vid].position;
     vertexOut.color = vertices[vid].color;
+    vertexOut.normal = uniforms->normalMatrix * vertices[vid].normal;
+    vertexOut.eye = -(uniforms->modelMatrix * vertices[vid].position).xyz;
     return vertexOut;
 }
 
-fragment half4 fragment_flatcolor(Vertex vertexIn [[stage_in]])
+fragment float4 fragment_flatcolor(Vertex vertexIn [[stage_in]])
 {
-    return half4(vertexIn.color);
+    
+//    // Ambient term
+//    float3 ambientTerm = light.ambientColor * material.ambientColor;
+//    // Diffuse term
+//    float3 normal = normalize(vertexIn.normal);
+//    float diffuseIntensity = saturate(dot(normal, light.direction));
+//    float3 diffuseTerm = light.diffuseColor * vertexIn.color.xyz * diffuseIntensity;
+//    // Specular term
+//    float3 specularTerm(0);
+//    if (diffuseIntensity > 0) {
+//        float3 eyeDirection = normalize(vertexIn.normal);
+//        float3 halfway = normalize(light.direction + eyeDirection);
+//        float specularFactor = pow(saturate(dot(normal, halfway)), material.specularPower);
+//        specularTerm = light.specularColor * material.specularColor * specularFactor;
+//    }
+//    return float4(ambientTerm + diffuseTerm, 1);
+    
+    float3 L = normalize(light.position.xyz);
+    float attenuation = clamp(dot(normalize(vertexIn.normal), L), 0.3, 1.0);
+
+//    float attenuation = clamp(dot(normalize(input.worldSpaceNormal), L), 0.3, 1.0);
+    float3 color = vertexIn.color.xyz*attenuation;
+//    return float4(color, 1.0);
+    
+    return float4(color, 1.0);
 }

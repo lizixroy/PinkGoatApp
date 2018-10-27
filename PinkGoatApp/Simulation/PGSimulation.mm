@@ -45,7 +45,7 @@
 
 - (void)beginSimulation
 {
-    [self setup];
+//    [self setup];
     [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
     for(id key in self.graphicalShapesRegistery) {
         PGShape *shape = self.graphicalShapesRegistery[key];
@@ -110,6 +110,8 @@
                 matrix_float4x4 transfromInWorldSpace = [PGObjcMathUtilities getMatrixFromTransfrom:colObj->getWorldTransform()];
                 PGShape *shape = self.graphicalShapesRegistery[[NSNumber numberWithInt:index]];
                 shape.transfromInWorldSpace = transfromInWorldSpace;
+                
+                
             }
         }
     }

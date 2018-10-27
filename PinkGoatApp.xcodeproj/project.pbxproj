@@ -52,6 +52,8 @@
 		B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C93213F994E00C71222 /* URDF2Bullet.mm */; };
 		B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */; };
 		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
+		B58DDAD32184277400D46E49 /* PGAssetImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = B58DDAD22184277400D46E49 /* PGAssetImporter.m */; };
+		B58DDAD52184279100D46E49 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DDAD42184279100D46E49 /* ModelIO.framework */; };
 		B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5998FC1217E8B5500413FDC /* cylinder.urdf */; };
 		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
 		B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGShapeFactory.mm */; };
@@ -173,6 +175,9 @@
 		B5859C9A213F9B8300C71222 /* PGRobotFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotFactory.h; sourceTree = "<group>"; };
 		B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobotFactory.mm; sourceTree = "<group>"; };
 		B5859C9D213F9CDF00C71222 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		B58DDAD12184277400D46E49 /* PGAssetImporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGAssetImporter.h; sourceTree = "<group>"; };
+		B58DDAD22184277400D46E49 /* PGAssetImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGAssetImporter.m; sourceTree = "<group>"; };
+		B58DDAD42184279100D46E49 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
 		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
 		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
 		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
@@ -214,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58DDAD52184279100D46E49 /* ModelIO.framework in Frameworks */,
 				B5E607BC2167070300858EF7 /* MetalKit.framework in Frameworks */,
 				B5E607BA216706FC00858EF7 /* Metal.framework in Frameworks */,
 				B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */,
@@ -383,6 +389,8 @@
 				B5859C91213F971A00C71222 /* PGMainViewController.mm */,
 				B5859C9A213F9B8300C71222 /* PGRobotFactory.h */,
 				B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */,
+				B58DDAD12184277400D46E49 /* PGAssetImporter.h */,
+				B58DDAD22184277400D46E49 /* PGAssetImporter.m */,
 			);
 			path = PinkGoatApp;
 			sourceTree = "<group>";
@@ -401,6 +409,7 @@
 		B5859C64213F84E700C71222 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B58DDAD42184279100D46E49 /* ModelIO.framework */,
 				B5E607BB2167070300858EF7 /* MetalKit.framework */,
 				B5E607B9216706FC00858EF7 /* Metal.framework */,
 				B5859C9D213F9CDF00C71222 /* SceneKit.framework */,
@@ -636,6 +645,7 @@
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
 				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
 				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
+				B58DDAD32184277400D46E49 /* PGAssetImporter.m in Sources */,
 				B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */,
 				B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */,
 				B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */,
