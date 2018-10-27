@@ -92,14 +92,6 @@
         }
     }
     
-//    matrix_float4x4 parentMatrixForChild = matrix_multiply(parentTransform, self.parentJointTransform);
-    
-//    for (PGShape *child in self.children) {
-//        [child drawWithCommandEncoder:commandEncoder
-//                               device:device
-//                 viewProjectionMatrix:viewProjectionMatrix
-//                      parentTransform:parentMatrixForChild];
-//    }
 }
 
 @end
