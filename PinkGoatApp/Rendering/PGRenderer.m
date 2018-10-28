@@ -176,4 +176,13 @@ typedef uint16_t PGIndex;
     self.camera.position = updatedPosition;
 }
 
+#pragma mark - SCNSceneRendererDelegate
+
+- (void)renderer:(id<SCNSceneRenderer>)renderer updateAtTime:(NSTimeInterval)time
+{
+    if (self.frameCompletion != nil) {
+        self.frameCompletion();
+    }
+}
+
 @end

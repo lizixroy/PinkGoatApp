@@ -59,15 +59,13 @@
 - (void)viewDidAppear {
     [super viewDidAppear];
     _view = (SCNView *)self.view;
-//    _view.device = MTLCreateSystemDefaultDevice();
-//    self.renderer = [[PGRenderer alloc] initWithMetalKitView:((MTKView *)self.view)];
-//    [self.renderer mtkView:_view drawableSizeWillChange:_view.drawableSize];
-//    _view.delegate = self.renderer;
-//    _view.controlDelegate = self.renderer;
+    self.renderer = [[PGRenderer alloc] init];
     
     SCNScene *scene = [[SCNScene alloc] init];
     _view.scene = scene;
-    _view.backgroundColor = NSColor.blackColor;
+    _view.backgroundColor = [NSColor colorWithDeviceRed:0.6980 green:0.6980 blue:0.7922 alpha:1.0];//NSColor.blackColor;
+    _view.delegate = self.renderer;
+    _view.allowsCameraControl = YES;
     
     _simulation = [[PGSimulation alloc] initWithScene:scene];
     _simulation.renderer = self.renderer;

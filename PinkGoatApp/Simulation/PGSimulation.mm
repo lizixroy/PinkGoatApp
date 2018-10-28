@@ -63,9 +63,6 @@
         CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
         NSTimeInterval timeDelta = (weakSelf.lastUpdatedTime == 0) ? 0 : currentTime - self.lastUpdatedTime;
         weakSelf.lastUpdatedTime = currentTime;
-//        NSLog(@"timeDelta: %f", timeDelta);
-//        NSLog(@"now update physics...");
-        //[weakSelf stepSimulationWithTimeDelta:timeDelta];
         [weakSelf syncPhysicsToGraphics];
     };
 }
@@ -88,7 +85,7 @@
             {
                 matrix_float4x4 transfromInWorldSpace = [PGObjcMathUtilities getMatrixFromTransfrom:colObj->getWorldTransform()];
                 PGShape *shape = self.graphicalShapesRegistery[[NSNumber numberWithInt:index]];
-                shape.transfromInWorldSpace = transfromInWorldSpace;
+                shape.sceneNode.simdTransform = transfromInWorldSpace;
             }
         }
     }
@@ -124,17 +121,21 @@
     // create and add a camera to the scene
     SCNNode *cameraNode = [SCNNode node];
     cameraNode.camera = [SCNCamera camera];
-    [scene.rootNode addChildNode:cameraNode];
     
     // place the camera
-    cameraNode.position = SCNVector3Make(0, 0, 3);
+    cameraNode.position = SCNVector3Make(0, -3, 0);
+    
+    vector_float3 eulerAngles = { M_PI / 2, 0, 0 };
+    cameraNode.simdEulerAngles = eulerAngles;
+    
+    [scene.rootNode addChildNode:cameraNode];
     
     // create and add a light to the scene
     SCNNode *lightNode = [SCNNode node];
 
     lightNode.light = [SCNLight light];
     lightNode.light.type = SCNLightTypeOmni;
-    lightNode.position = SCNVector3Make(0, 10, 10);
+    lightNode.position = cameraNode.position; //SCNVector3Make(10, -10, 0);
     [scene.rootNode addChildNode:lightNode];
     
     // create and add an ambient light to the scene
@@ -145,13 +146,11 @@
     [scene.rootNode addChildNode:ambientLightNode];
     
     // retrieve the ship node
-    
     NSArray<PGShape *> *shapes = self.graphicalShapesRegistery.allValues;
     for (PGShape *shape in shapes) {
-        SCNNode *ship = [shape toSceneNode]; //[scene.rootNode childNodeWithName:@"ship" recursively:YES];
+        SCNNode *node = shape.sceneNode; //[scene.rootNode childNodeWithName:@"ship" recursively:YES];
         // animate the 3d object
-        [ship runAction:[SCNAction repeatActionForever:[SCNAction rotateByX:0 y:2 z:0 duration:1]]];
-        [scene.rootNode addChildNode:ship];
+        [scene.rootNode addChildNode:node];
     }
     
 //    // retrieve the SCNView

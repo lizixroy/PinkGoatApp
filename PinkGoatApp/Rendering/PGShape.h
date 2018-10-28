@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) NSArray<PGVertexObject *> *vertices;
 @property (nonatomic, strong) NSArray<NSNumber *> *indices;
+@property (nonatomic, strong) SCNNode *sceneNode;
 
 @property (assign) matrix_float4x4 modelMatrix;
 @property (assign) matrix_float4x4 parentJointTransform;

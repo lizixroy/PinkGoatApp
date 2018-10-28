@@ -11,8 +11,9 @@
 #import "PGShape.h"
 #import <MetalKit/MetalKit.h>
 #import "PGMTKControlDelegate.h"
+#import <SceneKit/SceneKit.h>
 
-@interface PGRenderer : NSObject <MTKViewDelegate, PGMTKViewControlDelegate>
+@interface PGRenderer : NSObject <MTKViewDelegate, PGMTKViewControlDelegate, SCNSceneRendererDelegate>
 
 // This completion will be invovked after every frame
 @property (nonatomic, strong) void (^ _Nullable frameCompletion)(void);

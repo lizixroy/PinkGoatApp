@@ -25,6 +25,7 @@
         _parentJointTransform = matrix_identity_float4x4;
         _parentTransformInWorldSpace = matrix_identity_float4x4;
         _transfromInWorldSpace = matrix_identity_float4x4;
+        _sceneNode = [self toSceneNode];
     }
     return self;
 }
@@ -171,19 +172,14 @@
                                                             bufferIndex:0];
     // lack of layout will crash the program with no error message.
     descriptor.layouts[0] = [[MDLVertexBufferLayout alloc] initWithStride:sizeof(float) * 11];
-    
     MDLMeshBufferDataAllocator *allocator = [[MDLMeshBufferDataAllocator alloc] init];
     id<MDLMeshBuffer> meshBuffer = [allocator newBufferWithData:vertexRawData type:MDLMeshBufferTypeVertex];
-    
     id<MDLMeshBuffer> indexBuffer = [allocator newBufferWithData:indexRawData type:MDLMeshBufferTypeIndex];
     
     MDLSubmesh *submesh = [[MDLSubmesh alloc] initWithIndexBuffer:indexBuffer indexCount:indexRawData.length / sizeof(uint32) indexType:MDLIndexBitDepthUInt32 geometryType:MDLGeometryTypeTriangles material:nil];
     MDLMesh *mesh = [[MDLMesh alloc] initWithVertexBuffer:meshBuffer vertexCount: vertexRawData.length / (sizeof(float) * 11) descriptor:descriptor submeshes:@[submesh]];
-    
     SCNGeometry *geo = [SCNGeometry geometryWithMDLMesh:mesh];
-
     SCNNode *node = [SCNNode nodeWithGeometry:geo];
-    
     return node;
 }
 
