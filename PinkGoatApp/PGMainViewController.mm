@@ -30,6 +30,8 @@
 #include "btBulletDynamicsCommon.h"
 #import "PGMTKView.h"
 
+#import <SceneKit/SceneKit.h>
+
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
     btMultiBody* m_multiBody;
@@ -39,7 +41,8 @@
     btOverlappingPairCache* m_pairCache;
     btBroadphaseInterface*    m_broadphase;
     btMultiBodyConstraintSolver*    m_solver;
-    PGMTKView *_view;
+    SCNView *_view;
+//    PGMTKView *_view;
 }
 
 @property (nonatomic, strong) PGRenderer *renderer;
@@ -55,14 +58,18 @@
 
 - (void)viewDidAppear {
     [super viewDidAppear];
-    _view = (PGMTKView *)self.view;
-    _view.device = MTLCreateSystemDefaultDevice();
-    self.renderer = [[PGRenderer alloc] initWithMetalKitView:((MTKView *)self.view)];
-    [self.renderer mtkView:_view drawableSizeWillChange:_view.drawableSize];
-    _view.delegate = self.renderer;
-    _view.controlDelegate = self.renderer;
+    _view = (SCNView *)self.view;
+//    _view.device = MTLCreateSystemDefaultDevice();
+//    self.renderer = [[PGRenderer alloc] initWithMetalKitView:((MTKView *)self.view)];
+//    [self.renderer mtkView:_view drawableSizeWillChange:_view.drawableSize];
+//    _view.delegate = self.renderer;
+//    _view.controlDelegate = self.renderer;
     
-    _simulation = [[PGSimulation alloc] init];
+    SCNScene *scene = [[SCNScene alloc] init];
+    _view.scene = scene;
+    _view.backgroundColor = NSColor.blackColor;
+    
+    _simulation = [[PGSimulation alloc] initWithScene:scene];
     _simulation.renderer = self.renderer;
     
     [self createEmptyDynamicsWorld];

@@ -14,6 +14,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <SceneKit/SceneKit.h>
 #import "PGRenderer.h"
 #import "PGShape.h"
 #include "BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h"
@@ -27,6 +28,9 @@
 @property (nonatomic, strong) PGRenderer *renderer;
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, PGShape *>  *graphicalShapesRegistery;
 @property (assign) BOOL terminated;
+@property (nonatomic, strong) SCNScene *scene;
+
+- (instancetype)initWithScene:(SCNScene *)scene;
 
 - (void)beginSimulation;
 

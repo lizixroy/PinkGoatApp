@@ -33,6 +33,15 @@
     return self;
 }
 
+- (instancetype)initWithScene:(SCNScene *)scene;
+{
+    self = [self init];
+    if (self) {
+        _scene = scene;
+    }
+    return self;
+}
+
 - (int)registerShape:(PGShape *)shape
 {
     int index = _lastIndex + 1;
@@ -44,6 +53,7 @@
 - (void)beginSimulation
 {
     [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
+    [self setupScene];
     for(id key in self.graphicalShapesRegistery) {
         PGShape *shape = self.graphicalShapesRegistery[key];
         [self.renderer registerShape:shape];
@@ -102,6 +112,69 @@
         int index = [self registerShape:graphicalShape];
         shape->setUserIndex(index);
     }
+}
+
+- (void)setupScene
+{
+    
+    
+    // create a new scene
+    SCNScene *scene = self.scene;
+    
+    // create and add a camera to the scene
+    SCNNode *cameraNode = [SCNNode node];
+    cameraNode.camera = [SCNCamera camera];
+    [scene.rootNode addChildNode:cameraNode];
+    
+    // place the camera
+    cameraNode.position = SCNVector3Make(0, 0, 3);
+    
+    // create and add a light to the scene
+    SCNNode *lightNode = [SCNNode node];
+
+    lightNode.light = [SCNLight light];
+    lightNode.light.type = SCNLightTypeOmni;
+    lightNode.position = SCNVector3Make(0, 10, 10);
+    [scene.rootNode addChildNode:lightNode];
+    
+    // create and add an ambient light to the scene
+    SCNNode *ambientLightNode = [SCNNode node];
+    ambientLightNode.light = [SCNLight light];
+    ambientLightNode.light.type = SCNLightTypeAmbient;
+    ambientLightNode.light.color = [NSColor darkGrayColor];
+    [scene.rootNode addChildNode:ambientLightNode];
+    
+    // retrieve the ship node
+    
+    NSArray<PGShape *> *shapes = self.graphicalShapesRegistery.allValues;
+    for (PGShape *shape in shapes) {
+        SCNNode *ship = [shape toSceneNode]; //[scene.rootNode childNodeWithName:@"ship" recursively:YES];
+        // animate the 3d object
+        [ship runAction:[SCNAction repeatActionForever:[SCNAction rotateByX:0 y:2 z:0 duration:1]]];
+        [scene.rootNode addChildNode:ship];
+    }
+    
+//    // retrieve the SCNView
+//    SCNView *scnView = (SCNView *)self.view;
+//
+//    // set the scene to the view
+//    scnView.scene = scene;
+//
+//    // allows the user to manipulate the camera
+//    scnView.allowsCameraControl = YES;
+//
+//    // show statistics such as fps and timing information
+//    scnView.showsStatistics = YES;
+//
+//    // configure the view
+//    scnView.backgroundColor = [NSColor blackColor];
+    
+    // Add a click gesture recognizer
+//    NSClickGestureRecognizer *clickGesture = [[NSClickGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+//    NSMutableArray *gestureRecognizers = [NSMutableArray array];
+//    [gestureRecognizers addObject:clickGesture];
+//    [gestureRecognizers addObjectsFromArray:scnView.gestureRecognizers];
+//    scnView.gestureRecognizers = gestureRecognizers;
 }
 
 @end

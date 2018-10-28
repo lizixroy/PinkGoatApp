@@ -12,6 +12,9 @@
 #import "PGDataTypes.h"
 #import <Metal/Metal.h>
 #import <simd/simd.h>
+#import <SceneKit/SceneKit.h>
+#import <ModelIO/ModelIO.h>
+#import <SceneKit/ModelIO.h>
 
 @interface PGShape : NSObject
 
@@ -34,5 +37,7 @@
                         device:(id<MTLDevice>)device
           viewProjectionMatrix:(matrix_float4x4)viewProjectionMatrix
                parentTransform:(matrix_float4x4)parentTransform;
+
+- (SCNNode *)toSceneNode;
 
 @end

@@ -214,9 +214,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */,
 				B5E607BC2167070300858EF7 /* MetalKit.framework in Frameworks */,
 				B5E607BA216706FC00858EF7 /* Metal.framework in Frameworks */,
-				B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */,
 				B5859C75213F84E800C71222 /* libBullet3Dynamics.a in Frameworks */,
 				B5859C76213F84E800C71222 /* libBullet3Geometry.a in Frameworks */,
 				B5859C77213F84E800C71222 /* libBullet3Collision.a in Frameworks */,
