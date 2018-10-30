@@ -52,6 +52,7 @@
 		B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C93213F994E00C71222 /* URDF2Bullet.mm */; };
 		B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */; };
 		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
+		B58DDD6F2186696100D46E49 /* NSColor+Vector.m in Sources */ = {isa = PBXBuildFile; fileRef = B58DDD6E2186696100D46E49 /* NSColor+Vector.m */; };
 		B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5998FC1217E8B5500413FDC /* cylinder.urdf */; };
 		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
 		B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGShapeFactory.mm */; };
@@ -173,6 +174,8 @@
 		B5859C9A213F9B8300C71222 /* PGRobotFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotFactory.h; sourceTree = "<group>"; };
 		B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobotFactory.mm; sourceTree = "<group>"; };
 		B5859C9D213F9CDF00C71222 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		B58DDD6D2186696100D46E49 /* NSColor+Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColor+Vector.h"; sourceTree = "<group>"; };
+		B58DDD6E2186696100D46E49 /* NSColor+Vector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Vector.m"; sourceTree = "<group>"; };
 		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
 		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
 		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
@@ -438,6 +441,8 @@
 			children = (
 				B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */,
 				B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */,
+				B58DDD6D2186696100D46E49 /* NSColor+Vector.h */,
+				B58DDD6E2186696100D46E49 /* NSColor+Vector.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -646,6 +651,7 @@
 				B5E607B12165155100858EF7 /* PGRenderer.m in Sources */,
 				B57BD2252180EAA000463D9F /* PGSimulation.mm in Sources */,
 				B57BD22D2180EC3D00463D9F /* PGEntity.m in Sources */,
+				B58DDD6F2186696100D46E49 /* NSColor+Vector.m in Sources */,
 				B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */,
 				B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */,
 			);

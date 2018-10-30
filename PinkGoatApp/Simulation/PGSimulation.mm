@@ -7,7 +7,8 @@
 //
 
 #import "PGSimulation.h"
-#import "../bullet/BulletCollision/CollisionShapes/btCollisionShape.h"
+#import "../bullet/BulletCollision/btBulletCollisionCommon.h"
+#import "../bullet/BulletDynamics/btBulletDynamicsCommon.h"
 #import "GLInstanceGraphicsShape.h"
 #import "PGObjcMathUtilities.h"
 #import "PGCollisionShapeGraphicsGenerator.h"
@@ -52,17 +53,13 @@
 
 - (void)beginSimulation
 {
-    [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
-    [self setupScene];
-    for(id key in self.graphicalShapesRegistery) {
-        PGShape *shape = self.graphicalShapesRegistery[key];
-        [self.renderer registerShape:shape];
-    }
+    [self setup];
     __weak PGSimulation *weakSelf = self;
     self.renderer.frameCompletion = ^{
         CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
         NSTimeInterval timeDelta = (weakSelf.lastUpdatedTime == 0) ? 0 : currentTime - self.lastUpdatedTime;
         weakSelf.lastUpdatedTime = currentTime;
+        [weakSelf stepSimulationWithTimeDelta:timeDelta];
         [weakSelf syncPhysicsToGraphics];
     };
 }
@@ -111,20 +108,51 @@
     }
 }
 
+/**
+ This method sets up default settings for each simulation, which includes adding basic world element (ground plane, etc.)
+ amd set up scene for rendering.
+ */
+- (void)setup
+{
+    [self createGroundPlane];
+    [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
+    [self setupScene];
+}
+
+- (void)createGroundPlane
+{
+    btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(50.), btScalar(50.), btScalar(50.)));
+    btTransform groundTransform;
+    groundTransform.setIdentity();
+    groundTransform.setOrigin(btVector3(0, 0, -50));
+    btScalar mass(0.);
+    btVector3 localInertia(0, 0, 0);
+    btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, groundShape, localInertia);
+    btRigidBody* body = new btRigidBody(rbInfo);
+    body->setFriction(1);
+    //add the body to the dynamics world
+    self->physicsWorld->addRigidBody(body);
+    PGCollisionShapeGraphicsGenerator *graphicsGenerator = [[PGCollisionShapeGraphicsGenerator alloc] init];
+    PGShape *graphicalShape = [graphicsGenerator generateGraphicsForCollisionShape:groundShape];
+    
+    [graphicalShape setColor:[NSColor colorWithDeviceRed:0.1451 green:0.2431 blue:0.6196 alpha:1.0]];
+    int index = [self registerShape:graphicalShape];
+    groundShape->setUserIndex(index);
+}
+
 - (void)setupScene
 {
-    
-    
     // create a new scene
     SCNScene *scene = self.scene;
     
     // create and add a camera to the scene
     SCNNode *cameraNode = [SCNNode node];
     cameraNode.camera = [SCNCamera camera];
+    cameraNode.camera.zNear = 0.1;
     
     // place the camera
-    cameraNode.position = SCNVector3Make(0, -3, 0);
-    
+    cameraNode.position = SCNVector3Make(0, -3, 1);
     vector_float3 eulerAngles = { M_PI / 2, 0, 0 };
     cameraNode.simdEulerAngles = eulerAngles;
     
@@ -135,7 +163,11 @@
 
     lightNode.light = [SCNLight light];
     lightNode.light.type = SCNLightTypeOmni;
-    lightNode.position = cameraNode.position; //SCNVector3Make(10, -10, 0);
+    
+    // TODO: Now I'm having a hard time figuring out what each position mean in my current scene. This needs to be sorted out before proceed.
+    
+    lightNode.position = SCNVector3Make(0, -100, 100); //cameraNode.position;
+    
     [scene.rootNode addChildNode:lightNode];
     
     // create and add an ambient light to the scene
@@ -145,35 +177,11 @@
     ambientLightNode.light.color = [NSColor darkGrayColor];
     [scene.rootNode addChildNode:ambientLightNode];
     
-    // retrieve the ship node
     NSArray<PGShape *> *shapes = self.graphicalShapesRegistery.allValues;
     for (PGShape *shape in shapes) {
-        SCNNode *node = shape.sceneNode; //[scene.rootNode childNodeWithName:@"ship" recursively:YES];
-        // animate the 3d object
+        SCNNode *node = shape.sceneNode;
         [scene.rootNode addChildNode:node];
     }
-    
-//    // retrieve the SCNView
-//    SCNView *scnView = (SCNView *)self.view;
-//
-//    // set the scene to the view
-//    scnView.scene = scene;
-//
-//    // allows the user to manipulate the camera
-//    scnView.allowsCameraControl = YES;
-//
-//    // show statistics such as fps and timing information
-//    scnView.showsStatistics = YES;
-//
-//    // configure the view
-//    scnView.backgroundColor = [NSColor blackColor];
-    
-    // Add a click gesture recognizer
-//    NSClickGestureRecognizer *clickGesture = [[NSClickGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-//    NSMutableArray *gestureRecognizers = [NSMutableArray array];
-//    [gestureRecognizers addObject:clickGesture];
-//    [gestureRecognizers addObjectsFromArray:scnView.gestureRecognizers];
-//    scnView.gestureRecognizers = gestureRecognizers;
 }
 
 @end

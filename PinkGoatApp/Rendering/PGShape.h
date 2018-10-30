@@ -41,4 +41,10 @@
 
 - (SCNNode *)toSceneNode;
 
+/**
+    Set the color of the entire shape to the new color. This method will primarily be used for changing colors of shapes based solely on collision shapes.
+    This will change the color of associated SCNNode immediately.
+ */
+- (void)setColor:(NSColor *)color;
+
 @end

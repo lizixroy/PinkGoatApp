@@ -10,6 +10,7 @@
 #include <simd/simd.h>
 #import "PGShaderTypes.h"
 #import "PGMatrixLogger.h"
+#import "NSColor+Vector.h"
 
 @implementation PGShape
 
@@ -181,6 +182,14 @@
     SCNGeometry *geo = [SCNGeometry geometryWithMDLMesh:mesh];
     SCNNode *node = [SCNNode nodeWithGeometry:geo];
     return node;
+}
+
+- (void)setColor:(NSColor *)color
+{
+    for (PGVertexObject *vertex in self.vertices) {
+        vertex.color = color.vectorForm;
+    }
+    self.sceneNode = [self toSceneNode];
 }
 
 @end

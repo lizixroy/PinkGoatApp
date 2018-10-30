@@ -30,8 +30,8 @@
 @property (assign) BOOL terminated;
 @property (nonatomic, strong) SCNScene *scene;
 
-- (instancetype)initWithScene:(SCNScene *)scene;
 
+- (instancetype)initWithScene:(SCNScene *)scene;
 - (void)beginSimulation;
 
 /**
