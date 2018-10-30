@@ -64,6 +64,7 @@
     _view.backgroundColor = [NSColor colorWithDeviceRed:0.6980 green:0.6980 blue:0.7922 alpha:1.0];
     _view.delegate = self.renderer;
     _view.allowsCameraControl = YES;
+    _view.loops = YES;
     
     _simulation = [[PGSimulation alloc] initWithScene:scene];
     _simulation.renderer = self.renderer;
@@ -102,40 +103,40 @@
 // This method will be replaced later on with ways to create new simulation in the app directly.
 - (void)setupPhysicalWorld:(btMultiBodyDynamicsWorld *)world
 {
-    // Add a box
-    btTransform startTransform;
-    startTransform.setIdentity();
-    startTransform.setOrigin(btVector3(0, 0, 2));
-    
-    btScalar mass(1.f);
-    btVector3 localInertia(0, 0, 0);
-    btBoxShape *colShape = new btBoxShape(btVector3(0.5, 0.5, 0.5));
-    colShape->calculateLocalInertia(mass, localInertia);
-    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, 0, colShape, localInertia);
-    rbInfo.m_startWorldTransform = startTransform;
-    btRigidBody* body = new btRigidBody(rbInfo);
-    body->setRollingFriction(0.03);
-    body->setSpinningFriction(0.03);
-    body->setFriction(1);
-    body->setAnisotropicFriction(colShape->getAnisotropicRollingFrictionDirection(), btCollisionObject::CF_ANISOTROPIC_ROLLING_FRICTION);
-    world->addRigidBody(body);
-    
-    // Add a cynlinder
-    btTransform startTransform2;
-    startTransform2.setIdentity();
-    startTransform2.setOrigin(btVector3(1.5, 0, 0.25));
-    btScalar mass2(1.f);
-    btVector3 localInertia2(0, 0, 0);
-    btCylinderShape *colShape2 = new btCylinderShapeZ(btVector3(0.25, 0.25, 0.25));
-    colShape2->calculateLocalInertia(mass, localInertia);
-    btRigidBody::btRigidBodyConstructionInfo rbInfo2(mass2, 0, colShape2, localInertia);
-    rbInfo2.m_startWorldTransform = startTransform2;
-    btRigidBody* body2 = new btRigidBody(rbInfo2);
-    body2->setRollingFriction(0.03);
-    body2->setSpinningFriction(0.03);
-    body2->setFriction(1);
-    body2->setAnisotropicFriction(colShape2->getAnisotropicRollingFrictionDirection(), btCollisionObject::CF_ANISOTROPIC_ROLLING_FRICTION);
-    world->addRigidBody(body2);
+//    // Add a box
+//    btTransform startTransform;
+//    startTransform.setIdentity();
+//    startTransform.setOrigin(btVector3(0, 0, 2));
+//    
+//    btScalar mass(1.f);
+//    btVector3 localInertia(0, 0, 0);
+//    btBoxShape *colShape = new btBoxShape(btVector3(0.5, 0.5, 0.5));
+//    colShape->calculateLocalInertia(mass, localInertia);
+//    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, 0, colShape, localInertia);
+//    rbInfo.m_startWorldTransform = startTransform;
+//    btRigidBody* body = new btRigidBody(rbInfo);
+//    body->setRollingFriction(0.03);
+//    body->setSpinningFriction(0.03);
+//    body->setFriction(1);
+//    body->setAnisotropicFriction(colShape->getAnisotropicRollingFrictionDirection(), btCollisionObject::CF_ANISOTROPIC_ROLLING_FRICTION);
+//    world->addRigidBody(body);
+//    
+//    // Add a cynlinder
+//    btTransform startTransform2;
+//    startTransform2.setIdentity();
+//    startTransform2.setOrigin(btVector3(1.5, 0, 0.25));
+//    btScalar mass2(1.f);
+//    btVector3 localInertia2(0, 0, 0);
+//    btCylinderShape *colShape2 = new btCylinderShapeZ(btVector3(0.25, 0.25, 0.25));
+//    colShape2->calculateLocalInertia(mass, localInertia);
+//    btRigidBody::btRigidBodyConstructionInfo rbInfo2(mass2, 0, colShape2, localInertia);
+//    rbInfo2.m_startWorldTransform = startTransform2;
+//    btRigidBody* body2 = new btRigidBody(rbInfo2);
+//    body2->setRollingFriction(0.03);
+//    body2->setSpinningFriction(0.03);
+//    body2->setFriction(1);
+//    body2->setAnisotropicFriction(colShape2->getAnisotropicRollingFrictionDirection(), btCollisionObject::CF_ANISOTROPIC_ROLLING_FRICTION);
+//    world->addRigidBody(body2);
 }
 
 - (void)createEmptyDynamicsWorld

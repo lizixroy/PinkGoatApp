@@ -20,7 +20,6 @@
 @property (nonatomic, strong) NSArray<PGVertexObject *> *vertices;
 @property (nonatomic, strong) NSArray<NSNumber *> *indices;
 @property (nonatomic, strong) SCNNode *sceneNode;
-
 @property (nonatomic, strong) NSString *name;
 
 - (instancetype)initWithVertices:(NSArray<PGVertexObject *> *)vertices
