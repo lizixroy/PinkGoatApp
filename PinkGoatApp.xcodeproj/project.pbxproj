@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B5213397218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5213396218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm */; };
-		B521339A2182B7EE00875C68 /* PGCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = B52133992182B7EE00875C68 /* PGCamera.m */; };
 		B521339E2183905500875C68 /* PGMTKView.m in Sources */ = {isa = PBXBuildFile; fileRef = B521339D2183905500875C68 /* PGMTKView.m */; };
 		B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14121438B6700FBA6D7 /* UrdfParser.mm */; };
 		B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */ = {isa = PBXBuildFile; fileRef = B526B14521438BFD00FBA6D7 /* tinyxml2.mm */; };
@@ -89,8 +88,6 @@
 /* Begin PBXFileReference section */
 		B5213395218264F300875C68 /* PGCollisionShapeGraphicsGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGCollisionShapeGraphicsGenerator.h; sourceTree = "<group>"; };
 		B5213396218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGCollisionShapeGraphicsGenerator.mm; sourceTree = "<group>"; };
-		B52133982182B7EE00875C68 /* PGCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGCamera.h; sourceTree = "<group>"; };
-		B52133992182B7EE00875C68 /* PGCamera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGCamera.m; sourceTree = "<group>"; };
 		B521339C2183905500875C68 /* PGMTKView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMTKView.h; sourceTree = "<group>"; };
 		B521339D2183905500875C68 /* PGMTKView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMTKView.m; sourceTree = "<group>"; };
 		B521339F2183BBC200875C68 /* PGMTKControlDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMTKControlDelegate.h; sourceTree = "<group>"; };
@@ -473,8 +470,6 @@
 				B57BD2272180EB9200463D9F /* PGScene.m */,
 				B5213395218264F300875C68 /* PGCollisionShapeGraphicsGenerator.h */,
 				B5213396218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm */,
-				B52133982182B7EE00875C68 /* PGCamera.h */,
-				B52133992182B7EE00875C68 /* PGCamera.m */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -646,7 +641,6 @@
 				B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */,
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,
-				B521339A2182B7EE00875C68 /* PGCamera.m in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
 				B5E607B12165155100858EF7 /* PGRenderer.m in Sources */,
 				B57BD2252180EAA000463D9F /* PGSimulation.mm in Sources */,

@@ -22,8 +22,6 @@
 #import "PGShape.h"
 #import "PGVertexObject.h"
 #import "PGRenderer.h"
-#import <Metal/Metal.h>
-#import <MetalKit/MetalKit.h>
 #import "PGLogger.h"
 #import "PGShapeFactory.h"
 #import "PGSimulation.h"
@@ -43,7 +41,6 @@
     btBroadphaseInterface*    m_broadphase;
     btMultiBodyConstraintSolver*    m_solver;
     SCNView *_view;
-//    PGMTKView *_view;
 }
 
 @property (nonatomic, strong) PGRenderer *renderer;
