@@ -14,6 +14,11 @@
 #import "PGCollisionShapeGraphicsGenerator.h"
 #import "PGMatrixLogger.h"
 
+
+static NSTimeInterval MIN_SIM_ADVANCE_TIME_DELTA_IN_SECONDS = 0.001; // 1 milliseconds.
+static NSTimeInterval MAX_SIM_ADVANCE_TIME_DELTA_IN_SECONDS = 0.1; // 100 millseconds
+static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
+
 @interface PGSimulation()
 
 @property (assign) int lastIndex;
@@ -55,13 +60,30 @@
 {
     [self setup];
     __weak PGSimulation *weakSelf = self;
-    self.renderer.frameCompletion = ^{
-        CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
-        NSTimeInterval timeDelta = (weakSelf.lastUpdatedTime == 0) ? 0 : currentTime - self.lastUpdatedTime;
-        weakSelf.lastUpdatedTime = currentTime;
-        [weakSelf stepSimulationWithTimeDelta:timeDelta];
-        [weakSelf syncPhysicsToGraphics];
+    self.renderer.frameCompletionAtSystemTime = ^(NSTimeInterval time) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf advanceSimulationWithSystemTime:time];
+        });
     };
+}
+
+/**
+    Advance the simulation loop for timeDelta.
+    @param time system time in seconds.
+ */
+- (void)advanceSimulationWithSystemTime:(NSTimeInterval)time
+{
+    NSTimeInterval timeDelta = (self.lastUpdatedTime == 0) ? MIN_SIM_ADVANCE_TIME_DELTA_IN_SECONDS : time - self.lastUpdatedTime;
+    if (timeDelta > MAX_SIM_ADVANCE_TIME_DELTA_IN_SECONDS) {
+        timeDelta = MAX_SIM_ADVANCE_TIME_DELTA_IN_SECONDS;
+    }
+    if (timeDelta < MIN_SIM_ADVANCE_TIME_DELTA_IN_SECONDS) {
+        [NSThread sleepForTimeInterval:SIM_SLEEP_IN_SECONDS];
+    } else {
+        self.lastUpdatedTime = time;
+        [self stepSimulationWithTimeDelta:timeDelta];
+        [self syncPhysicsToGraphics];
+    }
 }
 
 - (void)stepSimulationWithTimeDelta:(NSTimeInterval)timeDelta

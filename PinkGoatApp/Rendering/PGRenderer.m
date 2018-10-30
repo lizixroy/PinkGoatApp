@@ -16,8 +16,8 @@
 
 - (void)renderer:(id<SCNSceneRenderer>)renderer updateAtTime:(NSTimeInterval)time
 {
-    if (self.frameCompletion != nil) {
-        self.frameCompletion();
+    if (self.frameCompletionAtSystemTime != nil) {
+        self.frameCompletionAtSystemTime(time);
     }
 }
 

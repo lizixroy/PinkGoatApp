@@ -16,6 +16,6 @@
 @interface PGRenderer : NSObject <SCNSceneRendererDelegate>
 
 // This completion will be invovked after every frame
-@property (nonatomic, strong) void (^ _Nullable frameCompletion)(void);
+@property (nonatomic, strong) void (^ _Nullable frameCompletionAtSystemTime)(NSTimeInterval time);
 
 @end
