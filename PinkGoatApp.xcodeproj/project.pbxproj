@@ -173,6 +173,7 @@
 		B5859C9D213F9CDF00C71222 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		B58DDD6D2186696100D46E49 /* NSColor+Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColor+Vector.h"; sourceTree = "<group>"; };
 		B58DDD6E2186696100D46E49 /* NSColor+Vector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Vector.m"; sourceTree = "<group>"; };
+		B58DDD7221881B4B00D46E49 /* PGPhysicsWorldProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGPhysicsWorldProtocol.h; sourceTree = "<group>"; };
 		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
 		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
 		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
@@ -331,6 +332,7 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B58DDD7121881B3200D46E49 /* Physics */,
 				B57BD2222180EA8C00463D9F /* Simulation */,
 				B5AC6892217F990C00D0F11F /* Utilities */,
 				B5E3553A217D8CFB0034FB97 /* Resources */,
@@ -431,6 +433,14 @@
 				B5859C8E213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm */,
 			);
 			path = bulletWrappers;
+			sourceTree = "<group>";
+		};
+		B58DDD7121881B3200D46E49 /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				B58DDD7221881B4B00D46E49 /* PGPhysicsWorldProtocol.h */,
+			);
+			path = Physics;
 			sourceTree = "<group>";
 		};
 		B5AC6892217F990C00D0F11F /* Utilities */ = {

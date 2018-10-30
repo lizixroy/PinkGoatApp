@@ -18,6 +18,7 @@
 #import "PGRenderer.h"
 #import "PGShape.h"
 #include "BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h"
+#import "PGPhysicsWorldProtocol.h"
 
 @interface PGSimulation : NSObject
 {
@@ -29,7 +30,6 @@
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, PGShape *>  *graphicalShapesRegistery;
 @property (assign) BOOL terminated;
 @property (nonatomic, strong) SCNScene *scene;
-
 
 - (instancetype)initWithScene:(SCNScene *)scene;
 - (void)beginSimulation;

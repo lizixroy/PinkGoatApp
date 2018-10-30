@@ -107,7 +107,7 @@
 //    btTransform startTransform;
 //    startTransform.setIdentity();
 //    startTransform.setOrigin(btVector3(0, 0, 2));
-//    
+//
 //    btScalar mass(1.f);
 //    btVector3 localInertia(0, 0, 0);
 //    btBoxShape *colShape = new btBoxShape(btVector3(0.5, 0.5, 0.5));
@@ -120,7 +120,7 @@
 //    body->setFriction(1);
 //    body->setAnisotropicFriction(colShape->getAnisotropicRollingFrictionDirection(), btCollisionObject::CF_ANISOTROPIC_ROLLING_FRICTION);
 //    world->addRigidBody(body);
-//    
+//
 //    // Add a cynlinder
 //    btTransform startTransform2;
 //    startTransform2.setIdentity();
