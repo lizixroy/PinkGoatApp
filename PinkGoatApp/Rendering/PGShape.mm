@@ -21,11 +21,6 @@
     if (self) {
         _vertices = vertices;
         _indices = indices;
-        _children = [[NSMutableArray alloc] init];
-        _modelMatrix = matrix_identity_float4x4;
-        _parentJointTransform = matrix_identity_float4x4;
-        _parentTransformInWorldSpace = matrix_identity_float4x4;
-        _transfromInWorldSpace = matrix_identity_float4x4;
         _sceneNode = [self toSceneNode];
     }
     return self;
@@ -48,60 +43,6 @@
         uint16_t index = indexObject.unsignedIntValue;
         memcpy(&indicesBuffer[i], &index, sizeof(index));
     }
-}
-
-- (void)drawWithCommandEncoder:(id<MTLRenderCommandEncoder>)commandEncoder
-                        device:(id<MTLDevice>)device
-          viewProjectionMatrix:(matrix_float4x4)viewProjectionMatrix
-               parentTransform:(matrix_float4x4)parentTransform
-{
-    matrix_float4x4 modelMatrix = self.transfromInWorldSpace; //matrix_multiply(parentTransform, matrix_multiply(self.parentJointTransform, self.modelMatrix));
-    if (self.vertices.count > 0) {
-        id<MTLBuffer> vertexBuffer = [device newBufferWithLength:self.vertices.count * sizeof(PGVertex)
-                                                         options:MTLResourceStorageModeShared];
-        vertexBuffer.label = @"Vertex Buffer";
-        PGVertex vertices[self.vertices.count];
-        uint16_t indices[self.indices.count];
-        [self makeVertices:&vertices[0] count:self.vertices.count];
-        [self makeIndices:&indices[0] count:self.indices.count];
-        
-        memcpy(vertexBuffer.contents, &vertices[0], self.vertices.count * sizeof(PGVertex));
-        id<MTLBuffer> indexBuffer = [device newBufferWithLength:self.indices.count * sizeof(uint16_t)
-                                                        options:MTLResourceStorageModeShared];
-        indexBuffer.label = @"Index Buffer";
-        memcpy(indexBuffer.contents, &indices[0], self.indices.count * sizeof(uint16_t));
-        [commandEncoder setVertexBuffer:vertexBuffer offset:0 atIndex:0];
-        
-        PGUniforms uniform = {
-            .viewProjectionMatrix = viewProjectionMatrix,
-            .modelMatrix = modelMatrix,
-            .normalMatrix = matrix_identity_float3x3
-        };
-        
-        id<MTLBuffer> uniformBuffer = [device newBufferWithLength:sizeof(PGUniforms)
-                                                          options:MTLResourceStorageModeShared];
-        memcpy(uniformBuffer.contents, &uniform, sizeof(uniform));
-        [commandEncoder setVertexBuffer:uniformBuffer offset:0 atIndex:1];
-        
-        if (self.indices.count > 0) {
-            [commandEncoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle
-                                       indexCount:self.indices.count
-                                        indexType:MTLIndexTypeUInt16
-                                      indexBuffer:indexBuffer
-                                indexBufferOffset:0];
-        } else {
-            [commandEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:self.vertices.count];
-        }
-    }
-    
-//    matrix_float4x4 parentMatrixForChild = matrix_multiply(parentTransform, self.parentJointTransform);
-    
-//    for (PGShape *child in self.children) {
-//        [child drawWithCommandEncoder:commandEncoder
-//                               device:device
-//                 viewProjectionMatrix:viewProjectionMatrix
-//                      parentTransform:parentMatrixForChild];
-//    }
 }
 
 - (NSData *)makeRawVertexData
