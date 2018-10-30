@@ -7,7 +7,8 @@
 //
 
 #import "PGSimulation.h"
-#import "../bullet/BulletCollision/CollisionShapes/btCollisionShape.h"
+#import "../bullet/BulletCollision/btBulletCollisionCommon.h"
+#import "../bullet/BulletDynamics/btBulletDynamicsCommon.h"
 #import "GLInstanceGraphicsShape.h"
 #import "PGObjcMathUtilities.h"
 #import "PGCollisionShapeGraphicsGenerator.h"
@@ -33,6 +34,15 @@
     return self;
 }
 
+- (instancetype)initWithScene:(SCNScene *)scene;
+{
+    self = [self init];
+    if (self) {
+        _scene = scene;
+    }
+    return self;
+}
+
 - (int)registerShape:(PGShape *)shape
 {
     int index = _lastIndex + 1;
@@ -43,19 +53,13 @@
 
 - (void)beginSimulation
 {
-    [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
-    for(id key in self.graphicalShapesRegistery) {
-        PGShape *shape = self.graphicalShapesRegistery[key];
-        [self.renderer registerShape:shape];
-    }
+    [self setup];
     __weak PGSimulation *weakSelf = self;
     self.renderer.frameCompletion = ^{
         CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
         NSTimeInterval timeDelta = (weakSelf.lastUpdatedTime == 0) ? 0 : currentTime - self.lastUpdatedTime;
         weakSelf.lastUpdatedTime = currentTime;
-//        NSLog(@"timeDelta: %f", timeDelta);
-//        NSLog(@"now update physics...");
-        //[weakSelf stepSimulationWithTimeDelta:timeDelta];
+        [weakSelf stepSimulationWithTimeDelta:timeDelta];
         [weakSelf syncPhysicsToGraphics];
     };
 }
@@ -78,7 +82,7 @@
             {
                 matrix_float4x4 transfromInWorldSpace = [PGObjcMathUtilities getMatrixFromTransfrom:colObj->getWorldTransform()];
                 PGShape *shape = self.graphicalShapesRegistery[[NSNumber numberWithInt:index]];
-                shape.transfromInWorldSpace = transfromInWorldSpace;
+                shape.sceneNode.simdTransform = transfromInWorldSpace;
             }
         }
     }
@@ -101,6 +105,82 @@
         PGShape *graphicalShape = [graphicsGenerator generateGraphicsForCollisionShape:shape];
         int index = [self registerShape:graphicalShape];
         shape->setUserIndex(index);
+    }
+}
+
+/**
+ This method sets up default settings for each simulation, which includes adding basic world element (ground plane, etc.)
+ amd set up scene for rendering.
+ */
+- (void)setup
+{
+    [self createGroundPlane];
+    [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
+    [self setupScene];
+}
+
+- (void)createGroundPlane
+{
+    btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(50.), btScalar(50.), btScalar(50.)));
+    btTransform groundTransform;
+    groundTransform.setIdentity();
+    groundTransform.setOrigin(btVector3(0, 0, -50));
+    btScalar mass(0.);
+    btVector3 localInertia(0, 0, 0);
+    btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, groundShape, localInertia);
+    btRigidBody* body = new btRigidBody(rbInfo);
+    body->setFriction(1);
+    //add the body to the dynamics world
+    self->physicsWorld->addRigidBody(body);
+    PGCollisionShapeGraphicsGenerator *graphicsGenerator = [[PGCollisionShapeGraphicsGenerator alloc] init];
+    PGShape *graphicalShape = [graphicsGenerator generateGraphicsForCollisionShape:groundShape];
+    
+    [graphicalShape setColor:[NSColor colorWithDeviceRed:0.1451 green:0.2431 blue:0.6196 alpha:1.0]];
+    int index = [self registerShape:graphicalShape];
+    groundShape->setUserIndex(index);
+}
+
+- (void)setupScene
+{
+    // create a new scene
+    SCNScene *scene = self.scene;
+    
+    // create and add a camera to the scene
+    SCNNode *cameraNode = [SCNNode node];
+    cameraNode.camera = [SCNCamera camera];
+    cameraNode.camera.zNear = 0.1;
+    
+    // place the camera
+    cameraNode.position = SCNVector3Make(0, -3, 1);
+    vector_float3 eulerAngles = { M_PI / 2, 0, 0 };
+    cameraNode.simdEulerAngles = eulerAngles;
+    
+    [scene.rootNode addChildNode:cameraNode];
+    
+    // create and add a light to the scene
+    SCNNode *lightNode = [SCNNode node];
+
+    lightNode.light = [SCNLight light];
+    lightNode.light.type = SCNLightTypeOmni;
+    
+    // TODO: Now I'm having a hard time figuring out what each position mean in my current scene. This needs to be sorted out before proceed.
+    
+    lightNode.position = SCNVector3Make(0, -100, 100); //cameraNode.position;
+    
+    [scene.rootNode addChildNode:lightNode];
+    
+    // create and add an ambient light to the scene
+    SCNNode *ambientLightNode = [SCNNode node];
+    ambientLightNode.light = [SCNLight light];
+    ambientLightNode.light.type = SCNLightTypeAmbient;
+    ambientLightNode.light.color = [NSColor darkGrayColor];
+    [scene.rootNode addChildNode:ambientLightNode];
+    
+    NSArray<PGShape *> *shapes = self.graphicalShapesRegistery.allValues;
+    for (PGShape *shape in shapes) {
+        SCNNode *node = shape.sceneNode;
+        [scene.rootNode addChildNode:node];
     }
 }
 

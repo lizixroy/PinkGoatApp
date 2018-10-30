@@ -44,6 +44,7 @@
     NSArray<PGVertexObject *> *vertices = @[vertex1, vertex2];
     PGShape *shape = [[PGShape alloc] initWithVertices:vertices indices:nil];
     PGVertex vertexBuffer[shape.vertices.count];
+    
     [shape makeVertices:&vertexBuffer[0] count:shape.vertices.count];
     
     PGVertex vertex = vertexBuffer[0];
@@ -71,9 +72,6 @@
     XCTAssertEqual(v2.color.y, expectedColor2.y);
     XCTAssertEqual(v2.color.z, expectedColor2.z);
     XCTAssertEqual(v2.color.w, expectedColor2.w);
-    
-
-
 }
 
 
