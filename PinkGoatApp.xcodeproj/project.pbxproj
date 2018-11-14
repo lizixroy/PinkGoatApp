@@ -54,6 +54,62 @@
 		B58DDD6F2186696100D46E49 /* NSColor+Vector.m in Sources */ = {isa = PBXBuildFile; fileRef = B58DDD6E2186696100D46E49 /* NSColor+Vector.m */; };
 		B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5998FC1217E8B5500413FDC /* cylinder.urdf */; };
 		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
+		B5C00AF2219A943600B78120 /* TestHTTPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00AF1219A943600B78120 /* TestHTTPServer.swift */; };
+		B5C00DAB219A9F9400B78120 /* ChannelPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D74219A9F8B00B78120 /* ChannelPipeline.swift */; };
+		B5C00DAC219A9F9400B78120 /* HappyEyeballs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D75219A9F8B00B78120 /* HappyEyeballs.swift */; };
+		B5C00DAD219A9F9400B78120 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D76219A9F8B00B78120 /* PriorityQueue.swift */; };
+		B5C00DAE219A9F9400B78120 /* MarkedCircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D77219A9F8B00B78120 /* MarkedCircularBuffer.swift */; };
+		B5C00DAF219A9F9400B78120 /* IOData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D78219A9F8B00B78120 /* IOData.swift */; };
+		B5C00DB0219A9F9400B78120 /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D79219A9F8B00B78120 /* Thread.swift */; };
+		B5C00DB1219A9F9400B78120 /* Codec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D7A219A9F8C00B78120 /* Codec.swift */; };
+		B5C00DB2219A9F9400B78120 /* ChannelOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D7B219A9F8C00B78120 /* ChannelOption.swift */; };
+		B5C00DB3219A9F9400B78120 /* NonBlockingFileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D7C219A9F8C00B78120 /* NonBlockingFileIO.swift */; };
+		B5C00DB4219A9F9400B78120 /* SocketOptionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D7D219A9F8C00B78120 /* SocketOptionProvider.swift */; };
+		B5C00DB5219A9F9400B78120 /* Interfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D7E219A9F8C00B78120 /* Interfaces.swift */; };
+		B5C00DB6219A9F9400B78120 /* RecvByteBufferAllocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D7F219A9F8C00B78120 /* RecvByteBufferAllocator.swift */; };
+		B5C00DB7219A9F9400B78120 /* PendingDatagramWritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D80219A9F8C00B78120 /* PendingDatagramWritesManager.swift */; };
+		B5C00DB8219A9F9400B78120 /* MulticastChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D81219A9F8C00B78120 /* MulticastChannel.swift */; };
+		B5C00DB9219A9F9400B78120 /* ByteBuffer-core.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D82219A9F8C00B78120 /* ByteBuffer-core.swift */; };
+		B5C00DBA219A9F9400B78120 /* FileRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D83219A9F8C00B78120 /* FileRegion.swift */; };
+		B5C00DBB219A9F9400B78120 /* LinuxCPUSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D84219A9F8C00B78120 /* LinuxCPUSet.swift */; };
+		B5C00DBC219A9F9400B78120 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D85219A9F8D00B78120 /* Socket.swift */; };
+		B5C00DBD219A9F9400B78120 /* ByteBuffer-int.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D86219A9F8D00B78120 /* ByteBuffer-int.swift */; };
+		B5C00DBE219A9F9400B78120 /* FileHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D87219A9F8D00B78120 /* FileHandle.swift */; };
+		B5C00DBF219A9F9400B78120 /* ByteBuffer-views.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D88219A9F8D00B78120 /* ByteBuffer-views.swift */; };
+		B5C00DC0219A9F9400B78120 /* SocketAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D89219A9F8D00B78120 /* SocketAddresses.swift */; };
+		B5C00DC1219A9F9400B78120 /* DeadChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D8A219A9F8D00B78120 /* DeadChannel.swift */; };
+		B5C00DC2219A9F9400B78120 /* PendingWritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D8B219A9F8D00B78120 /* PendingWritesManager.swift */; };
+		B5C00DC3219A9F9400B78120 /* NIOAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D8C219A9F8D00B78120 /* NIOAny.swift */; };
+		B5C00DC4219A9F9400B78120 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D8D219A9F8E00B78120 /* Selectable.swift */; };
+		B5C00DC5219A9F9400B78120 /* BaseSocketChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D8E219A9F8E00B78120 /* BaseSocketChannel.swift */; };
+		B5C00DC6219A9F9400B78120 /* FileDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D8F219A9F8E00B78120 /* FileDescriptor.swift */; };
+		B5C00DC7219A9F9400B78120 /* ChannelInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D90219A9F8E00B78120 /* ChannelInvoker.swift */; };
+		B5C00DC8219A9F9400B78120 /* Linux.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D91219A9F8E00B78120 /* Linux.swift */; };
+		B5C00DC9219A9F9400B78120 /* BaseSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D92219A9F8E00B78120 /* BaseSocket.swift */; };
+		B5C00DCA219A9F9400B78120 /* ServerSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D93219A9F8E00B78120 /* ServerSocket.swift */; };
+		B5C00DCB219A9F9400B78120 /* ChannelHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D94219A9F8E00B78120 /* ChannelHandlers.swift */; };
+		B5C00DCC219A9F9400B78120 /* EventLoopFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D95219A9F8E00B78120 /* EventLoopFuture.swift */; };
+		B5C00DCD219A9F9400B78120 /* CompositeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D96219A9F8F00B78120 /* CompositeError.swift */; };
+		B5C00DCE219A9F9400B78120 /* ByteBuffer-aux.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D97219A9F8F00B78120 /* ByteBuffer-aux.swift */; };
+		B5C00DCF219A9F9400B78120 /* BlockingIOThreadPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D98219A9F8F00B78120 /* BlockingIOThreadPool.swift */; };
+		B5C00DD0219A9F9400B78120 /* AddressedEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D99219A9F8F00B78120 /* AddressedEnvelope.swift */; };
+		B5C00DD1219A9F9400B78120 /* EventLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D9A219A9F8F00B78120 /* EventLoop.swift */; };
+		B5C00DD2219A9F9400B78120 /* CircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D9B219A9F8F00B78120 /* CircularBuffer.swift */; };
+		B5C00DD3219A9F9400B78120 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D9C219A9F8F00B78120 /* System.swift */; };
+		B5C00DD4219A9F9400B78120 /* Embedded.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D9D219A9F9000B78120 /* Embedded.swift */; };
+		B5C00DD5219A9F9400B78120 /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D9E219A9F9000B78120 /* Selector.swift */; };
+		B5C00DD6219A9F9400B78120 /* IntegerTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00D9F219A9F9000B78120 /* IntegerTypes.swift */; };
+		B5C00DD7219A9F9400B78120 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA0219A9F9000B78120 /* Utilities.swift */; };
+		B5C00DD8219A9F9400B78120 /* ChannelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA1219A9F9000B78120 /* ChannelHandler.swift */; };
+		B5C00DD9219A9F9400B78120 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA2219A9F9100B78120 /* Channel.swift */; };
+		B5C00DDA219A9F9400B78120 /* IO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA3219A9F9100B78120 /* IO.swift */; };
+		B5C00DDB219A9F9400B78120 /* TypeAssistedChannelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA4219A9F9100B78120 /* TypeAssistedChannelHandler.swift */; };
+		B5C00DDC219A9F9400B78120 /* SocketChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA5219A9F9200B78120 /* SocketChannel.swift */; };
+		B5C00DDD219A9F9400B78120 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA6219A9F9200B78120 /* Bootstrap.swift */; };
+		B5C00DDE219A9F9400B78120 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA7219A9F9200B78120 /* Heap.swift */; };
+		B5C00DDF219A9F9400B78120 /* GetaddrinfoResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA8219A9F9300B78120 /* GetaddrinfoResolver.swift */; };
+		B5C00DE0219A9F9400B78120 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DA9219A9F9300B78120 /* Resolver.swift */; };
+		B5C00DE1219A9F9400B78120 /* ContiguousCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C00DAA219A9F9300B78120 /* ContiguousCollection.swift */; };
 		B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGShapeFactory.mm */; };
 		B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */; };
 		B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5E3553B217D8D090034FB97 /* cougarbot.urdf */; };
@@ -177,6 +233,62 @@
 		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
 		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
 		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
+		B5C00AF1219A943600B78120 /* TestHTTPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHTTPServer.swift; sourceTree = "<group>"; };
+		B5C00D74219A9F8B00B78120 /* ChannelPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelPipeline.swift; sourceTree = "<group>"; };
+		B5C00D75219A9F8B00B78120 /* HappyEyeballs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HappyEyeballs.swift; sourceTree = "<group>"; };
+		B5C00D76219A9F8B00B78120 /* PriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
+		B5C00D77219A9F8B00B78120 /* MarkedCircularBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkedCircularBuffer.swift; sourceTree = "<group>"; };
+		B5C00D78219A9F8B00B78120 /* IOData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOData.swift; sourceTree = "<group>"; };
+		B5C00D79219A9F8B00B78120 /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
+		B5C00D7A219A9F8C00B78120 /* Codec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Codec.swift; sourceTree = "<group>"; };
+		B5C00D7B219A9F8C00B78120 /* ChannelOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelOption.swift; sourceTree = "<group>"; };
+		B5C00D7C219A9F8C00B78120 /* NonBlockingFileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonBlockingFileIO.swift; sourceTree = "<group>"; };
+		B5C00D7D219A9F8C00B78120 /* SocketOptionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketOptionProvider.swift; sourceTree = "<group>"; };
+		B5C00D7E219A9F8C00B78120 /* Interfaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interfaces.swift; sourceTree = "<group>"; };
+		B5C00D7F219A9F8C00B78120 /* RecvByteBufferAllocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecvByteBufferAllocator.swift; sourceTree = "<group>"; };
+		B5C00D80219A9F8C00B78120 /* PendingDatagramWritesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingDatagramWritesManager.swift; sourceTree = "<group>"; };
+		B5C00D81219A9F8C00B78120 /* MulticastChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastChannel.swift; sourceTree = "<group>"; };
+		B5C00D82219A9F8C00B78120 /* ByteBuffer-core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ByteBuffer-core.swift"; sourceTree = "<group>"; };
+		B5C00D83219A9F8C00B78120 /* FileRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileRegion.swift; sourceTree = "<group>"; };
+		B5C00D84219A9F8C00B78120 /* LinuxCPUSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxCPUSet.swift; sourceTree = "<group>"; };
+		B5C00D85219A9F8D00B78120 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		B5C00D86219A9F8D00B78120 /* ByteBuffer-int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ByteBuffer-int.swift"; sourceTree = "<group>"; };
+		B5C00D87219A9F8D00B78120 /* FileHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandle.swift; sourceTree = "<group>"; };
+		B5C00D88219A9F8D00B78120 /* ByteBuffer-views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ByteBuffer-views.swift"; sourceTree = "<group>"; };
+		B5C00D89219A9F8D00B78120 /* SocketAddresses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAddresses.swift; sourceTree = "<group>"; };
+		B5C00D8A219A9F8D00B78120 /* DeadChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeadChannel.swift; sourceTree = "<group>"; };
+		B5C00D8B219A9F8D00B78120 /* PendingWritesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingWritesManager.swift; sourceTree = "<group>"; };
+		B5C00D8C219A9F8D00B78120 /* NIOAny.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOAny.swift; sourceTree = "<group>"; };
+		B5C00D8D219A9F8E00B78120 /* Selectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
+		B5C00D8E219A9F8E00B78120 /* BaseSocketChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSocketChannel.swift; sourceTree = "<group>"; };
+		B5C00D8F219A9F8E00B78120 /* FileDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDescriptor.swift; sourceTree = "<group>"; };
+		B5C00D90219A9F8E00B78120 /* ChannelInvoker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelInvoker.swift; sourceTree = "<group>"; };
+		B5C00D91219A9F8E00B78120 /* Linux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Linux.swift; sourceTree = "<group>"; };
+		B5C00D92219A9F8E00B78120 /* BaseSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSocket.swift; sourceTree = "<group>"; };
+		B5C00D93219A9F8E00B78120 /* ServerSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSocket.swift; sourceTree = "<group>"; };
+		B5C00D94219A9F8E00B78120 /* ChannelHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelHandlers.swift; sourceTree = "<group>"; };
+		B5C00D95219A9F8E00B78120 /* EventLoopFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLoopFuture.swift; sourceTree = "<group>"; };
+		B5C00D96219A9F8F00B78120 /* CompositeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeError.swift; sourceTree = "<group>"; };
+		B5C00D97219A9F8F00B78120 /* ByteBuffer-aux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ByteBuffer-aux.swift"; sourceTree = "<group>"; };
+		B5C00D98219A9F8F00B78120 /* BlockingIOThreadPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockingIOThreadPool.swift; sourceTree = "<group>"; };
+		B5C00D99219A9F8F00B78120 /* AddressedEnvelope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressedEnvelope.swift; sourceTree = "<group>"; };
+		B5C00D9A219A9F8F00B78120 /* EventLoop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLoop.swift; sourceTree = "<group>"; };
+		B5C00D9B219A9F8F00B78120 /* CircularBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularBuffer.swift; sourceTree = "<group>"; };
+		B5C00D9C219A9F8F00B78120 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		B5C00D9D219A9F9000B78120 /* Embedded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Embedded.swift; sourceTree = "<group>"; };
+		B5C00D9E219A9F9000B78120 /* Selector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selector.swift; sourceTree = "<group>"; };
+		B5C00D9F219A9F9000B78120 /* IntegerTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerTypes.swift; sourceTree = "<group>"; };
+		B5C00DA0219A9F9000B78120 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B5C00DA1219A9F9000B78120 /* ChannelHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelHandler.swift; sourceTree = "<group>"; };
+		B5C00DA2219A9F9100B78120 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		B5C00DA3219A9F9100B78120 /* IO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IO.swift; sourceTree = "<group>"; };
+		B5C00DA4219A9F9100B78120 /* TypeAssistedChannelHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeAssistedChannelHandler.swift; sourceTree = "<group>"; };
+		B5C00DA5219A9F9200B78120 /* SocketChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketChannel.swift; sourceTree = "<group>"; };
+		B5C00DA6219A9F9200B78120 /* Bootstrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
+		B5C00DA7219A9F9200B78120 /* Heap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
+		B5C00DA8219A9F9300B78120 /* GetaddrinfoResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetaddrinfoResolver.swift; sourceTree = "<group>"; };
+		B5C00DA9219A9F9300B78120 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		B5C00DAA219A9F9300B78120 /* ContiguousCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContiguousCollection.swift; sourceTree = "<group>"; };
 		B5E35467217BA2510034FB97 /* PGShapeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShapeFactory.h; sourceTree = "<group>"; };
 		B5E35468217BA2510034FB97 /* PGShapeFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGShapeFactory.mm; sourceTree = "<group>"; };
 		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
@@ -332,6 +444,7 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5C00AF0219A942300B78120 /* Server */,
 				B58DDD7121881B3200D46E49 /* Physics */,
 				B57BD2222180EA8C00463D9F /* Simulation */,
 				B5AC6892217F990C00D0F11F /* Utilities */,
@@ -452,6 +565,69 @@
 				B58DDD6E2186696100D46E49 /* NSColor+Vector.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B5C00AF0219A942300B78120 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				B5C00D99219A9F8F00B78120 /* AddressedEnvelope.swift */,
+				B5C00D92219A9F8E00B78120 /* BaseSocket.swift */,
+				B5C00D8E219A9F8E00B78120 /* BaseSocketChannel.swift */,
+				B5C00D98219A9F8F00B78120 /* BlockingIOThreadPool.swift */,
+				B5C00DA6219A9F9200B78120 /* Bootstrap.swift */,
+				B5C00D97219A9F8F00B78120 /* ByteBuffer-aux.swift */,
+				B5C00D82219A9F8C00B78120 /* ByteBuffer-core.swift */,
+				B5C00D86219A9F8D00B78120 /* ByteBuffer-int.swift */,
+				B5C00D88219A9F8D00B78120 /* ByteBuffer-views.swift */,
+				B5C00DA2219A9F9100B78120 /* Channel.swift */,
+				B5C00DA1219A9F9000B78120 /* ChannelHandler.swift */,
+				B5C00D94219A9F8E00B78120 /* ChannelHandlers.swift */,
+				B5C00D90219A9F8E00B78120 /* ChannelInvoker.swift */,
+				B5C00D7B219A9F8C00B78120 /* ChannelOption.swift */,
+				B5C00D74219A9F8B00B78120 /* ChannelPipeline.swift */,
+				B5C00D9B219A9F8F00B78120 /* CircularBuffer.swift */,
+				B5C00D7A219A9F8C00B78120 /* Codec.swift */,
+				B5C00D96219A9F8F00B78120 /* CompositeError.swift */,
+				B5C00DAA219A9F9300B78120 /* ContiguousCollection.swift */,
+				B5C00D8A219A9F8D00B78120 /* DeadChannel.swift */,
+				B5C00D9D219A9F9000B78120 /* Embedded.swift */,
+				B5C00D9A219A9F8F00B78120 /* EventLoop.swift */,
+				B5C00D95219A9F8E00B78120 /* EventLoopFuture.swift */,
+				B5C00D8F219A9F8E00B78120 /* FileDescriptor.swift */,
+				B5C00D87219A9F8D00B78120 /* FileHandle.swift */,
+				B5C00D83219A9F8C00B78120 /* FileRegion.swift */,
+				B5C00DA8219A9F9300B78120 /* GetaddrinfoResolver.swift */,
+				B5C00D75219A9F8B00B78120 /* HappyEyeballs.swift */,
+				B5C00DA7219A9F9200B78120 /* Heap.swift */,
+				B5C00D9F219A9F9000B78120 /* IntegerTypes.swift */,
+				B5C00D7E219A9F8C00B78120 /* Interfaces.swift */,
+				B5C00DA3219A9F9100B78120 /* IO.swift */,
+				B5C00D78219A9F8B00B78120 /* IOData.swift */,
+				B5C00D91219A9F8E00B78120 /* Linux.swift */,
+				B5C00D84219A9F8C00B78120 /* LinuxCPUSet.swift */,
+				B5C00D77219A9F8B00B78120 /* MarkedCircularBuffer.swift */,
+				B5C00D81219A9F8C00B78120 /* MulticastChannel.swift */,
+				B5C00D8C219A9F8D00B78120 /* NIOAny.swift */,
+				B5C00D7C219A9F8C00B78120 /* NonBlockingFileIO.swift */,
+				B5C00D80219A9F8C00B78120 /* PendingDatagramWritesManager.swift */,
+				B5C00D8B219A9F8D00B78120 /* PendingWritesManager.swift */,
+				B5C00D76219A9F8B00B78120 /* PriorityQueue.swift */,
+				B5C00D7F219A9F8C00B78120 /* RecvByteBufferAllocator.swift */,
+				B5C00DA9219A9F9300B78120 /* Resolver.swift */,
+				B5C00D8D219A9F8E00B78120 /* Selectable.swift */,
+				B5C00D9E219A9F9000B78120 /* Selector.swift */,
+				B5C00D93219A9F8E00B78120 /* ServerSocket.swift */,
+				B5C00D85219A9F8D00B78120 /* Socket.swift */,
+				B5C00D89219A9F8D00B78120 /* SocketAddresses.swift */,
+				B5C00DA5219A9F9200B78120 /* SocketChannel.swift */,
+				B5C00D7D219A9F8C00B78120 /* SocketOptionProvider.swift */,
+				B5C00D9C219A9F8F00B78120 /* System.swift */,
+				B5C00D79219A9F8B00B78120 /* Thread.swift */,
+				B5C00DA4219A9F9100B78120 /* TypeAssistedChannelHandler.swift */,
+				B5C00DA0219A9F9000B78120 /* Utilities.swift */,
+				B5C00AF1219A943600B78120 /* TestHTTPServer.swift */,
+			);
+			path = Server;
 			sourceTree = "<group>";
 		};
 		B5E3553A217D8CFB0034FB97 /* Resources */ = {
@@ -621,43 +797,99 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C00DDC219A9F9400B78120 /* SocketChannel.swift in Sources */,
 				B5EBA404214E0D3A00DB4CD6 /* MyMultiBodyCreator.cpp in Sources */,
+				B5C00DB3219A9F9400B78120 /* NonBlockingFileIO.swift in Sources */,
+				B5C00DE0219A9F9400B78120 /* Resolver.swift in Sources */,
+				B5C00DB4219A9F9400B78120 /* SocketOptionProvider.swift in Sources */,
+				B5C00DC7219A9F9400B78120 /* ChannelInvoker.swift in Sources */,
 				B526B237214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp in Sources */,
+				B5C00DB5219A9F9400B78120 /* Interfaces.swift in Sources */,
+				B5C00DD8219A9F9400B78120 /* ChannelHandler.swift in Sources */,
+				B5C00DC8219A9F9400B78120 /* Linux.swift in Sources */,
+				B5C00DC5219A9F9400B78120 /* BaseSocketChannel.swift in Sources */,
+				B5C00DD7219A9F9400B78120 /* Utilities.swift in Sources */,
+				B5C00DBB219A9F9400B78120 /* LinuxCPUSet.swift in Sources */,
+				B5C00DB1219A9F9400B78120 /* Codec.swift in Sources */,
 				B526B22B214A275800FBA6D7 /* LoadMeshFromObj.cpp in Sources */,
+				B5C00DBC219A9F9400B78120 /* Socket.swift in Sources */,
 				B5E607B52165AEE300858EF7 /* PGShape.mm in Sources */,
+				B5C00DDA219A9F9400B78120 /* IO.swift in Sources */,
+				B5C00DB7219A9F9400B78120 /* PendingDatagramWritesManager.swift in Sources */,
+				B5C00DBE219A9F9400B78120 /* FileHandle.swift in Sources */,
+				B5C00DCF219A9F9400B78120 /* BlockingIOThreadPool.swift in Sources */,
+				B5C00DB9219A9F9400B78120 /* ByteBuffer-core.swift in Sources */,
 				B583BACE21608C06005E1332 /* CollisionShape2TriangleMesh.cpp in Sources */,
 				B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */,
+				B5C00DD9219A9F9400B78120 /* Channel.swift in Sources */,
+				B5C00DC1219A9F9400B78120 /* DeadChannel.swift in Sources */,
+				B5C00DAF219A9F9400B78120 /* IOData.swift in Sources */,
 				B5213397218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm in Sources */,
 				B521339E2183905500875C68 /* PGMTKView.m in Sources */,
+				B5C00AF2219A943600B78120 /* TestHTTPServer.swift in Sources */,
+				B5C00DCC219A9F9400B78120 /* EventLoopFuture.swift in Sources */,
 				B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */,
+				B5C00DC3219A9F9400B78120 /* NIOAny.swift in Sources */,
 				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
+				B5C00DC9219A9F9400B78120 /* BaseSocket.swift in Sources */,
+				B5C00DCB219A9F9400B78120 /* ChannelHandlers.swift in Sources */,
 				B5E607B82165B8AE00858EF7 /* PGVertexObject.m in Sources */,
 				B5859C92213F971A00C71222 /* PGMainViewController.mm in Sources */,
 				B526B227214A263D00FBA6D7 /* tiny_obj_loader.cpp in Sources */,
 				B5859C88213F87B800C71222 /* BulletDynamicsWorldFactory.mm in Sources */,
+				B5C00DDB219A9F9400B78120 /* TypeAssistedChannelHandler.swift in Sources */,
 				B57BD2282180EB9200463D9F /* PGScene.m in Sources */,
+				B5C00DD3219A9F9400B78120 /* System.swift in Sources */,
 				B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */,
 				B526B224214A25CB00FBA6D7 /* b3ResourcePath.cpp in Sources */,
+				B5C00DCE219A9F9400B78120 /* ByteBuffer-aux.swift in Sources */,
+				B5C00DBA219A9F9400B78120 /* FileRegion.swift in Sources */,
+				B5C00DC4219A9F9400B78120 /* Selectable.swift in Sources */,
+				B5C00DBD219A9F9400B78120 /* ByteBuffer-int.swift in Sources */,
 				B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */,
 				B5EDE3C721763E8000EC3CA0 /* PGLogger.mm in Sources */,
+				B5C00DAD219A9F9400B78120 /* PriorityQueue.swift in Sources */,
 				B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */,
 				B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */,
 				B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */,
+				B5C00DD0219A9F9400B78120 /* AddressedEnvelope.swift in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
 				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
+				B5C00DD4219A9F9400B78120 /* Embedded.swift in Sources */,
+				B5C00DB8219A9F9400B78120 /* MulticastChannel.swift in Sources */,
+				B5C00DAC219A9F9400B78120 /* HappyEyeballs.swift in Sources */,
 				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
 				B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */,
+				B5C00DD1219A9F9400B78120 /* EventLoop.swift in Sources */,
 				B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */,
+				B5C00DC0219A9F9400B78120 /* SocketAddresses.swift in Sources */,
 				B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */,
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
+				B5C00DB0219A9F9400B78120 /* Thread.swift in Sources */,
+				B5C00DDF219A9F9400B78120 /* GetaddrinfoResolver.swift in Sources */,
+				B5C00DAE219A9F9400B78120 /* MarkedCircularBuffer.swift in Sources */,
+				B5C00DD5219A9F9400B78120 /* Selector.swift in Sources */,
+				B5C00DD6219A9F9400B78120 /* IntegerTypes.swift in Sources */,
 				B5E607B12165155100858EF7 /* PGRenderer.m in Sources */,
+				B5C00DBF219A9F9400B78120 /* ByteBuffer-views.swift in Sources */,
+				B5C00DCA219A9F9400B78120 /* ServerSocket.swift in Sources */,
+				B5C00DD2219A9F9400B78120 /* CircularBuffer.swift in Sources */,
+				B5C00DDD219A9F9400B78120 /* Bootstrap.swift in Sources */,
+				B5C00DC6219A9F9400B78120 /* FileDescriptor.swift in Sources */,
+				B5C00DCD219A9F9400B78120 /* CompositeError.swift in Sources */,
+				B5C00DC2219A9F9400B78120 /* PendingWritesManager.swift in Sources */,
+				B5C00DDE219A9F9400B78120 /* Heap.swift in Sources */,
 				B57BD2252180EAA000463D9F /* PGSimulation.mm in Sources */,
 				B57BD22D2180EC3D00463D9F /* PGEntity.m in Sources */,
+				B5C00DAB219A9F9400B78120 /* ChannelPipeline.swift in Sources */,
+				B5C00DB2219A9F9400B78120 /* ChannelOption.swift in Sources */,
 				B58DDD6F2186696100D46E49 /* NSColor+Vector.m in Sources */,
 				B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */,
 				B5859C95213F994E00C71222 /* URDF2Bullet.mm in Sources */,
+				B5C00DB6219A9F9400B78120 /* RecvByteBufferAllocator.swift in Sources */,
+				B5C00DE1219A9F9400B78120 /* ContiguousCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

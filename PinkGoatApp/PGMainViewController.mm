@@ -27,9 +27,9 @@
 #import "PGSimulation.h"
 #include "btBulletDynamicsCommon.h"
 #import "PGMTKView.h"
-
 #import <SceneKit/SceneKit.h>
 #import "bullet/BulletCollision/btBulletCollisionCommon.h"
+#import "PinkGoatApp-Swift.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -52,6 +52,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    TestHTTPServer *server = [[TestHTTPServer alloc] init];
+    [server jointCommandUpdated];
+    
 }
 
 - (void)viewDidAppear {
