@@ -14,7 +14,6 @@
 #import "PGCollisionShapeGraphicsGenerator.h"
 #import "PGMatrixLogger.h"
 
-
 static NSTimeInterval MIN_SIM_ADVANCE_TIME_DELTA_IN_SECONDS = 0.001; // 1 milliseconds.
 static NSTimeInterval MAX_SIM_ADVANCE_TIME_DELTA_IN_SECONDS = 0.1; // 100 millseconds
 static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
@@ -139,6 +138,10 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
     [self createGroundPlane];
     [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
     [self setupScene];
+    
+    int numDoFs = robot->numDoFs();
+    
+    NSLog(@"numDoFs: %d", numDoFs);
 }
 
 - (void)createGroundPlane

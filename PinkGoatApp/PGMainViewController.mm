@@ -31,9 +31,15 @@
 #import <SceneKit/SceneKit.h>
 #import "bullet/BulletCollision/btBulletCollisionCommon.h"
 
+#include "BulletInverseDynamics/MultiBodyTreeCreator.hpp"
+#include "BulletInverseDynamics/btMultiBodyTreeCreator.hpp"
+
+
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
     btMultiBody* m_multiBody;
+    btInverseDynamicsBullet3::MultiBodyTree* m_multiBodyTree;
+    
     btAlignedObjectArray<btCollisionShape*>    m_collisionShapes;
     btDefaultCollisionConfiguration* m_collisionConfiguration;
     btCollisionDispatcher*    m_dispatcher;
@@ -68,10 +74,11 @@
     
     _simulation = [[PGSimulation alloc] initWithScene:scene];
     _simulation.renderer = self.renderer;
-    
+
     [self createEmptyDynamicsWorld];
     self.simulation->physicsWorld = m_dynamicsWorld;
     [self importRobotModel];
+    self.simulation->robot = m_multiBodyTree;
     [self.simulation beginSimulation];
 }
 
@@ -94,6 +101,17 @@
             m_collisionShapes.push_back(u2b.getAllocatedCollisionShape(i));
         }
         m_multiBody = creation.getBulletMultiBody();
+    }
+    
+    // Create multibody tree
+    btInverseDynamics::btMultiBodyTreeCreator id_creator;
+    if (-1 == id_creator.createFromBtMultiBody(m_multiBody, false))
+    {
+        b3Error("error creating tree\n");
+    }
+    else
+    {
+        m_multiBodyTree = btInverseDynamics::CreateMultiBodyTree(id_creator);
     }
 }
 

@@ -20,6 +20,7 @@
 #include "BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h"
 #include "BulletDynamics/btBulletDynamicsCommon.h"
 #import "PGPhysicsWorldProtocol.h"
+#include "BulletInverseDynamics/MultiBodyTreeCreator.hpp"
 
 @interface PGSimulation : NSObject
 {
@@ -27,7 +28,7 @@
     btDiscreteDynamicsWorld *physicsWorld;
     // For now, let each simulation only have one robot (tree of multiple rigid body).
     // Later on this needs to be converted into an array.
-//    MultiBodyTree *robot;
+    btInverseDynamicsBullet3::MultiBodyTree *robot;
 }
 
 @property (nonatomic, strong) PGRenderer *renderer;
