@@ -35,6 +35,7 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
         _lastIndex = -1;
         _graphicalShapesRegistery = [[NSMutableDictionary alloc] init];
         _terminated = NO;
+        _subscribers = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -90,7 +91,9 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
 {
     self->physicsWorld->stepSimulation(timeDelta);
     // Send update event to all subscribers (e.g., controllers, etc.) of the simulation.
-    
+    for (id<PGEventSubscriberProtocol> subscriber in self.subscribers) {
+        [subscriber update];
+    }
 }
 
 - (void)syncPhysicsToGraphics
@@ -141,10 +144,13 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
     [self createGroundPlane];
     [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
     [self setupScene];
-    
-    int numDoFs = robot->numDoFs();
-    
-    NSLog(@"numDoFs: %d", numDoFs);
+}
+
+- (void)addUpdateSubscription:(id<PGEventSubscriberProtocol>)subscriber
+{
+    if (![self.subscribers containsObject:subscriber]) {
+        [self.subscribers addObject:subscriber];
+    }
 }
 
 - (void)createGroundPlane

@@ -22,20 +22,21 @@
 #import "PGPhysicsWorldProtocol.h"
 #import "BulletInverseDynamics/MultiBodyTreeCreator.hpp"
 #import "PGEventSubscriber.h"
+#import "PGRobot.h"
 
 @interface PGSimulation : NSObject
 {
     @public
     btDiscreteDynamicsWorld *physicsWorld;
-    // For now, let each simulation only have one robot (tree of multiple rigid body).
-    // Later on this needs to be converted into an array.
-    btInverseDynamicsBullet3::MultiBodyTree *robot;
 }
 
 @property (nonatomic, strong) PGRenderer *renderer;
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, PGShape *>  *graphicalShapesRegistery;
 @property (assign) BOOL terminated;
 @property (nonatomic, strong) SCNScene *scene;
+// For now, let each simulation only have one robot (tree of multiple rigid body).
+// Later on this needs to be converted into an array.
+@property (nonatomic, strong) PGRobot *robot;
 
 - (instancetype)initWithScene:(SCNScene *)scene;
 - (void)beginSimulation;
@@ -48,5 +49,14 @@
     int: the index in the registery for the shape passed in.
  */
 - (int)registerShape:(PGShape *)shape;
+
+
+/**
+ Add a subscriber to update subscribers to receive update event for every step of the simulation.
+ One subscriber will only be added once. After the first time, subsequent subscriptions calls will be ignored.
+
+ @param subscriber
+ */
+- (void)addUpdateSubscription:(id<PGEventSubscriberProtocol>)subscriber;
 
 @end

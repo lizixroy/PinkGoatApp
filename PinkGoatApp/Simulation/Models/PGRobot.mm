@@ -33,16 +33,24 @@
 {
     NSLog(@"Receive update from simulation");
     const int num_dofs = multiBody->getNumDofs();
+    btInverseDynamics::vecx nu(num_dofs), qdot(num_dofs), q(num_dofs), joint_force(num_dofs);
+    btInverseDynamics::vecx pd_control(num_dofs);
     for (int i = 0; i < num_dofs; i++) {
-        float jointPosition = multiBody->getJointPos(i);
-        float jointVelocity = multiBody->getJointVel(i);
+        q(i) = multiBody->getJointPos(i);
+        qdot(i) = multiBody->getJointVel(i);
         PGPIDController *controller = [self.jointControllers objectAtIndex:i];
-        float controlSignal = [controller computeControlSignalWithReference:0
-                                                            currentPosition:jointPosition
-                                                            currentVelocity:jointVelocity];
-//        if (-1 != self->multiBodyTree->calculateInverseDynamics(q, qdot, nu, &joint_force)) {
-//
-//        }
+        // TODO: need to set the position from user's codebase. For now use 0.
+        float reference = 0.0f;
+        nu(i) = [controller computeControlSignalWithReference:reference
+                                                            currentPosition:q(i)
+                                                            currentVelocity:qdot(i)];
+    }
+    if (self->multiBodyTree->calculateInverseDynamics(q, qdot, nu, &joint_force) != -1) {
+        NSLog(@"joint_force:");
+        for (int i = 0; i < joint_force.size(); i++) {
+            NSLog(@"%f", joint_force[i]);
+            self->multiBody->addJointTorque(i, joint_force(i));
+        }
     }
 }
 

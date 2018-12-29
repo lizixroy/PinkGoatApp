@@ -33,7 +33,7 @@
 
 #include "BulletInverseDynamics/MultiBodyTreeCreator.hpp"
 #include "BulletInverseDynamics/btMultiBodyTreeCreator.hpp"
-
+#import "PGRobot.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -78,7 +78,6 @@
     [self createEmptyDynamicsWorld];
     self.simulation->physicsWorld = m_dynamicsWorld;
     [self importRobotModel];
-    self.simulation->robot = m_multiBodyTree;
     [self.simulation beginSimulation];
 }
 
@@ -113,6 +112,11 @@
     {
         m_multiBodyTree = btInverseDynamics::CreateMultiBodyTree(id_creator);
     }
+    
+    PGRobot *robot = [[PGRobot alloc] initWithMultiBodyTree:m_multiBodyTree multiBody:m_multiBody];
+    [robot addJointControllers];
+    self.simulation.robot = robot;
+    [self.simulation addUpdateSubscription:robot];
 }
 
 - (void)createEmptyDynamicsWorld
