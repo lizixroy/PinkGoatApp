@@ -17,10 +17,11 @@
 #import <SceneKit/SceneKit.h>
 #import "PGRenderer.h"
 #import "PGShape.h"
-#include "BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h"
-#include "BulletDynamics/btBulletDynamicsCommon.h"
+#import "BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h"
+#import "BulletDynamics/btBulletDynamicsCommon.h"
 #import "PGPhysicsWorldProtocol.h"
-#include "BulletInverseDynamics/MultiBodyTreeCreator.hpp"
+#import "BulletInverseDynamics/MultiBodyTreeCreator.hpp"
+#import "PGEventSubscriber.h"
 
 @interface PGSimulation : NSObject
 {

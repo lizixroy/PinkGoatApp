@@ -22,6 +22,7 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
 
 @property (assign) int lastIndex;
 @property (assign) NSTimeInterval lastUpdatedTime;
+@property (nonatomic, strong) NSMutableArray<id<PGEventSubscriberProtocol>> *subscribers;
 
 @end
 
@@ -88,6 +89,8 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
 - (void)stepSimulationWithTimeDelta:(NSTimeInterval)timeDelta
 {
     self->physicsWorld->stepSimulation(timeDelta);
+    // Send update event to all subscribers (e.g., controllers, etc.) of the simulation.
+    
 }
 
 - (void)syncPhysicsToGraphics
