@@ -54,6 +54,7 @@
 		B58DDD6F2186696100D46E49 /* NSColor+Vector.m in Sources */ = {isa = PBXBuildFile; fileRef = B58DDD6E2186696100D46E49 /* NSColor+Vector.m */; };
 		B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5998FC1217E8B5500413FDC /* cylinder.urdf */; };
 		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
+		B5C00F8121A13AE000B78120 /* PGRobotController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5C00F8021A13AE000B78120 /* PGRobotController.mm */; };
 		B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGShapeFactory.mm */; };
 		B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */; };
 		B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5E3553B217D8D090034FB97 /* cougarbot.urdf */; };
@@ -177,6 +178,8 @@
 		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
 		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
 		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
+		B5C00F7F21A13AE000B78120 /* PGRobotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotController.h; sourceTree = "<group>"; };
+		B5C00F8021A13AE000B78120 /* PGRobotController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobotController.mm; sourceTree = "<group>"; };
 		B5E35467217BA2510034FB97 /* PGShapeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShapeFactory.h; sourceTree = "<group>"; };
 		B5E35468217BA2510034FB97 /* PGShapeFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGShapeFactory.mm; sourceTree = "<group>"; };
 		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
@@ -332,6 +335,7 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5C00F7C21A13A6800B78120 /* Controllers */,
 				B58DDD7121881B3200D46E49 /* Physics */,
 				B57BD2222180EA8C00463D9F /* Simulation */,
 				B5AC6892217F990C00D0F11F /* Utilities */,
@@ -452,6 +456,15 @@
 				B58DDD6E2186696100D46E49 /* NSColor+Vector.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B5C00F7C21A13A6800B78120 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5C00F7F21A13AE000B78120 /* PGRobotController.h */,
+				B5C00F8021A13AE000B78120 /* PGRobotController.mm */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		B5E3553A217D8CFB0034FB97 /* Resources */ = {
@@ -626,6 +639,7 @@
 				B526B22B214A275800FBA6D7 /* LoadMeshFromObj.cpp in Sources */,
 				B5E607B52165AEE300858EF7 /* PGShape.mm in Sources */,
 				B583BACE21608C06005E1332 /* CollisionShape2TriangleMesh.cpp in Sources */,
+				B5C00F8121A13AE000B78120 /* PGRobotController.mm in Sources */,
 				B5EBA409214EBF0800DB4CD6 /* btDefaultCollisionConfiguration.cpp in Sources */,
 				B5213397218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm in Sources */,
 				B521339E2183905500875C68 /* PGMTKView.m in Sources */,

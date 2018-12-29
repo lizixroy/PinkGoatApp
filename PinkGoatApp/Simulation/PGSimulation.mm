@@ -110,7 +110,7 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
     }
 }
 
-/*!
+/*!å
  @abstract Generate graphical representation for collision shapes that do not have graphics yet (i.e., not imported from files)
  @param world The Physics world whose shapes we try to generate graphics for.
  */
