@@ -19,6 +19,8 @@
 		B526B233214A283B00FBA6D7 /* LoadMeshFromCollada.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B231214A283B00FBA6D7 /* LoadMeshFromCollada.cpp */; };
 		B526B237214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B235214A28CA00FBA6D7 /* b3ImportMeshUtility.cpp */; };
 		B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B23A214A297100FBA6D7 /* stb_image.cpp */; };
+		B5311BD921D7421F00212FE9 /* PGPIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5311BD821D7421F00212FE9 /* PGPIDController.m */; };
+		B5311BDD21D7F02200212FE9 /* PGRobot.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5311BDC21D7F02200212FE9 /* PGRobot.mm */; };
 		B57BD2252180EAA000463D9F /* PGSimulation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B57BD2242180EAA000463D9F /* PGSimulation.mm */; };
 		B57BD2282180EB9200463D9F /* PGScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B57BD2272180EB9200463D9F /* PGScene.m */; };
 		B57BD22D2180EC3D00463D9F /* PGEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B57BD22C2180EC3D00463D9F /* PGEntity.m */; };
@@ -119,6 +121,12 @@
 		B526B238214A297000FBA6D7 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		B526B239214A297100FBA6D7 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
 		B526B23A214A297100FBA6D7 /* stb_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
+		B5311BD721D7421F00212FE9 /* PGPIDController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGPIDController.h; sourceTree = "<group>"; };
+		B5311BD821D7421F00212FE9 /* PGPIDController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGPIDController.m; sourceTree = "<group>"; };
+		B5311BDA21D7EAB500212FE9 /* PGEventSubscriber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGEventSubscriber.h; sourceTree = "<group>"; };
+		B5311BDB21D7F02200212FE9 /* PGRobot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobot.h; sourceTree = "<group>"; };
+		B5311BDC21D7F02200212FE9 /* PGRobot.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobot.mm; sourceTree = "<group>"; };
+		B5311BDE21D7F58700212FE9 /* PGRobotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotController.h; sourceTree = "<group>"; };
 		B57BD2232180EAA000463D9F /* PGSimulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGSimulation.h; sourceTree = "<group>"; };
 		B57BD2242180EAA000463D9F /* PGSimulation.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGSimulation.mm; sourceTree = "<group>"; };
 		B57BD2262180EB9200463D9F /* PGScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGScene.h; sourceTree = "<group>"; };
@@ -297,6 +305,7 @@
 				B57BD22A2180EC3100463D9F /* Models */,
 				B57BD2232180EAA000463D9F /* PGSimulation.h */,
 				B57BD2242180EAA000463D9F /* PGSimulation.mm */,
+				B5311BDA21D7EAB500212FE9 /* PGEventSubscriber.h */,
 			);
 			path = Simulation;
 			sourceTree = "<group>";
@@ -306,6 +315,8 @@
 			children = (
 				B57BD22B2180EC3D00463D9F /* PGEntity.h */,
 				B57BD22C2180EC3D00463D9F /* PGEntity.m */,
+				B5311BDB21D7F02200212FE9 /* PGRobot.h */,
+				B5311BDC21D7F02200212FE9 /* PGRobot.mm */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -332,6 +343,7 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5C00F7C21A13A6800B78120 /* Controllers */,
 				B58DDD7121881B3200D46E49 /* Physics */,
 				B57BD2222180EA8C00463D9F /* Simulation */,
 				B5AC6892217F990C00D0F11F /* Utilities */,
@@ -452,6 +464,16 @@
 				B58DDD6E2186696100D46E49 /* NSColor+Vector.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B5C00F7C21A13A6800B78120 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5311BD721D7421F00212FE9 /* PGPIDController.h */,
+				B5311BD821D7421F00212FE9 /* PGPIDController.m */,
+				B5311BDE21D7F58700212FE9 /* PGRobotController.h */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		B5E3553A217D8CFB0034FB97 /* Resources */ = {
@@ -645,6 +667,7 @@
 				B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
 				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
+				B5311BD921D7421F00212FE9 /* PGPIDController.m in Sources */,
 				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
 				B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */,
 				B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */,
@@ -652,6 +675,7 @@
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
+				B5311BDD21D7F02200212FE9 /* PGRobot.mm in Sources */,
 				B5E607B12165155100858EF7 /* PGRenderer.m in Sources */,
 				B57BD2252180EAA000463D9F /* PGSimulation.mm in Sources */,
 				B57BD22D2180EC3D00463D9F /* PGEntity.m in Sources */,

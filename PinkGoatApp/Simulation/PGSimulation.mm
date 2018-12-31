@@ -14,7 +14,6 @@
 #import "PGCollisionShapeGraphicsGenerator.h"
 #import "PGMatrixLogger.h"
 
-
 static NSTimeInterval MIN_SIM_ADVANCE_TIME_DELTA_IN_SECONDS = 0.001; // 1 milliseconds.
 static NSTimeInterval MAX_SIM_ADVANCE_TIME_DELTA_IN_SECONDS = 0.1; // 100 millseconds
 static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
@@ -23,6 +22,7 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
 
 @property (assign) int lastIndex;
 @property (assign) NSTimeInterval lastUpdatedTime;
+@property (nonatomic, strong) NSMutableArray<id<PGEventSubscriberProtocol>> *subscribers;
 
 @end
 
@@ -35,6 +35,7 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
         _lastIndex = -1;
         _graphicalShapesRegistery = [[NSMutableDictionary alloc] init];
         _terminated = NO;
+        _subscribers = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -89,6 +90,10 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
 - (void)stepSimulationWithTimeDelta:(NSTimeInterval)timeDelta
 {
     self->physicsWorld->stepSimulation(timeDelta);
+    // Send update event to all subscribers (e.g., controllers, etc.) of the simulation.
+    for (id<PGEventSubscriberProtocol> subscriber in self.subscribers) {
+        [subscriber update];
+    }
 }
 
 - (void)syncPhysicsToGraphics
@@ -110,7 +115,7 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
     }
 }
 
-/*!
+/*!å
  @abstract Generate graphical representation for collision shapes that do not have graphics yet (i.e., not imported from files)
  @param world The Physics world whose shapes we try to generate graphics for.
  */
@@ -139,6 +144,13 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
     [self createGroundPlane];
     [self generateGraphicsForCollisionObjectsInWorld:physicsWorld];
     [self setupScene];
+}
+
+- (void)addUpdateSubscription:(id<PGEventSubscriberProtocol>)subscriber
+{
+    if (![self.subscribers containsObject:subscriber]) {
+        [self.subscribers addObject:subscriber];
+    }
 }
 
 - (void)createGroundPlane
