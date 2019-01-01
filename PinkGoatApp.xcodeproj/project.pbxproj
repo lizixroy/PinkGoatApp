@@ -196,6 +196,7 @@
 		B5B7A5EE21DAEAA9008495B9 /* PGTimeSeriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGTimeSeriesViewController.h; sourceTree = "<group>"; };
 		B5B7A5EF21DAEAA9008495B9 /* PGTimeSeriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGTimeSeriesViewController.m; sourceTree = "<group>"; };
 		B5B7A5F121DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PGTimeSeriesViewController.storyboard; sourceTree = "<group>"; };
+		B5B7A5F321DB1E63008495B9 /* PGRobotSubscriptionProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotSubscriptionProtocols.h; sourceTree = "<group>"; };
 		B5E35467217BA2510034FB97 /* PGShapeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShapeFactory.h; sourceTree = "<group>"; };
 		B5E35468217BA2510034FB97 /* PGShapeFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGShapeFactory.mm; sourceTree = "<group>"; };
 		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
@@ -328,6 +329,7 @@
 				B57BD22C2180EC3D00463D9F /* PGEntity.m */,
 				B5311BDB21D7F02200212FE9 /* PGRobot.h */,
 				B5311BDC21D7F02200212FE9 /* PGRobot.mm */,
+				B5B7A5F321DB1E63008495B9 /* PGRobotSubscriptionProtocols.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";

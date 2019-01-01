@@ -12,7 +12,7 @@
 @interface PGTimeSeriesViewController ()
 @property (weak) IBOutlet PGTimeSeriesView *timeSeriesView;
 @property (weak) IBOutlet NSTableView *variablesTableView;
-@property (nonatomic, strong) NSMutableArray<NSNumber *> *jointVariables;
+@property (nonatomic, assign) NSUInteger jointCount;
 @end
 
 @implementation PGTimeSeriesViewController
@@ -22,12 +22,17 @@
     // Do view setup here.
     self.variablesTableView.delegate = self;
     self.variablesTableView.dataSource = self;
+    [self.timeSeriesView setupWithJointCount:self.jointCount];
 }
 
-- (void)setupWithJointVariables:(NSMutableArray<NSNumber *> *)jointVariables
+- (void)setupWithJointCount:(NSUInteger)jointCount
 {
-    self.jointVariables = jointVariables;
-    [self.timeSeriesView setupWithAngles:self.jointVariables];
+    self.jointCount = jointCount;
+}
+
+- (void)updateWithJointVariables:(NSArray<NSNumber *> *)jointVariables {
+    [self.timeSeriesView updateWithJointVariables:jointVariables];
+    [self.timeSeriesView setNeedsDisplay:YES];
 }
 
 @end

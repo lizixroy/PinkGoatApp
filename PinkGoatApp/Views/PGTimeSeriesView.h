@@ -14,15 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSMutableArray<NSNumber *> *jointAngles;
 
-/**
- Instantiate new time series view with jiont angles expressed in radians
-
- @param frameRect frame
- @param jointAngles angles in radians
- */
-- (instancetype)initWithFrame:(NSRect)frameRect jointAngles:(NSMutableArray<NSNumber *> *)jointAngles;
-- (void)setupWithAngles:(NSMutableArray<NSNumber *> *)jointAngles;
-- (void)update;
+- (void)setupWithJointCount:(NSUInteger)jointCount;
+- (void)updateWithJointVariables:(NSArray<NSNumber *> *)jointVariables;
 
 @end
 

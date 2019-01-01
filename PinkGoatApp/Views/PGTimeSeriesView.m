@@ -24,36 +24,27 @@ static CGFloat PADDING = 10.0f;
 
 @implementation PGTimeSeriesView
 
-- (void)setupWithAngles:(NSMutableArray<NSNumber *> *)jointAngles
+- (void)setupWithJointCount:(NSUInteger)jointCount
 {
-    _jointAngles = jointAngles;
+    _jointAngles = [[NSMutableArray alloc] init];
     _lines = [[NSMutableArray alloc] init];
     NSArray *colors = [self makeColorsForNumberOfLines:_lines.count];
-    for (int i = 0; i < jointAngles.count; i++) {
+    for (int i = 0; i < jointCount; i++) {
         _lineBufferSize = self.frame.size.width;
         NSColor *color = colors[i];
         PGTimeSeriesLine *line = [[PGTimeSeriesLine alloc] initWithBufferSize:self.lineBufferSize color:color];
         [_lines addObject:line];
+        // insert default value 0 into joint angles array.
+        [_jointAngles addObject:@0];
     }
     self.wantsLayer = YES;
     self.layer.backgroundColor = NSColor.whiteColor.CGColor;
 }
 
-- (instancetype)initWithFrame:(NSRect)frameRect
-                  jointAngles:(NSMutableArray<NSNumber *> *)jointAngles;
+- (void)updateWithJointVariables:(NSArray<NSNumber *> *)jointVariables
 {
-    self = [super initWithFrame:frameRect];
-    if (self) {
-        [self setupWithAngles:jointAngles];
-        
-    }
-    return self;
-}
-
-- (void)update
-{
-    for (int i = 0; i < self.jointAngles.count; i++) {
-        NSNumber *angle = self.jointAngles[i];
+    for (int i = 0; i < jointVariables.count; i++) {
+        NSNumber *angle = jointVariables[i];
         PGTimeSeriesLine *line = [self.lines objectAtIndex:i];
         [line insertValue:angle];
     }

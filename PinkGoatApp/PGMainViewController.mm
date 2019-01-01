@@ -137,10 +137,13 @@
     if (viewController == nil) {
         return;
     }
-    [viewController setupWithJointVariables:robot.jointVariables];
+    [viewController setupWithJointCount:robot->multiBody->getNumDofs()];
     NSWindow *window = [NSWindow windowWithContentViewController:viewController];
     NSWindowController *wc = [[NSWindowController alloc] initWithWindow:window];
     [wc showWindow:wc];
+    [robot addJointVariableSubscriber:viewController];
 }
+    
+ 
 
 @end

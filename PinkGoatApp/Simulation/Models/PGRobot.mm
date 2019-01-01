@@ -12,6 +12,7 @@
 @interface PGRobot()
 
 @property (nonatomic, strong) NSMutableArray<id<PGRobotController>> *jointControllers;
+@property (nonatomic, strong) NSMutableArray<id<PGRobotJointVariablesSubscriber>> *jointVariableSubscribers;
 
 @end
 
@@ -26,6 +27,7 @@
         self->multiBodyTree = multiBodyTree;
         _jointControllers = [[NSMutableArray alloc] init];
         _jointVariables = [[NSMutableArray alloc] init];
+        _jointVariableSubscribers = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -51,9 +53,15 @@
         NSLog(@"joint_force:");
         for (int i = 0; i < joint_force.size(); i++) {
             NSLog(@"%f", joint_force[i]);
-            self->multiBody->addJointTorque(i, joint_force(i));
+//            self->multiBody->addJointTorque(i, joint_force(i));
         }
     }
+    
+    // update subscribers of this robot
+    for (id<PGRobotJointVariablesSubscriber> subscriber in self.jointVariableSubscribers) {
+        [subscriber updateWithJointVariables:[NSArray arrayWithArray:_jointVariables]];
+    }
+    
 }
 
 - (void)addJointControllers
@@ -68,6 +76,14 @@
                                                                             derivativeGain:kd];
         [self.jointControllers addObject:pidController];
     }
+}
+
+- (void)addJointVariableSubscriber:(id<PGRobotJointVariablesSubscriber>)subscriber
+{
+    if ([self.jointVariableSubscribers containsObject:subscriber]) {
+        return;
+    }
+    [self.jointVariableSubscribers addObject:subscriber];
 }
 
 @end
