@@ -56,6 +56,8 @@
 		B58DDD6F2186696100D46E49 /* NSColor+Vector.m in Sources */ = {isa = PBXBuildFile; fileRef = B58DDD6E2186696100D46E49 /* NSColor+Vector.m */; };
 		B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5998FC1217E8B5500413FDC /* cylinder.urdf */; };
 		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
+		B5B7A5EC21DAE9D8008495B9 /* PGTimeSeriesLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5E821DAE9D7008495B9 /* PGTimeSeriesLine.m */; };
+		B5B7A5ED21DAE9D8008495B9 /* PGTimeSeriesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5E921DAE9D7008495B9 /* PGTimeSeriesView.m */; };
 		B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGShapeFactory.mm */; };
 		B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */; };
 		B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5E3553B217D8D090034FB97 /* cougarbot.urdf */; };
@@ -185,6 +187,10 @@
 		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
 		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
 		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
+		B5B7A5E821DAE9D7008495B9 /* PGTimeSeriesLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTimeSeriesLine.m; sourceTree = "<group>"; };
+		B5B7A5E921DAE9D7008495B9 /* PGTimeSeriesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTimeSeriesView.m; sourceTree = "<group>"; };
+		B5B7A5EA21DAE9D7008495B9 /* PGTimeSeriesLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTimeSeriesLine.h; sourceTree = "<group>"; };
+		B5B7A5EB21DAE9D8008495B9 /* PGTimeSeriesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTimeSeriesView.h; sourceTree = "<group>"; };
 		B5E35467217BA2510034FB97 /* PGShapeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShapeFactory.h; sourceTree = "<group>"; };
 		B5E35468217BA2510034FB97 /* PGShapeFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGShapeFactory.mm; sourceTree = "<group>"; };
 		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
@@ -343,6 +349,7 @@
 		B5859C43213F83EF00C71222 /* PinkGoatApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5B7A5E721DAE9CB008495B9 /* Views */,
 				B5C00F7C21A13A6800B78120 /* Controllers */,
 				B58DDD7121881B3200D46E49 /* Physics */,
 				B57BD2222180EA8C00463D9F /* Simulation */,
@@ -464,6 +471,17 @@
 				B58DDD6E2186696100D46E49 /* NSColor+Vector.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B5B7A5E721DAE9CB008495B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5B7A5EB21DAE9D8008495B9 /* PGTimeSeriesView.h */,
+				B5B7A5E921DAE9D7008495B9 /* PGTimeSeriesView.m */,
+				B5B7A5EA21DAE9D7008495B9 /* PGTimeSeriesLine.h */,
+				B5B7A5E821DAE9D7008495B9 /* PGTimeSeriesLine.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B5C00F7C21A13A6800B78120 /* Controllers */ = {
@@ -657,6 +675,7 @@
 				B5859C92213F971A00C71222 /* PGMainViewController.mm in Sources */,
 				B526B227214A263D00FBA6D7 /* tiny_obj_loader.cpp in Sources */,
 				B5859C88213F87B800C71222 /* BulletDynamicsWorldFactory.mm in Sources */,
+				B5B7A5EC21DAE9D8008495B9 /* PGTimeSeriesLine.m in Sources */,
 				B57BD2282180EB9200463D9F /* PGScene.m in Sources */,
 				B526B14921438C5000FBA6D7 /* urdfStringSplit.mm in Sources */,
 				B526B224214A25CB00FBA6D7 /* b3ResourcePath.cpp in Sources */,
@@ -669,6 +688,7 @@
 				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
 				B5311BD921D7421F00212FE9 /* PGPIDController.m in Sources */,
 				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
+				B5B7A5ED21DAE9D8008495B9 /* PGTimeSeriesView.m in Sources */,
 				B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */,
 				B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */,
 				B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */,
