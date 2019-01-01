@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
     btMultiBody* multiBody;
 }
 
+@property (nonatomic, strong, readonly) NSMutableArray<NSNumber *> *jointVariables;
+
 - (instancetype)initWithMultiBodyTree:(btInverseDynamicsBullet3::MultiBodyTree *)multiBodyTree
                             multiBody:(btMultiBody *)multiBody;
 

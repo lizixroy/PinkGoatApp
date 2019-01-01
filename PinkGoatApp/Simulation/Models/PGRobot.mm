@@ -25,6 +25,7 @@
         self->multiBody = multiBody;
         self->multiBodyTree = multiBodyTree;
         _jointControllers = [[NSMutableArray alloc] init];
+        _jointVariables = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -38,6 +39,7 @@
     for (int i = 0; i < num_dofs; i++) {
         q(i) = multiBody->getJointPos(i);
         qdot(i) = multiBody->getJointVel(i);
+        _jointVariables[i] = @(q(i));
         PGPIDController *controller = [self.jointControllers objectAtIndex:i];
         // TODO: need to set the position from user's codebase. For now use 0.
         float reference = 0.0f;

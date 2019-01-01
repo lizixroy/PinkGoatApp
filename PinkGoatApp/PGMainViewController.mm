@@ -27,13 +27,12 @@
 #import "PGSimulation.h"
 #include "btBulletDynamicsCommon.h"
 #import "PGMTKView.h"
-
 #import <SceneKit/SceneKit.h>
 #import "bullet/BulletCollision/btBulletCollisionCommon.h"
-
 #include "BulletInverseDynamics/MultiBodyTreeCreator.hpp"
 #include "BulletInverseDynamics/btMultiBodyTreeCreator.hpp"
 #import "PGRobot.h"
+#import "PGTimeSeriesViewController.h"
 
 @interface PGMainViewController () {
     btMultiBodyDynamicsWorld* m_dynamicsWorld;
@@ -79,6 +78,7 @@
     self.simulation->physicsWorld = m_dynamicsWorld;
     [self importRobotModel];
     [self.simulation beginSimulation];
+    [self showTimeSeriesViewForRobot:self.simulation.robot];
 }
 
 // TODO: move this to model layer.
@@ -128,6 +128,19 @@
     m_solver = new btMultiBodyConstraintSolver;
     m_dynamicsWorld = new btMultiBodyDynamicsWorld(m_dispatcher, m_broadphase, m_solver, m_collisionConfiguration);
     m_dynamicsWorld->setGravity(btVector3(0, 0, -10));
+}
+
+- (void)showTimeSeriesViewForRobot:(PGRobot *)robot
+{
+    NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"PGTimeSeriesViewController" bundle:[NSBundle mainBundle]];
+    PGTimeSeriesViewController *viewController = [storyboard instantiateControllerWithIdentifier:@"PGTimeSeriesViewController"];
+    if (viewController == nil) {
+        return;
+    }
+    [viewController setupWithJointVariables:robot.jointVariables];
+    NSWindow *window = [NSWindow windowWithContentViewController:viewController];
+    NSWindowController *wc = [[NSWindowController alloc] initWithWindow:window];
+    [wc showWindow:wc];
 }
 
 @end

@@ -58,6 +58,8 @@
 		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
 		B5B7A5EC21DAE9D8008495B9 /* PGTimeSeriesLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5E821DAE9D7008495B9 /* PGTimeSeriesLine.m */; };
 		B5B7A5ED21DAE9D8008495B9 /* PGTimeSeriesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5E921DAE9D7008495B9 /* PGTimeSeriesView.m */; };
+		B5B7A5F021DAEAA9008495B9 /* PGTimeSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5EF21DAEAA9008495B9 /* PGTimeSeriesViewController.m */; };
+		B5B7A5F221DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B7A5F121DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard */; };
 		B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGShapeFactory.mm */; };
 		B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */; };
 		B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5E3553B217D8D090034FB97 /* cougarbot.urdf */; };
@@ -191,6 +193,9 @@
 		B5B7A5E921DAE9D7008495B9 /* PGTimeSeriesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTimeSeriesView.m; sourceTree = "<group>"; };
 		B5B7A5EA21DAE9D7008495B9 /* PGTimeSeriesLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTimeSeriesLine.h; sourceTree = "<group>"; };
 		B5B7A5EB21DAE9D8008495B9 /* PGTimeSeriesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTimeSeriesView.h; sourceTree = "<group>"; };
+		B5B7A5EE21DAEAA9008495B9 /* PGTimeSeriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGTimeSeriesViewController.h; sourceTree = "<group>"; };
+		B5B7A5EF21DAEAA9008495B9 /* PGTimeSeriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGTimeSeriesViewController.m; sourceTree = "<group>"; };
+		B5B7A5F121DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PGTimeSeriesViewController.storyboard; sourceTree = "<group>"; };
 		B5E35467217BA2510034FB97 /* PGShapeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShapeFactory.h; sourceTree = "<group>"; };
 		B5E35468217BA2510034FB97 /* PGShapeFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGShapeFactory.mm; sourceTree = "<group>"; };
 		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
@@ -480,6 +485,9 @@
 				B5B7A5E921DAE9D7008495B9 /* PGTimeSeriesView.m */,
 				B5B7A5EA21DAE9D7008495B9 /* PGTimeSeriesLine.h */,
 				B5B7A5E821DAE9D7008495B9 /* PGTimeSeriesLine.m */,
+				B5B7A5EE21DAEAA9008495B9 /* PGTimeSeriesViewController.h */,
+				B5B7A5EF21DAEAA9008495B9 /* PGTimeSeriesViewController.m */,
+				B5B7A5F121DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -639,6 +647,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */,
+				B5B7A5F221DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard in Resources */,
 				B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */,
 				B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */,
 				B5859C4C213F83EF00C71222 /* Main.storyboard in Resources */,
@@ -686,6 +695,7 @@
 				B5EBA40C214ECA7900DB4CD6 /* WavefrontObjConverter.m in Sources */,
 				B5859C47213F83EF00C71222 /* ViewController.swift in Sources */,
 				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
+				B5B7A5F021DAEAA9008495B9 /* PGTimeSeriesViewController.m in Sources */,
 				B5311BD921D7421F00212FE9 /* PGPIDController.m in Sources */,
 				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
 				B5B7A5ED21DAE9D8008495B9 /* PGTimeSeriesView.m in Sources */,
