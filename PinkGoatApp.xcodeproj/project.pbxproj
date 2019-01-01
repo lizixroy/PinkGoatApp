@@ -60,6 +60,8 @@
 		B5B7A5ED21DAE9D8008495B9 /* PGTimeSeriesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5E921DAE9D7008495B9 /* PGTimeSeriesView.m */; };
 		B5B7A5F021DAEAA9008495B9 /* PGTimeSeriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5EF21DAEAA9008495B9 /* PGTimeSeriesViewController.m */; };
 		B5B7A5F221DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B7A5F121DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard */; };
+		B5B7A5F621DB3087008495B9 /* PGJointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5F521DB3087008495B9 /* PGJointTableViewCell.m */; };
+		B5B7A5F821DB30BE008495B9 /* PGJointTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B7A5F721DB30BE008495B9 /* PGJointTableViewCell.xib */; };
 		B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGShapeFactory.mm */; };
 		B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */; };
 		B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5E3553B217D8D090034FB97 /* cougarbot.urdf */; };
@@ -197,6 +199,9 @@
 		B5B7A5EF21DAEAA9008495B9 /* PGTimeSeriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGTimeSeriesViewController.m; sourceTree = "<group>"; };
 		B5B7A5F121DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PGTimeSeriesViewController.storyboard; sourceTree = "<group>"; };
 		B5B7A5F321DB1E63008495B9 /* PGRobotSubscriptionProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotSubscriptionProtocols.h; sourceTree = "<group>"; };
+		B5B7A5F421DB3087008495B9 /* PGJointTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGJointTableViewCell.h; sourceTree = "<group>"; };
+		B5B7A5F521DB3087008495B9 /* PGJointTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGJointTableViewCell.m; sourceTree = "<group>"; };
+		B5B7A5F721DB30BE008495B9 /* PGJointTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PGJointTableViewCell.xib; sourceTree = "<group>"; };
 		B5E35467217BA2510034FB97 /* PGShapeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShapeFactory.h; sourceTree = "<group>"; };
 		B5E35468217BA2510034FB97 /* PGShapeFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGShapeFactory.mm; sourceTree = "<group>"; };
 		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
@@ -490,6 +495,9 @@
 				B5B7A5EE21DAEAA9008495B9 /* PGTimeSeriesViewController.h */,
 				B5B7A5EF21DAEAA9008495B9 /* PGTimeSeriesViewController.m */,
 				B5B7A5F121DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard */,
+				B5B7A5F421DB3087008495B9 /* PGJointTableViewCell.h */,
+				B5B7A5F521DB3087008495B9 /* PGJointTableViewCell.m */,
+				B5B7A5F721DB30BE008495B9 /* PGJointTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -655,6 +663,7 @@
 				B5859C4C213F83EF00C71222 /* Main.storyboard in Resources */,
 				B5EBA406214E1ADC00DB4CD6 /* kuka_iiwa in Resources */,
 				B5859C63213F849A00C71222 /* bullet in Resources */,
+				B5B7A5F821DB30BE008495B9 /* PGJointTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +712,7 @@
 				B5B7A5ED21DAE9D8008495B9 /* PGTimeSeriesView.m in Sources */,
 				B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */,
 				B5EDE187216957DC00EC3CA0 /* PGMathUtilities.m in Sources */,
+				B5B7A5F621DB3087008495B9 /* PGJointTableViewCell.m in Sources */,
 				B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */,
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,

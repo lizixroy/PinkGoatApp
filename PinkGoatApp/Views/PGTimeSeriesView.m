@@ -24,11 +24,10 @@ static CGFloat PADDING = 10.0f;
 
 @implementation PGTimeSeriesView
 
-- (void)setupWithJointCount:(NSUInteger)jointCount
+- (void)setupWithJointCount:(NSUInteger)jointCount lineColors:(NSArray<NSColor *> *)colors
 {
     _jointAngles = [[NSMutableArray alloc] init];
     _lines = [[NSMutableArray alloc] init];
-    NSArray *colors = [self makeColorsForNumberOfLines:_lines.count];
     for (int i = 0; i < jointCount; i++) {
         _lineBufferSize = self.frame.size.width;
         NSColor *color = colors[i];
@@ -104,36 +103,6 @@ static CGFloat PADDING = 10.0f;
         CGFloat h = (angle * height) / M_PI;
         return midY - fabs(h);
     }
-}
-
-- (NSArray<NSColor *> *)makeColorsForNumberOfLines:(NSUInteger)numerOfLines
-{
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    [array addObject:[NSColor colorWithDeviceRed:0.7412 green:0.2118 blue:0.1569 alpha:1.0]]; // red
-    [array addObject:[NSColor colorWithDeviceRed:0.8353 green:0.5373 blue:0.2353 alpha:1.0]]; // orange
-    [array addObject:[NSColor colorWithDeviceRed:0.9529 green:1.0000 blue:0.3686 alpha:1.0]]; // yellow
-    [array addObject:[NSColor colorWithDeviceRed:0.6275 green:0.9059 blue:0.6784 alpha:1.0]]; // green
-    [array addObject:[NSColor colorWithDeviceRed:0.3412 green:0.5725 blue:0.8706 alpha:1.0]]; // blue
-    [array addObject:[NSColor colorWithDeviceRed:0.3725 green:0.0824 blue:0.8980 alpha:1.0]]; // indigo
-    [array addObject:[NSColor colorWithDeviceRed:0.4706 green:0.1804 blue:0.9020 alpha:1.0]]; // purple
-    // Generate random colors for the remaining.
-    
-    if (numerOfLines > array.count) {
-        NSUInteger n = numerOfLines - array.count;
-        for (int i = 0; i < n; i++) {
-            [array addObject:[self generateRandomColor]];
-        }
-    }
-    return [NSArray arrayWithArray:array];
-}
-
-- (NSColor *)generateRandomColor
-{
-    CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
-    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
-    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
-    NSColor *color = [NSColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
-    return color;
 }
 
 - (void)drawHorizonTalDashLineWithContext:(CGContextRef)context

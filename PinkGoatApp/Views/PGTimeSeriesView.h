@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSMutableArray<NSNumber *> *jointAngles;
 
-- (void)setupWithJointCount:(NSUInteger)jointCount;
+- (void)setupWithJointCount:(NSUInteger)jointCount lineColors:(NSArray<NSColor *> *)colors;
 - (void)updateWithJointVariables:(NSArray<NSNumber *> *)jointVariables;
 
 @end
