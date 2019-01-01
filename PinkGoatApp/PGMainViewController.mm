@@ -137,7 +137,7 @@
     if (viewController == nil) {
         return;
     }
-    [viewController setupWithJointCount:robot->multiBody->getNumDofs()];
+    [viewController setupWithJointCount:robot->multiBody->getNumDofs() robot:robot];
     NSWindow *window = [NSWindow windowWithContentViewController:viewController];
     NSWindowController *wc = [[NSWindowController alloc] initWithWindow:window];
     [wc showWindow:wc];

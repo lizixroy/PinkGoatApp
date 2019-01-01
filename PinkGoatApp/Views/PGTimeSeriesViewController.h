@@ -8,12 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PGRobotSubscriptionProtocols.h"
+#import "PGRobot.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PGTimeSeriesViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, PGRobotJointVariablesSubscriber>
 
-- (void)setupWithJointCount:(NSUInteger)jointCount;
+@property (weak) PGRobot *robot;
+
+- (void)setupWithJointCount:(NSUInteger)jointCount robot:(PGRobot *)robot;
 
 @end
 

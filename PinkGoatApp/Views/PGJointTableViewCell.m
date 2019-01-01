@@ -10,6 +10,16 @@
 
 @implementation PGJointTableViewCell
 
+- (IBAction)sliderValueChanged:(id)sender {
+    if (![sender isKindOfClass:[NSSlider class]]) {
+        return;
+    }
+    NSSlider *slider = sender;
+    if (self.sliderDidChangeValue != nil) {
+        self.sliderDidChangeValue(slider.floatValue);
+    }
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     

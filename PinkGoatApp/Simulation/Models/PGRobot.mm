@@ -25,6 +25,12 @@
     if (self) {
         self->multiBody = multiBody;
         self->multiBodyTree = multiBodyTree;
+        _desiredJointVariables = [[NSMutableArray alloc] init];
+        int numberOfJoints = multiBody->getNumDofs();
+        // Set robot to home position by default.
+        for (int i = 0; i < numberOfJoints; i++) {
+            [_desiredJointVariables addObject:@0];
+        }
         _jointControllers = [[NSMutableArray alloc] init];
         _jointVariableSubscribers = [[NSMutableArray alloc] init];
     }
@@ -33,7 +39,6 @@
 
 - (void)update
 {
-    NSLog(@"Receive update from simulation");
     const int num_dofs = multiBody->getNumDofs();
     btInverseDynamics::vecx nu(num_dofs), qdot(num_dofs), q(num_dofs), joint_force(num_dofs);
     btInverseDynamics::vecx pd_control(num_dofs);
@@ -44,7 +49,8 @@
         [jointVariables addObject: @(q(i))];
         PGPIDController *controller = [self.jointControllers objectAtIndex:i];
         // TODO: need to set the position from user's codebase. For now use 0.
-        float reference = 0.0f;
+        float reference = self.desiredJointVariables[i].floatValue;
+        
         nu(i) = [controller computeControlSignalWithReference:reference
                                                             currentPosition:q(i)
                                                             currentVelocity:qdot(i)];
@@ -53,7 +59,7 @@
         NSLog(@"joint_force:");
         for (int i = 0; i < joint_force.size(); i++) {
             NSLog(@"%f", joint_force[i]);
-//            self->multiBody->addJointTorque(i, joint_force(i));
+            self->multiBody->addJointTorque(i, joint_force(i));
         }
     }
     

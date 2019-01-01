@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) IBOutlet NSSlider *slider;
 @property (weak) IBOutlet NSTextField *desiredJointAngleTextField;
 
+@property (nonatomic, strong) void (^sliderDidChangeValue)(float);
 
 @end
 

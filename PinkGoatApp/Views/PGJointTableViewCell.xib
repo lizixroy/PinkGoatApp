@@ -30,7 +30,10 @@
                 </customView>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B6B-AA-h8G">
                     <rect key="frame" x="3" y="30" width="305" height="19"/>
-                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="U8O-UU-rUE"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="U8O-UU-rUE"/>
+                    <connections>
+                        <action selector="sliderValueChanged:" target="N20-EG-BAR" id="XXs-mt-V0I"/>
+                    </connections>
                 </slider>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JgU-N4-Gtv">
                     <rect key="frame" x="5" y="5" width="50" height="22"/>

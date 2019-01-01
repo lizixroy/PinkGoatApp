@@ -35,8 +35,10 @@
 }
 
 - (void)setupWithJointCount:(NSUInteger)jointCount
+                      robot:(PGRobot *)robot
 {
     self.jointCount = jointCount;
+    self.robot = robot;
 }
 
 - (void)updateWithJointVariables:(NSArray<NSNumber *> *)jointVariables {
@@ -89,6 +91,13 @@
     cell.jointNameLabel.stringValue = jointName;
     cell.colorView.wantsLayer = YES;
     cell.colorView.layer.backgroundColor = self.lineColors[row].CGColor;
+    cell.slider.minValue = -M_PI;
+    cell.slider.maxValue = M_PI;
+    cell.slider.floatValue = self.robot.desiredJointVariables[row].floatValue;
+    __weak PGTimeSeriesViewController *weakSelf = self;
+    cell.sliderDidChangeValue = ^(float value) {
+        weakSelf.robot.desiredJointVariables[row] = [NSNumber numberWithFloat:value];
+    };
     return cell;
 }
 

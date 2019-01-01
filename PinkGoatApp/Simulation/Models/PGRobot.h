@@ -22,7 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
     btMultiBody* multiBody;
 }
 
-//@property (nonatomic, strong, readonly) NSMutableArray<NSNumber *> *jointVariables;
+// Desired joint variabels for the robot. This can be used to control the robot's configuration
+@property (nonatomic, strong, readonly) NSMutableArray<NSNumber *> *desiredJointVariables;
 
 - (instancetype)initWithMultiBodyTree:(btInverseDynamicsBullet3::MultiBodyTree *)multiBodyTree
                             multiBody:(btMultiBody *)multiBody;

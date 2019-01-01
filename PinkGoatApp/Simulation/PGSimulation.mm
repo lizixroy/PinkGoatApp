@@ -62,6 +62,7 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
     [self setup];
     __weak PGSimulation *weakSelf = self;
     self.renderer.frameCompletionAtSystemTime = ^(NSTimeInterval time) {
+        NSLog(@"Delegate called");
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf advanceSimulationWithSystemTime:time];
         });
