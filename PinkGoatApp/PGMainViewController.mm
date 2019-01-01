@@ -70,10 +70,11 @@
     _view.delegate = self.renderer;
     _view.allowsCameraControl = YES;
     _view.loops = YES;
+    _view.playing = YES;
     
     _simulation = [[PGSimulation alloc] initWithScene:scene];
     _simulation.renderer = self.renderer;
-
+    
     [self createEmptyDynamicsWorld];
     self.simulation->physicsWorld = m_dynamicsWorld;
     [self importRobotModel];
@@ -143,7 +144,5 @@
     [wc showWindow:wc];
     [robot addJointVariableSubscriber:viewController];
 }
-    
- 
 
 @end
