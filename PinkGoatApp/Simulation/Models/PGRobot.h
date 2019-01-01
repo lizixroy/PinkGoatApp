@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
     btMultiBody* multiBody;
 }
 
-@property (nonatomic, strong, readonly) NSMutableArray<NSNumber *> *jointVariables;
+//@property (nonatomic, strong, readonly) NSMutableArray<NSNumber *> *jointVariables;
 
 - (instancetype)initWithMultiBodyTree:(btInverseDynamicsBullet3::MultiBodyTree *)multiBodyTree
                             multiBody:(btMultiBody *)multiBody;
@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
  Add a subscriber to receive updates for joint variables. A subscriber will be added once, subsequent call with the
  same subscriber instance will be ignored.
  
- @param subscriber
+ @param subscriber to be added
  */
 - (void)addJointVariableSubscriber:(id<PGRobotJointVariablesSubscriber>)subscriber;
 
