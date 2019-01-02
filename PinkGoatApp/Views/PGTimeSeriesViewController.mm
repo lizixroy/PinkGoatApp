@@ -95,9 +95,16 @@
     cell.slider.maxValue = M_PI;
     cell.slider.floatValue = self.robot.desiredJointVariables[row].floatValue;
     __weak PGTimeSeriesViewController *weakSelf = self;
+    __weak PGJointTableViewCell *weakCell = cell;
     cell.sliderDidChangeValue = ^(float value) {
         weakSelf.robot.desiredJointVariables[row] = [NSNumber numberWithFloat:value];
+        weakCell.desiredJointAngleTextField.stringValue = [NSString stringWithFormat:@"%.04f", value];
     };
+    cell.jointValueDidChange = ^(float jointAngle) {
+        weakSelf.robot.desiredJointVariables[row] = [NSNumber numberWithFloat:jointAngle];
+        weakCell.slider.floatValue = jointAngle;
+    };
+    cell.desiredJointAngleTextField.stringValue = [NSString stringWithFormat:@"%.04f",  self.robot.desiredJointVariables[row].floatValue];    
     return cell;
 }
 

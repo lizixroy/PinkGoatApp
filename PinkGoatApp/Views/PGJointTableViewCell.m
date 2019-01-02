@@ -20,6 +20,16 @@
     }
 }
 
+- (IBAction)textfieldValueDidChange:(id)sender {
+    if (![sender isKindOfClass:[NSTextField class]]) {
+        return;
+    }
+    NSTextField *textField = sender;
+    if (self.jointValueDidChange != nil) {
+        self.jointValueDidChange(textField.floatValue);
+    }
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
