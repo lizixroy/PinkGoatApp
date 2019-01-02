@@ -12,6 +12,7 @@
 @interface PGRobot()
 
 @property (nonatomic, strong) NSMutableArray<id<PGRobotController>> *jointControllers;
+@property (nonatomic, strong) NSMutableArray<id<PGRobotJointVariablesSubscriber>> *jointVariableSubscribers;
 
 @end
 
@@ -24,23 +25,32 @@
     if (self) {
         self->multiBody = multiBody;
         self->multiBodyTree = multiBodyTree;
+        _desiredJointVariables = [[NSMutableArray alloc] init];
+        int numberOfJoints = multiBody->getNumDofs();
+        // Set robot to home position by default.
+        for (int i = 0; i < numberOfJoints; i++) {
+            [_desiredJointVariables addObject:@0];
+        }
         _jointControllers = [[NSMutableArray alloc] init];
+        _jointVariableSubscribers = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (void)update
 {
-    NSLog(@"Receive update from simulation");
     const int num_dofs = multiBody->getNumDofs();
     btInverseDynamics::vecx nu(num_dofs), qdot(num_dofs), q(num_dofs), joint_force(num_dofs);
     btInverseDynamics::vecx pd_control(num_dofs);
+    NSMutableArray<NSNumber *> *jointVariables = [[NSMutableArray alloc] init];
     for (int i = 0; i < num_dofs; i++) {
         q(i) = multiBody->getJointPos(i);
         qdot(i) = multiBody->getJointVel(i);
+        [jointVariables addObject: @(q(i))];
         PGPIDController *controller = [self.jointControllers objectAtIndex:i];
         // TODO: need to set the position from user's codebase. For now use 0.
-        float reference = 0.0f;
+        float reference = self.desiredJointVariables[i].floatValue;
+        
         nu(i) = [controller computeControlSignalWithReference:reference
                                                             currentPosition:q(i)
                                                             currentVelocity:qdot(i)];
@@ -52,6 +62,12 @@
             self->multiBody->addJointTorque(i, joint_force(i));
         }
     }
+    
+    // update subscribers of this robot
+    for (id<PGRobotJointVariablesSubscriber> subscriber in self.jointVariableSubscribers) {
+        [subscriber updateWithJointVariables:[NSArray arrayWithArray:jointVariables]];
+    }
+    
 }
 
 - (void)addJointControllers
@@ -66,6 +82,14 @@
                                                                             derivativeGain:kd];
         [self.jointControllers addObject:pidController];
     }
+}
+
+- (void)addJointVariableSubscriber:(id<PGRobotJointVariablesSubscriber>)subscriber
+{
+    if ([self.jointVariableSubscribers containsObject:subscriber]) {
+        return;
+    }
+    [self.jointVariableSubscribers addObject:subscriber];
 }
 
 @end

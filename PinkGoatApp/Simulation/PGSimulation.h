@@ -55,8 +55,10 @@
  Add a subscriber to update subscribers to receive update event for every step of the simulation.
  One subscriber will only be added once. After the first time, subsequent subscriptions calls will be ignored.
 
- @param subscriber
+ @param subscriber to be added.
  */
 - (void)addUpdateSubscription:(id<PGEventSubscriberProtocol>)subscriber;
+
+
 
 @end

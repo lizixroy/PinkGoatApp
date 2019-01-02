@@ -11,14 +11,19 @@
 #import "BulletInverseDynamics/MultiBodyTreeCreator.hpp"
 #import "BulletDynamics/Featherstone/btMultiBody.h"
 #import "PGEventSubscriber.h"
+#import "PGRobotSubscriptionProtocols.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PGRobot : PGEntity <PGEventSubscriberProtocol>
 {
+    @public
     btInverseDynamicsBullet3::MultiBodyTree *multiBodyTree;
     btMultiBody* multiBody;
 }
+
+// Desired joint variabels for the robot. This can be used to control the robot's configuration
+@property (nonatomic, strong, readonly) NSMutableArray<NSNumber *> *desiredJointVariables;
 
 - (instancetype)initWithMultiBodyTree:(btInverseDynamicsBullet3::MultiBodyTree *)multiBodyTree
                             multiBody:(btMultiBody *)multiBody;
@@ -28,6 +33,15 @@ NS_ASSUME_NONNULL_BEGIN
  Add PID controllers to robot's joints.
  */
 - (void)addJointControllers;
+
+
+/**
+ Add a subscriber to receive updates for joint variables. A subscriber will be added once, subsequent call with the
+ same subscriber instance will be ignored.
+ 
+ @param subscriber to be added
+ */
+- (void)addJointVariableSubscriber:(id<PGRobotJointVariablesSubscriber>)subscriber;
 
 @end
 
