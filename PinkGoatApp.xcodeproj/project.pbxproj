@@ -62,6 +62,7 @@
 		B5B7A5F221DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B7A5F121DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard */; };
 		B5B7A5F621DB3087008495B9 /* PGJointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5F521DB3087008495B9 /* PGJointTableViewCell.m */; };
 		B5B7A5F821DB30BE008495B9 /* PGJointTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B7A5F721DB30BE008495B9 /* PGJointTableViewCell.xib */; };
+		B5DBF7BA220556330054D647 /* KUKA in Resources */ = {isa = PBXBuildFile; fileRef = B5DBF7B9220556330054D647 /* KUKA */; };
 		B5E35469217BA2510034FB97 /* PGShapeFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E35468217BA2510034FB97 /* PGShapeFactory.mm */; };
 		B5E3546C217D33520034FB97 /* PGObjcMathUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5E3546B217D33520034FB97 /* PGObjcMathUtilities.mm */; };
 		B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5E3553B217D8D090034FB97 /* cougarbot.urdf */; };
@@ -202,6 +203,7 @@
 		B5B7A5F421DB3087008495B9 /* PGJointTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGJointTableViewCell.h; sourceTree = "<group>"; };
 		B5B7A5F521DB3087008495B9 /* PGJointTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGJointTableViewCell.m; sourceTree = "<group>"; };
 		B5B7A5F721DB30BE008495B9 /* PGJointTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PGJointTableViewCell.xib; sourceTree = "<group>"; };
+		B5DBF7B9220556330054D647 /* KUKA */ = {isa = PBXFileReference; lastKnownFileType = folder; path = KUKA; sourceTree = "<group>"; };
 		B5E35467217BA2510034FB97 /* PGShapeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGShapeFactory.h; sourceTree = "<group>"; };
 		B5E35468217BA2510034FB97 /* PGShapeFactory.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGShapeFactory.mm; sourceTree = "<group>"; };
 		B5E3546A217D33520034FB97 /* PGObjcMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGObjcMathUtilities.h; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 		B5E3553A217D8CFB0034FB97 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B5DBF7B9220556330054D647 /* KUKA */,
 				B5998FC1217E8B5500413FDC /* cylinder.urdf */,
 				B5E3553B217D8D090034FB97 /* cougarbot.urdf */,
 			);
@@ -659,6 +662,7 @@
 				B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */,
 				B5B7A5F221DAEAC4008495B9 /* PGTimeSeriesViewController.storyboard in Resources */,
 				B5859C49213F83EF00C71222 /* Assets.xcassets in Resources */,
+				B5DBF7BA220556330054D647 /* KUKA in Resources */,
 				B5E3553C217D8D090034FB97 /* cougarbot.urdf in Resources */,
 				B5859C4C213F83EF00C71222 /* Main.storyboard in Resources */,
 				B5EBA406214E1ADC00DB4CD6 /* kuka_iiwa in Resources */,

@@ -84,11 +84,10 @@
 
 // TODO: move this to model layer.
 - (void)importRobotModel {
-    
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *modelPath= [bundle pathForResource:@"KUKA/model" ofType:@"urdf"];
     BulletURDFImporter u2b(NULL,0,1,0);
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"cougarbot" ofType:@"urdf"];
-//    bool loadOk = u2b.loadURDF(path.UTF8String);// lwr / kuka.urdf");
-    bool loadOk = u2b.loadURDF("/Users/royli/Documents/projects/bullet3/data/kuka_iiwa/model.urdf");// lwr / kuka.urdf");
+    bool loadOk = u2b.loadURDF(modelPath.UTF8String);
     if (loadOk)
     {
         // Creating physical representation.
