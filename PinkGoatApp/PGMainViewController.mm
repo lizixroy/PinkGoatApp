@@ -83,17 +83,20 @@
 }
 
 // TODO: move this to model layer.
-- (void)importRobotModel {
+- (void)importRobotModel
+{
     NSBundle *bundle = [NSBundle mainBundle];
-    NSString *modelPath= [bundle pathForResource:@"KUKA/model" ofType:@"urdf"];
+    NSString *modelPath= [bundle pathForResource:@"gripper/wsg50_with_r2d2_gripper" ofType:@"sdf"];
     BulletURDFImporter u2b(NULL,0,1,0);
-    bool loadOk = u2b.loadURDF(modelPath.UTF8String);
+    bool loadOk = u2b.loadSDF(modelPath.UTF8String);
+    
     if (loadOk)
     {
         // Creating physical representation.
         MyMultiBodyCreator creation;
         btTransform identityTrans;
         identityTrans.setIdentity();
+        u2b.activateModel(0);
         ConvertURDF2Bullet(u2b, creation, identityTrans, m_dynamicsWorld, true,u2b.getPathPrefix(), self.simulation);
         for (int i = 0; i < u2b.getNumAllocatedCollisionShapes(); i++)
         {
@@ -117,6 +120,12 @@
     [robot addJointControllers];
     self.simulation.robot = robot;
     [self.simulation addUpdateSubscription:robot];
+}
+
+- (void)addGripper
+{
+    
+//    m_robotSim.loadSDF("gripper/wsg50_with_r2d2_gripper.sdf", results);
 }
 
 - (void)createEmptyDynamicsWorld
