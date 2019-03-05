@@ -43,26 +43,26 @@
     btInverseDynamics::vecx nu(num_dofs), qdot(num_dofs), q(num_dofs), joint_force(num_dofs);
     btInverseDynamics::vecx pd_control(num_dofs);
     NSMutableArray<NSNumber *> *jointVariables = [[NSMutableArray alloc] init];
+    
     for (int i = 0; i < num_dofs; i++) {
         q(i) = multiBody->getJointPos(i);
         qdot(i) = multiBody->getJointVel(i);
         [jointVariables addObject: @(q(i))];
+        if (i >= self.jointControllers.count) {
+            continue;
+        }
         PGPIDController *controller = [self.jointControllers objectAtIndex:i];
         // TODO: need to set the position from user's codebase. For now use 0.
         float reference = self.desiredJointVariables[i].floatValue;
-        
         nu(i) = [controller computeControlSignalWithReference:reference
                                                             currentPosition:q(i)
                                                             currentVelocity:qdot(i)];
     }
     if (self->multiBodyTree->calculateInverseDynamics(q, qdot, nu, &joint_force) != -1) {
-        NSLog(@"joint_force:");
         for (int i = 0; i < joint_force.size(); i++) {
-            NSLog(@"%f", joint_force[i]);
-            self->multiBody->addJointTorque(i, joint_force(i));
+//            self->multiBody->addJointTorque(i, joint_force(i));
         }
     }
-    
     // update subscribers of this robot
     for (id<PGRobotJointVariablesSubscriber> subscriber in self.jointVariableSubscribers) {
         [subscriber updateWithJointVariables:[NSArray arrayWithArray:jointVariables]];

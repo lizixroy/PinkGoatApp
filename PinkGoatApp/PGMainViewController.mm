@@ -32,6 +32,7 @@
 #include "BulletInverseDynamics/MultiBodyTreeCreator.hpp"
 #include "BulletInverseDynamics/btMultiBodyTreeCreator.hpp"
 #import "PGRobot.h"
+#import "Gripper.h"
 #import "PGTimeSeriesViewController.h"
 
 @interface PGMainViewController () {
@@ -77,9 +78,12 @@
     
     [self createEmptyDynamicsWorld];
     self.simulation->physicsWorld = m_dynamicsWorld;
-    [self importRobotModel];
+//    [self importRobotModel];
+    [self createGripper];
     [self.simulation beginSimulation];
     [self showTimeSeriesViewForRobot:self.simulation.robot];
+    
+    [self startFakeCommandSender];
 }
 
 // TODO: move this to model layer.
@@ -122,10 +126,42 @@
     [self.simulation addUpdateSubscription:robot];
 }
 
-- (void)addGripper
+- (void)createGripper
 {
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *modelPath= [bundle pathForResource:@"gripper/wsg50_with_r2d2_gripper" ofType:@"sdf"];
+    BulletURDFImporter u2b(NULL,0,1,0);
+    bool loadOk = u2b.loadSDF(modelPath.UTF8String);
     
-//    m_robotSim.loadSDF("gripper/wsg50_with_r2d2_gripper.sdf", results);
+    if (loadOk)
+    {
+        // Creating physical representation.
+        MyMultiBodyCreator creation;
+        btTransform identityTrans;
+        identityTrans.setIdentity();
+        u2b.activateModel(0);
+        ConvertURDF2Bullet(u2b, creation, identityTrans, m_dynamicsWorld, true,u2b.getPathPrefix(), self.simulation);
+        for (int i = 0; i < u2b.getNumAllocatedCollisionShapes(); i++)
+        {
+            m_collisionShapes.push_back(u2b.getAllocatedCollisionShape(i));
+        }
+        m_multiBody = creation.getBulletMultiBody();
+    }
+    
+    // Create multibody tree
+    btInverseDynamics::btMultiBodyTreeCreator id_creator;
+    if (-1 == id_creator.createFromBtMultiBody(m_multiBody, false))
+    {
+        b3Error("error creating tree\n");
+    }
+    else
+    {
+        m_multiBodyTree = btInverseDynamics::CreateMultiBodyTree(id_creator);
+    }
+    
+    Gripper *gripper = [[Gripper alloc] initWithMultiBodyTree:m_multiBodyTree multiBody:m_multiBody];
+    self.simulation.robot = gripper;
+    [self.simulation addUpdateSubscription:gripper];
 }
 
 - (void)createEmptyDynamicsWorld
@@ -151,6 +187,17 @@
     NSWindowController *wc = [[NSWindowController alloc] initWithWindow:window];
     [wc showWindow:wc];
     [robot addJointVariableSubscriber:viewController];
+}
+
+// TODO: Implement a Python bridge to receive data from outside of the simiulation
+// For now, let's use this method to send commands to objects inside the simulation
+- (void)startFakeCommandSender
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([self.simulation.robot isKindOfClass: [Gripper class]]) {
+            NSLog(@"Closing the gripper");
+        }
+    });
 }
 
 @end

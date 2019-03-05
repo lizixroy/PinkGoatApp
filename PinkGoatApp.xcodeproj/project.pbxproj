@@ -21,6 +21,7 @@
 		B526B23B214A297100FBA6D7 /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B526B23A214A297100FBA6D7 /* stb_image.cpp */; };
 		B5311BD921D7421F00212FE9 /* PGPIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5311BD821D7421F00212FE9 /* PGPIDController.m */; };
 		B5311BDD21D7F02200212FE9 /* PGRobot.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5311BDC21D7F02200212FE9 /* PGRobot.mm */; };
+		B55AFB20222E41CF003E4C58 /* Gripper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B55AFB1F222E41CF003E4C58 /* Gripper.mm */; };
 		B57BD2252180EAA000463D9F /* PGSimulation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B57BD2242180EAA000463D9F /* PGSimulation.mm */; };
 		B57BD2282180EB9200463D9F /* PGScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B57BD2272180EB9200463D9F /* PGScene.m */; };
 		B57BD22D2180EC3D00463D9F /* PGEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B57BD22C2180EC3D00463D9F /* PGEntity.m */; };
@@ -54,6 +55,7 @@
 		B5859C9C213F9B8300C71222 /* PGRobotFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5859C9B213F9B8300C71222 /* PGRobotFactory.mm */; };
 		B5859C9E213F9CDF00C71222 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5859C9D213F9CDF00C71222 /* SceneKit.framework */; };
 		B58DDD6F2186696100D46E49 /* NSColor+Vector.m in Sources */ = {isa = PBXBuildFile; fileRef = B58DDD6E2186696100D46E49 /* NSColor+Vector.m */; };
+		B58E8C9322151C810063F2A4 /* TLGripperController.m in Sources */ = {isa = PBXBuildFile; fileRef = B58E8C9222151C810063F2A4 /* TLGripperController.m */; };
 		B5998FC2217E8B5500413FDC /* cylinder.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B5998FC1217E8B5500413FDC /* cylinder.urdf */; };
 		B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */; };
 		B5B7A5EC21DAE9D8008495B9 /* PGTimeSeriesLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B7A5E821DAE9D7008495B9 /* PGTimeSeriesLine.m */; };
@@ -135,6 +137,8 @@
 		B5311BDB21D7F02200212FE9 /* PGRobot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobot.h; sourceTree = "<group>"; };
 		B5311BDC21D7F02200212FE9 /* PGRobot.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGRobot.mm; sourceTree = "<group>"; };
 		B5311BDE21D7F58700212FE9 /* PGRobotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotController.h; sourceTree = "<group>"; };
+		B55AFB1E222E41CF003E4C58 /* Gripper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gripper.h; sourceTree = "<group>"; };
+		B55AFB1F222E41CF003E4C58 /* Gripper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Gripper.mm; sourceTree = "<group>"; };
 		B57BD2232180EAA000463D9F /* PGSimulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGSimulation.h; sourceTree = "<group>"; };
 		B57BD2242180EAA000463D9F /* PGSimulation.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGSimulation.mm; sourceTree = "<group>"; };
 		B57BD2262180EB9200463D9F /* PGScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGScene.h; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 		B58DDD6D2186696100D46E49 /* NSColor+Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColor+Vector.h"; sourceTree = "<group>"; };
 		B58DDD6E2186696100D46E49 /* NSColor+Vector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Vector.m"; sourceTree = "<group>"; };
 		B58DDD7221881B4B00D46E49 /* PGPhysicsWorldProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGPhysicsWorldProtocol.h; sourceTree = "<group>"; };
+		B58E8C9122151C810063F2A4 /* TLGripperController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLGripperController.h; sourceTree = "<group>"; };
+		B58E8C9222151C810063F2A4 /* TLGripperController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLGripperController.m; sourceTree = "<group>"; };
 		B5998FC1217E8B5500413FDC /* cylinder.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cylinder.urdf; sourceTree = "<group>"; };
 		B5AC6893217F991E00D0F11F /* PGMatrixLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMatrixLogger.h; sourceTree = "<group>"; };
 		B5AC6894217F991E00D0F11F /* PGMatrixLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMatrixLogger.m; sourceTree = "<group>"; };
@@ -339,6 +345,8 @@
 				B5311BDB21D7F02200212FE9 /* PGRobot.h */,
 				B5311BDC21D7F02200212FE9 /* PGRobot.mm */,
 				B5B7A5F321DB1E63008495B9 /* PGRobotSubscriptionProtocols.h */,
+				B55AFB1E222E41CF003E4C58 /* Gripper.h */,
+				B55AFB1F222E41CF003E4C58 /* Gripper.mm */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -512,6 +520,8 @@
 				B5311BD721D7421F00212FE9 /* PGPIDController.h */,
 				B5311BD821D7421F00212FE9 /* PGPIDController.m */,
 				B5311BDE21D7F58700212FE9 /* PGRobotController.h */,
+				B58E8C9122151C810063F2A4 /* TLGripperController.h */,
+				B58E8C9222151C810063F2A4 /* TLGripperController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -698,6 +708,7 @@
 				B5213397218264F300875C68 /* PGCollisionShapeGraphicsGenerator.mm in Sources */,
 				B521339E2183905500875C68 /* PGMTKView.m in Sources */,
 				B526B14621438BFD00FBA6D7 /* tinyxml2.mm in Sources */,
+				B58E8C9322151C810063F2A4 /* TLGripperController.m in Sources */,
 				B5859C8F213F8D7300C71222 /* BTMultiBodyDynamicsWorldWrapper.mm in Sources */,
 				B5E607B82165B8AE00858EF7 /* PGVertexObject.m in Sources */,
 				B5859C92213F971A00C71222 /* PGMainViewController.mm in Sources */,
@@ -716,6 +727,7 @@
 				B526B2202148D29100FBA6D7 /* BulletUrdfImporter.mm in Sources */,
 				B5B7A5F021DAEAA9008495B9 /* PGTimeSeriesViewController.mm in Sources */,
 				B5311BD921D7421F00212FE9 /* PGPIDController.m in Sources */,
+				B55AFB20222E41CF003E4C58 /* Gripper.mm in Sources */,
 				B5E607BF2167097100858EF7 /* PGShaders.metal in Sources */,
 				B5B7A5ED21DAE9D8008495B9 /* PGTimeSeriesView.m in Sources */,
 				B5AC6895217F991E00D0F11F /* PGMatrixLogger.m in Sources */,
