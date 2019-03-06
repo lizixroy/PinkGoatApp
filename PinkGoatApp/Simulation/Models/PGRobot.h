@@ -12,6 +12,7 @@
 #import "BulletDynamics/Featherstone/btMultiBody.h"
 #import "PGEventSubscriber.h"
 #import "PGRobotSubscriptionProtocols.h"
+#import "JointMotor.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Desired joint variabels for the robot. This can be used to control the robot's configuration
 @property (nonatomic, strong, readonly) NSMutableArray<NSNumber *> *desiredJointVariables;
+@property (nonatomic, strong) NSMutableArray<JointMotor *> *jointMotors;
 
 - (instancetype)initWithMultiBodyTree:(btInverseDynamicsBullet3::MultiBodyTree *)multiBodyTree
                             multiBody:(btMultiBody *)multiBody;

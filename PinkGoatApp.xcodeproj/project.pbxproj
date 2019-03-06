@@ -22,6 +22,7 @@
 		B5311BD921D7421F00212FE9 /* PGPIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5311BD821D7421F00212FE9 /* PGPIDController.m */; };
 		B5311BDD21D7F02200212FE9 /* PGRobot.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5311BDC21D7F02200212FE9 /* PGRobot.mm */; };
 		B55AFB20222E41CF003E4C58 /* Gripper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B55AFB1F222E41CF003E4C58 /* Gripper.mm */; };
+		B55AFBF1222F835D003E4C58 /* JointMotor.mm in Sources */ = {isa = PBXBuildFile; fileRef = B55AFBF0222F835D003E4C58 /* JointMotor.mm */; };
 		B57BD2252180EAA000463D9F /* PGSimulation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B57BD2242180EAA000463D9F /* PGSimulation.mm */; };
 		B57BD2282180EB9200463D9F /* PGScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B57BD2272180EB9200463D9F /* PGScene.m */; };
 		B57BD22D2180EC3D00463D9F /* PGEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B57BD22C2180EC3D00463D9F /* PGEntity.m */; };
@@ -139,6 +140,8 @@
 		B5311BDE21D7F58700212FE9 /* PGRobotController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGRobotController.h; sourceTree = "<group>"; };
 		B55AFB1E222E41CF003E4C58 /* Gripper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gripper.h; sourceTree = "<group>"; };
 		B55AFB1F222E41CF003E4C58 /* Gripper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Gripper.mm; sourceTree = "<group>"; };
+		B55AFBEF222F835D003E4C58 /* JointMotor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JointMotor.h; sourceTree = "<group>"; };
+		B55AFBF0222F835D003E4C58 /* JointMotor.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JointMotor.mm; sourceTree = "<group>"; };
 		B57BD2232180EAA000463D9F /* PGSimulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGSimulation.h; sourceTree = "<group>"; };
 		B57BD2242180EAA000463D9F /* PGSimulation.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PGSimulation.mm; sourceTree = "<group>"; };
 		B57BD2262180EB9200463D9F /* PGScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGScene.h; sourceTree = "<group>"; };
@@ -326,9 +329,19 @@
 			path = TinyXML;
 			sourceTree = "<group>";
 		};
+		B55AFBEE222F8344003E4C58 /* BulletWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				B55AFBEF222F835D003E4C58 /* JointMotor.h */,
+				B55AFBF0222F835D003E4C58 /* JointMotor.mm */,
+			);
+			path = BulletWrappers;
+			sourceTree = "<group>";
+		};
 		B57BD2222180EA8C00463D9F /* Simulation */ = {
 			isa = PBXGroup;
 			children = (
+				B55AFBEE222F8344003E4C58 /* BulletWrappers */,
 				B57BD22A2180EC3100463D9F /* Models */,
 				B57BD2232180EAA000463D9F /* PGSimulation.h */,
 				B57BD2242180EAA000463D9F /* PGSimulation.mm */,
@@ -737,6 +750,7 @@
 				B526B14221438B6700FBA6D7 /* UrdfParser.mm in Sources */,
 				B5EBA40F214ECB7B00DB4CD6 /* Wavefront2GLInstanceGraphicsShape.cpp in Sources */,
 				B5859C45213F83EF00C71222 /* AppDelegate.swift in Sources */,
+				B55AFBF1222F835D003E4C58 /* JointMotor.mm in Sources */,
 				B5311BDD21D7F02200212FE9 /* PGRobot.mm in Sources */,
 				B5E607B12165155100858EF7 /* PGRenderer.m in Sources */,
 				B57BD2252180EAA000463D9F /* PGSimulation.mm in Sources */,

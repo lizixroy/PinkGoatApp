@@ -81,8 +81,7 @@
 //    [self importRobotModel];
     [self createGripper];
     [self.simulation beginSimulation];
-    [self showTimeSeriesViewForRobot:self.simulation.robot];
-    
+//    [self showTimeSeriesViewForRobot:self.simulation.robot];
     [self startFakeCommandSender];
 }
 
@@ -161,6 +160,7 @@
     
     Gripper *gripper = [[Gripper alloc] initWithMultiBodyTree:m_multiBodyTree multiBody:m_multiBody];
     self.simulation.robot = gripper;
+    [self.simulation addRobot:gripper];
     [self.simulation addUpdateSubscription:gripper];
 }
 
@@ -196,6 +196,10 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([self.simulation.robot isKindOfClass: [Gripper class]]) {
             NSLog(@"Closing the gripper");
+            
+            Gripper *gripper = (Gripper *)self.simulation.robot;
+            [gripper close];
+            
         }
     });
 }

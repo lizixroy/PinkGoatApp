@@ -13,6 +13,7 @@
 #import "PGObjcMathUtilities.h"
 #import "PGCollisionShapeGraphicsGenerator.h"
 #import "PGMatrixLogger.h"
+#import "JointMotor.h"
 
 static NSTimeInterval MIN_SIM_ADVANCE_TIME_DELTA_IN_SECONDS = 0.001; // 1 milliseconds.
 static NSTimeInterval MAX_SIM_ADVANCE_TIME_DELTA_IN_SECONDS = 0.1; // 100 millseconds
@@ -215,6 +216,15 @@ static NSTimeInterval SIM_SLEEP_IN_SECONDS = 0.0001; // 0.1 milliseconds
     for (PGShape *shape in shapes) {
         SCNNode *node = shape.sceneNode;
         [scene.rootNode addChildNode:node];
+    }
+}
+
+- (void)addRobot:(PGRobot *)robot;
+{
+    //TODO: For now, only add motors of a robot into the dynamics world.
+    // The rest of the robot such as multi body and multi body tree will be moved here too.
+    for (JointMotor *motor in robot.jointMotors) {
+        self->physicsWorld->addMultiBodyConstraint(motor->motor);
     }
 }
 

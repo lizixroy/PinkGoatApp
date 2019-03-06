@@ -8,6 +8,7 @@
 
 #import "PGRobot.h"
 #import "PGPIDController.h"
+#import "BulletDynamics/Featherstone/btMultiBodyJointMotor.h"
 
 @interface PGRobot()
 
@@ -33,6 +34,7 @@
         }
         _jointControllers = [[NSMutableArray alloc] init];
         _jointVariableSubscribers = [[NSMutableArray alloc] init];
+        _jointMotors = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -90,6 +92,40 @@
         return;
     }
     [self.jointVariableSubscribers addObject:subscriber];
+}
+
+- (BOOL)supportsJointMotorWithLinkIndex:(int)multiBodyLinkIndex
+{
+    bool supportMotor = (self->multiBody->getLink(multiBodyLinkIndex).m_jointType == btMultibodyLink::eRevolute || self->multiBody->getLink(multiBodyLinkIndex).m_jointType == btMultibodyLink::ePrismatic);
+    return supportMotor;
+}
+
+- (void)createJointMotors
+{
+    int numLinks = self->multiBody->getNumLinks();
+    for (int i = 0; i < numLinks; i++)
+    {
+        int mbLinkIndex = i;
+        
+        if ([self supportsJointMotorWithLinkIndex:mbLinkIndex])
+        {
+            float maxMotorImpulse = 1.f;
+            int dof = 0;
+            btScalar desiredVelocity = 0.f;
+            btMultiBodyJointMotor* motor = new btMultiBodyJointMotor(self->multiBody, mbLinkIndex, dof, desiredVelocity, maxMotorImpulse);
+            motor->setPositionTarget(0, 0);
+            motor->setVelocityTarget(0, 1);
+            //motor->setRhsClamp(gRhsClamp);
+            //motor->setMaxAppliedImpulse(0);
+            self->multiBody->getLink(mbLinkIndex).m_userPtr = motor;
+            
+            JointMotor *jointMotor = [[JointMotor alloc] init];
+            jointMotor->motor = motor;
+            [self.jointMotors addObject:jointMotor];
+//            m_data->m_dynamicsWorld->addMultiBodyConstraint(motor);
+            motor->finalizeMultiDof();
+        }
+    }
 }
 
 @end

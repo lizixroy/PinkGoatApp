@@ -10,4 +10,19 @@
 
 @implementation Gripper
 
+// This class simulates an external robot controller that would be running outside TL.
+
+- (void)close;
+{
+    NSLog(@"Closing");
+    
+//    motor->setVelocityTarget(desiredVelocity, kd);
+
+}
+
+- (void)open;
+{
+    NSLog(@"Openning");
+}
+
 @end

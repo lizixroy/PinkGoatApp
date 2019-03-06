@@ -27,7 +27,7 @@
 @interface PGSimulation : NSObject
 {
     @public
-    btDiscreteDynamicsWorld *physicsWorld;
+    btMultiBodyDynamicsWorld *physicsWorld;
 }
 
 @property (nonatomic, strong) PGRenderer *renderer;
@@ -59,6 +59,9 @@
  */
 - (void)addUpdateSubscription:(id<PGEventSubscriberProtocol>)subscriber;
 
-
+/**
+ Add a robot into simulation.
+ */
+- (void)addRobot:(PGRobot *)robot;
 
 @end
